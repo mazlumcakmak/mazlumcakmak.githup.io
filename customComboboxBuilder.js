@@ -20,6 +20,6 @@
                 this.dispatchEvent(event);
             });
         }
-        customElements.define("com-mazlum-sap-customCombobox",
+        customElements.define("custom-button",
             customComboboxBuilderPanel);
     })();
