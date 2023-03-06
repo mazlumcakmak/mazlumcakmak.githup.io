@@ -17,7 +17,7 @@
         }, {
             "kind": "builder",
             "tag": "com-mazlum-sap-customCombobox-builder",
-            "url": "https:\/\/cdn.jsdelivr.net\/gh\/mazlumcakmak\/CustomCombobox\/CustomCombobox_Builder.js",
+            "url": "https://raw.githubusercontent.com/mazlumcakmak/mazlumcakmak.githup.io/main/customComboboxBuilder.js",
             "integrity": "",
             "ignoreIntegrity": true
         }
