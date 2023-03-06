@@ -119,26 +119,15 @@
                 new CustomEvent("propertiesChanged", {
                     detail: {
                         properties: {
-                            date: this.date,
-                            captionaftercountdown: this.captionaftercountdown
+                            members: this.members 
                         },
                     },
                 }));
         }
-
-        set date(_date) {
-            this._shadowRoot.getElementById("builder_fruits").value = _date;
-        }
-        get date() {
+ 
+        get getMembers() {
             return this._shadowRoot.getElementById("builder_fruits").value;
-        }
-
-        set captionaftercountdown(_captionaftercountdown) {
-            this._shadowRoot.getElementById("builder_captionaftercountdown").value = _captionaftercountdown;
-        }
-        get captionaftercountdown() {
-            return this._shadowRoot.getElementById("builder_captionaftercountdown").value;
-        }
+        } 
 
     }
     customElements.define("com-mazlum-sap-customCombobox",
