@@ -16,14 +16,15 @@
             element.addEventListener("click", function (e) {
                 debugger;
                 var table = template.getElementsByClassName("tableFilter");
-				var lvFilterClass = template.getElementsByClassName("filterName");
-				
+                var lvFilterClass = template.getElementsByClassName("filterName");
+
                 if (lvFilterClass[0].value == "" || lvFilterClass[0].value == undefined) {
                     return;
                 }
                 var row = table[0].insertRow(table[0].length);
                 var cell1 = row.insertCell(0);
                 cell1.innerHTML = lvFilterClass[0].value;
+                debugger;
             });
         }
         _submit(e) {
