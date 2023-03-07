@@ -96,7 +96,7 @@
         </form>
         ';
     class DimensionWidgetBuilderPanel extends HTMLElement {
-        construcdimensionTyper() {
+        constructor() {
             super();
 			debugger;
             this._shadowRoot = this.attachShadow({
