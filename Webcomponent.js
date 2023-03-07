@@ -1,6 +1,6 @@
 (function () {
     let tmpl = document.createElement('template');
-    tmpl.innerHTML = '<select id = "dimDropDownSel"></select>';
+    tmpl.innerHTML = '<select id = "dimDropDownSel" style="width:150px;height:32px" ></select>';
 
     class PerformanceHelp extends HTMLElement {
         constructor() {
