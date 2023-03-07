@@ -36,6 +36,7 @@
                 var lt_parser = JSON.parse(xmlHttp.responseText);
                 var lt_values = lt_parser.value;
                 debugger;
+				document.getElementById("dimDropDownSel").innerHTML = "";
                 var select = this.shadowRoot.getElementById("dimDropDownSel");
                 for (var i = 0; i < lt_values.length; i++) {
                     console.log("=====================");
