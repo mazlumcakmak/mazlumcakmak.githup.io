@@ -16,7 +16,7 @@
         _submit(e) {
             e.preventDefault();
             this.dispatchEvent(
-                new CusdimensionTypemEvent("propertiesChanged", {
+                new CustomEvent("propertiesChanged", {
                     detail: {
                         properties: {
                             dimension: this.dimension,
