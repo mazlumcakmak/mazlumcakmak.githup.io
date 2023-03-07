@@ -30,23 +30,31 @@
             if (dimension != "" && dimension != undefined) {
                 var xmlHttp = new XMLHttpRequest();
                 var lvUrl = "https://itelligencegroup-4.eu10.hcs.cloud.sap/api/v1/dataexport/providers/sac/C9Z996O1NC1N4P3AWYHVPEXP8G/" + dimension + "Master";
-                xmlHttp.open("GET", lvUrl, false); // false for synchronous request
+                xmlHttp.open("GET", lvUrl, true); // false for synchronous request
+                xmlHttp.onload = (e) => {
+                    if (xmlHttp.readyState === 4) {
+                        if (xmlHttp.status === 200) {
+                            var lt_parser = JSON.parse(xmlHttp.responseText);
+                            var lt_values = lt_parser.value;
+
+                            this.shadowRoot.getElementById("dimDropDownSel").innerHTML = "";
+                            var select = this.shadowRoot.getElementById("dimDropDownSel");
+                            for (var i = 0; i < lt_values.length; i++) {
+                                var option = document.createElement("OPTION");
+                                option.innerHTML = lt_values[i].Description;
+                                option.value = lt_values[i].ID;
+                                select.options.add(option);
+                            }
+                        } else {
+                            console.error(xmlHttp.statusText);
+                        }
+                    }
+                };
+                xmlHttp.onerror = (e) => {
+                    console.error(xhr.statusText);
+                };
                 xmlHttp.send(null);
-                console.log(xmlHttp.responseText);
-                var lt_parser = JSON.parse(xmlHttp.responseText);
-                var lt_values = lt_parser.value;
-                debugger;
-				this.shadowRoot.getElementById("dimDropDownSel").innerHTML = "";
-                var select = this.shadowRoot.getElementById("dimDropDownSel");
-                for (var i = 0; i < lt_values.length; i++) {
-                    console.log("=====================");
-                    console.log("ID:", lt_values[i].ID);
-                    console.log("Description:", lt_values[i].Description);
-                    var option = document.createElement("OPTION");
-                    option.innerHTML = lt_values[i].Description;
-                    option.value = lt_values[i].ID;
-                    select.options.add(option);
-                }
+
             }
         }
         onCustomWidgetAfterUpdate(changedProperties) {
