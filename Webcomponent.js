@@ -5,8 +5,9 @@
     class PerformanceHelp extends HTMLElement {
         constructor() {
             super();
-            this.init(); 
-            var xmlHttp = new XMLHttpRequest();
+            this.init();
+            //var xmlHttp = new XMLHttpRequest();
+            /*
             xmlHttp.open("GET", "https://itelligencegroup-4.eu10.hcs.cloud.sap/api/v1/dataexport/providers/sac/C9Z996O1NC1N4P3AWYHVPEXP8G/SAP_FI_IFP_GLACCOUNTMaster", false); // false for synchronous request
             xmlHttp.send(null);
             console.log(xmlHttp.responseText);
@@ -15,14 +16,15 @@
             debugger;
             var select = this.shadowRoot.getElementById("dimDropDownSel");
             for (var i = 0; i < lt_values.length; i++) {
-                console.log("=====================");
-                console.log("ID:", lt_values[i].ID);
-                console.log("Description:", lt_values[i].Description);
-                var option = document.createElement("OPTION");
-                option.innerHTML = lt_values[i].Description;
-                option.value = lt_values[i].ID;
-                select.options.add(option);
+            console.log("=====================");
+            console.log("ID:", lt_values[i].ID);
+            console.log("Description:", lt_values[i].Description);
+            var option = document.createElement("OPTION");
+            option.innerHTML = lt_values[i].Description;
+            option.value = lt_values[i].ID;
+            select.options.add(option);
             }
+             */
         }
 
         init() {
@@ -39,7 +41,6 @@
         }
 
         fireChanged() {}
-      
 
     }
 
