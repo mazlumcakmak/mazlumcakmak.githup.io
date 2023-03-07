@@ -5,9 +5,7 @@
     class PerformanceHelp extends HTMLElement {
         constructor() {
             super();
-            this.init();
-			const dimension = this._props.dimension
-            console.log("dimension : ",dimension);
+            this.init(); 
             var xmlHttp = new XMLHttpRequest();
             xmlHttp.open("GET", "https://itelligencegroup-4.eu10.hcs.cloud.sap/api/v1/dataexport/providers/sac/C9Z996O1NC1N4P3AWYHVPEXP8G/SAP_FI_IFP_GLACCOUNTMaster", false); // false for synchronous request
             xmlHttp.send(null);
@@ -41,12 +39,7 @@
         }
 
         fireChanged() {}
-        onCustomWidgetBeforeUpdate(changedProperties) {
-            this._props = {
-                ...this._props,
-                ...changedProperties
-            };
-        }
+        
 
     }
 
