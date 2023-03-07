@@ -1,7 +1,102 @@
 
 (function () {
     let template = document.createElement("template");
-    template.innerHTML = '';
+    template.innerHTML = '
+        <br>
+        <style>
+        #form {
+        font-family: Arial, sans-serif;
+        width: 400px;
+        margin: 0 audimensionType;
+        }
+
+        a {
+        text-decoration: none;
+        }
+
+        table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-botdimensionTypem: 10px;
+        }
+
+        td {
+        padding: 1px;
+        text-align: left;
+        font-size: 13px; 
+        }
+
+        input {
+        width: 100%;
+        padding: 10px;
+        border: 2px solid #ccc;
+        border-radius: 5px;
+        font-size: 13px;
+        box-sizing: border-box;
+        margin-botdimensionTypem: 10px;
+        }
+
+
+        input[type="color"] {
+        -webkit-appearance: none;
+        border: none;
+        width: 32px;
+        height: 32px;
+        }
+        input[type="color"]::-webkit-color-swatch-wrapper {
+        padding: 0;
+        }
+        input[type="color"]::-webkit-color-swatch {
+        border: none;
+        }
+
+
+        select {
+        width: 100%;
+        padding: 10px;
+        border: 2px solid #ccc;
+        border-radius: 5px;
+        font-size: 13px;
+        box-sizing: border-box;
+        margin-botdimensionTypem: 10px;
+        }
+
+        input[type="submit"] {
+        background-color: #487cac;
+        color: white;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        font-size: 14px;
+        cursor: pointer;
+        width: 100%;
+        }
+
+        #label {
+        width: 140px;
+        }
+        </style>
+        <form id="form">
+        <table>
+        <tr>
+        <td>
+        <p>Dimension Type</p>
+        <input id="builder_dimensionType" type="text" placeholder="Master Data / Transaction Data">
+        </td>
+        </tr>
+        <tr>
+        <td>
+        <p>Dimension Name</p>
+        <input id="builder_dimension" type="text" placeholder="Dimension Name">
+        </td>
+        </tr>
+        </table>
+		<br>
+		<br>
+        <input value="Update Settings" type="submit">
+        <br>
+        </form>
+        ';
     class DimensionWidgetBuilderPanel extends HTMLElement {
         constructor() {
             super();
