@@ -34,10 +34,12 @@
             this.dispatchEvent(
                 new CustomEvent("propertiesChanged", {
 
-                    if (this.filterName == "" || this.filterName == undefined) {
-                        return;
-                    }
-                    this.tableFiltre();
+                    detail: {
+                        properties: {
+                            filterName: this.filterName,
+                            tableFiltre: this.tableFiltre
+                        },
+                    },
                 }));
         }
 
@@ -57,8 +59,8 @@
         get tableFiltre() {
             return this._shadowRoot.getElementById("tableFilter");
         }
-        set tableFiltre() {
-            var table = this.tableFiltre();
+        set tableFiltre(_tableFiltre) {
+            var table = _tableFiltre;
             var row = table.insertRow(table.length);
             var cell1 = row.insertCell(0);
             cell1.innerHTML = this._shadowRoot.getElementById("filterName").value;
