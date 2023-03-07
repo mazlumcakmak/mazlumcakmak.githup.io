@@ -7,12 +7,29 @@
             super();
             this.init();
             this._props = {};
-			debugger;
+            this.getData();
+
+        }
+
+        init() {
+
+            let shadowRoot = this.attachShadow({
+                mode: "open"
+            });
+            shadowRoot.appendChild(tmpl.content.cloneNode(true));
+            this.addEventListener("click", event => {
+                var event = new Event("onClick");
+                this.fireChanged();
+                this.dispatchEvent(event);
+            });
+        }
+        getData() {
+            debugger;
             const dimension = this._props.dimension;
             const dimensionType = this._props.dimensionType;
             if (dimension != "" && dimension != undefined) {
                 var xmlHttp = new XMLHttpRequest();
-				var lvUrl = "https://itelligencegroup-4.eu10.hcs.cloud.sap/api/v1/dataexport/providers/sac/C9Z996O1NC1N4P3AWYHVPEXP8G/"+dimension+"Master";
+                var lvUrl = "https://itelligencegroup-4.eu10.hcs.cloud.sap/api/v1/dataexport/providers/sac/C9Z996O1NC1N4P3AWYHVPEXP8G/" + dimension + "Master";
                 xmlHttp.open("GET", lvUrl, false); // false for synchronous request
                 xmlHttp.send(null);
                 console.log(xmlHttp.responseText);
@@ -30,22 +47,10 @@
                     select.options.add(option);
                 }
             }
-
         }
-
-        init() {
-
-            let shadowRoot = this.attachShadow({
-                mode: "open"
-            });
-            shadowRoot.appendChild(tmpl.content.cloneNode(true));
-            this.addEventListener("click", event => {
-                var event = new Event("onClick");
-                this.fireChanged();
-                this.dispatchEvent(event);
-            });
+        onCustomWidgetAfterUpdate(changedProperties) {
+            this.getData();
         }
-
         fireChanged() {}
         onCustomWidgetBeforeUpdate(changedProperties) {
             this._props = {
