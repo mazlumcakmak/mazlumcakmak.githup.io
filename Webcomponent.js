@@ -6,23 +6,8 @@
         constructor() {
             super();
             this.init();
-        }
-
-        init() {
-
-            let shadowRoot = this.attachShadow({
-                mode: "open"
-            });
-            shadowRoot.appendChild(tmpl.content.cloneNode(true));
-            this.addEventListener("click", event => {
-                var event = new Event("onClick");
-                this.fireChanged();
-                this.dispatchEvent(event);
-            });
-        }
-
-        fireChanged() {
-            console.log("OnClick Triggered");
+			
+			  console.log("OnClick Triggered");
             var xmlHttp = new XMLHttpRequest();
             xmlHttp.open("GET", "https://itelligencegroup-4.eu10.hcs.cloud.sap/api/v1/dataexport/providers/sac/C9Z996O1NC1N4P3AWYHVPEXP8G/SAP_FI_IFP_GLACCOUNTMaster", false); // false for synchronous request
             xmlHttp.send(null);
@@ -40,6 +25,23 @@
 				option.value  = lt_values[i].ID; 
 				select.options.add(option);
             }
+        }
+
+        init() {
+
+            let shadowRoot = this.attachShadow({
+                mode: "open"
+            });
+            shadowRoot.appendChild(tmpl.content.cloneNode(true));
+            this.addEventListener("click", event => {
+                var event = new Event("onClick");
+                this.fireChanged();
+                this.dispatchEvent(event);
+            });
+        }
+
+        fireChanged() {
+          
 
         }
 
