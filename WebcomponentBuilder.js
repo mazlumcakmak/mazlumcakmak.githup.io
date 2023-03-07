@@ -13,7 +13,7 @@
             .getElementById("form")
             .addEventListener("submit", this._submit.bind(this));
             const element = this._shadowRoot.getElementById("addBtn");
-            element.addEventListener("click", myFunction);
+            element.addEventListener("click", this.myFunction);
         }
         _submit(e) {
             e.preventDefault();
