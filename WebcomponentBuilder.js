@@ -9,21 +9,23 @@
                 mode: "open"
             });
             this._shadowRoot.appendChild(template.content.cloneNode(true));
+			this.tableFilter(this._shadowRoot.getElementById(tableFilter)); 
+			this.filterName(this._shadowRoot.getElementsByClassName("filterName").value);
             this._shadowRoot
             .getElementById("form")
             .addEventListener("submit", this._submit.bind(this));
             const element = this._shadowRoot.getElementById("addBtn");
             element.addEventListener("click", function (e) {
                 debugger;
-                var table = template.getElementsByClassName("tableFilter");
-                var lvFilterClass = template.getElementsByClassName("filterName");
+                var table = this.tableFilter();
+                var lvFilterClass = this.filterName();
 
-                if (lvFilterClass[0].value == "" || lvFilterClass[0].value == undefined) {
+                if (lvFilterClass == "" || lvFilterClass == undefined) {
                     return;
                 }
-                var row = table[0].insertRow(table[0].length);
+                var row = table.insertRow(table.length);
                 var cell1 = row.insertCell(0);
-                cell1.innerHTML = lvFilterClass[0].value;
+                cell1.innerHTML = lvFilterClass;
                 debugger;
             });
         }
@@ -52,6 +54,18 @@
         }
         get dimensionType() {
             return this._shadowRoot.getElementById("builder_dimensionType").value;
+        }
+		set tableFilter(_tableFilter) {
+            this._shadowRoot.getElementById("tableFilter") = _tableFilter;
+        }
+        get tableFilter() {
+            return this._shadowRoot.getElementById("tableFilter");
+        }
+		set filterName(_filterName) {
+            this._shadowRoot.getElementById("filterName").value = _filterName;
+        }
+        get filterName() {
+            return this._shadowRoot.getElementById("filterName").value;
         }
 
     }
