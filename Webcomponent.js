@@ -29,15 +29,15 @@
             console.log(xmlHttp.responseText);
             var lt_parser = JSON.parse(xmlHttp.responseText);
             var lt_values = lt_parser.value;
+			var select = document.getElementById("dimDropDownSel");
             for (var i = 0; i < lt_values.length; i++) {
                 console.log("=====================");
                 console.log("ID:", lt_values[i].ID);
-                console.log("Description:", lt_values[i].Description);  
-				var select = document.getElementById("dimDropDownSel");
-				var option = document.createElement('option');
+                console.log("Description:", lt_values[i].Description);   
+				var option = document.createElement('option'); 
 				option.text = lt_values[i].Description;
-				option.value  = lt_values[i].ID;
-				select.add(option, 0);
+				option.value  = lt_values[i].ID; 
+				select.appendChild(option);
             }
 
         }
