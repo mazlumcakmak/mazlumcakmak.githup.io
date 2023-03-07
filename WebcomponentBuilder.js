@@ -26,7 +26,7 @@
                 }));
         }
         myFunction() {
-            var table = this._shadowRoot..getElementById("tableFilter");
+            var table = this._shadowRoot.getElementById("tableFilter");
             if (this._shadowRoot.getElementById("filterName").value == "" || this._shadowRoot.getElementById("filterName").value == undefined) {
                 return;
             }
