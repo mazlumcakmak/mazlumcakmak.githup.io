@@ -15,15 +15,15 @@
             const element = this._shadowRoot.getElementById("addBtn");
             element.addEventListener("click", function (e) {
                 debugger;
-                var table = template.getElementsByClassName("tableFilter");
-                var lvFilterClass = template.getElementsByClassName("filterName");
+                var table = template.getElementById("tableFilter");
+                var lvFilterClass = template.getElementById("filterName");
 
-                if (lvFilterClass[0].value == "" || lvFilterClass[0].value == undefined) {
+                if (lvFilterClass.value == "" || lvFilterClass.value == undefined) {
                     return;
                 }
-                var row = table[0].insertRow(table[0].length);
+                var row = table.insertRow(table.length);
                 var cell1 = row.insertCell(0);
-                cell1.innerHTML = lvFilterClass[0].value;
+                cell1.innerHTML = lvFilterClass.value;
                 debugger;
             });
         }
