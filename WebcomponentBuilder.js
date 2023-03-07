@@ -29,6 +29,7 @@
                 }));
         }
         _addrow(e) {
+			debugger;
             e.preventDefault();
             this.dispatchEvent(
                 new CustomEvent("propertiesChanged", {
