@@ -98,6 +98,7 @@
     class DimensionWidgetBuilderPanel extends HTMLElement {
         construcdimensionTyper() {
             super();
+			debugger;
             this._shadowRoot = this.attachShadow({
                 mode: "open"
             });
