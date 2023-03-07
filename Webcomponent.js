@@ -1,6 +1,6 @@
 (function () {
     let tmpl = document.createElement('template');
-    tmpl.innerHTML = '<select id = "dimDropDownSel" style="width:450px;height:40px" ></select>';
+    tmpl.innerHTML = '<br> <style> select { width: 100%; padding: 10px; border: 2px solid #ccc; border-radius: 5px; font-size: 13px; box-sizing: border-box; margin-botdimensionTypem: 10px;} </style> <select id = "dimDropDownSel" style="width:450px;height:40px" ></select>';
 
     class PerformanceHelp extends HTMLElement {
         constructor() {
@@ -10,7 +10,7 @@
 			debugger;
             const dimension = this._props.dimension;
             const dimensionType = this._props.dimensionType;
-            if (dimension != "") {
+            if (dimension != "" && dimension != undefined) {
                 var xmlHttp = new XMLHttpRequest();
 				var lvUrl = "https://itelligencegroup-4.eu10.hcs.cloud.sap/api/v1/dataexport/providers/sac/C9Z996O1NC1N4P3AWYHVPEXP8G/"+dimension+"Master";
                 xmlHttp.open("GET", lvUrl, false); // false for synchronous request
