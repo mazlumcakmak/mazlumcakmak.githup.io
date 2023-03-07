@@ -29,7 +29,8 @@
             var lt_parser =  JSON.parse(xmlHttp.responseText);
             var lt_values = lt_parser.value;
             for(var i = 0; i < lt_values.length; i++ ){
-                console.log(lt_values[i].PRICE);
+                console.log("Price:" , lt_values[i].PRICE);
+                console.log("SAP_FI_IFP_QUANTITY_UNIT:",lt_values[i].SAP_FI_IFP_QUANTITY_UNIT);
             }
             
         }        
