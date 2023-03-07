@@ -10,7 +10,7 @@
             });
             this._shadowRoot.appendChild(template.content.cloneNode(true));
 			this.tableFilter(this._shadowRoot.getElementById("tableFilter")); 
-			this.filterName(this._shadowRoot.getElementsByClassName("filterName").value);
+			this.filterName(this._shadowRoot.getElementById("filterName").value);
             this._shadowRoot
             .getElementById("form")
             .addEventListener("submit", this._submit.bind(this));
