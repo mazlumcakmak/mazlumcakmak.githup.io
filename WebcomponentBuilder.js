@@ -13,7 +13,16 @@
             .getElementById("form")
             .addEventListener("submit", this._submit.bind(this));
             const element = this._shadowRoot.getElementById("addBtn");
-            element.addEventListener("click", this.myFunction(this._shadowRoot));
+            element.addEventListener("click", function (e) {
+                debugger;
+                var table = this._shadowRoot.getElementById("tableFilter");
+                if (this._shadowRoot.getElementById("filterName").value == "" || this._shadowRoot.getElementById("filterName").value == undefined) {
+                    return;
+                }
+                var row = table.insertRow(table.length);
+                var cell1 = row.insertCell(0);
+                cell1.innerHTML = this._shadowRoot.getElementById("filterName").value;
+            });
         }
         _submit(e) {
             e.preventDefault();
@@ -26,16 +35,6 @@
                         },
                     },
                 }));
-        }
-        myFunction(_shadowRoot) {
-			debugger;
-            var table = _shadowRoot.getElementById("tableFilter");
-            if (_shadowRoot.getElementById("filterName").value == "" || _shadowRoot.getElementById("filterName").value == undefined) {
-                return;
-            }
-            var row = table.insertRow(table.length);
-            var cell1 = row.insertCell(0);
-            cell1.innerHTML = _shadowRoot.getElementById("filterName").value;
         }
 
         set dimension(_dimension) {
