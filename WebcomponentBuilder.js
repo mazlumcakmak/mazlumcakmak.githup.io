@@ -100,7 +100,6 @@
     class DimensionWidgetBuilderPanel extends HTMLElement {
         constructor() {
             super();
-			debugger;
             this._shadowRoot = this.attachShadow({
                 mode: "open"
             });
@@ -137,6 +136,6 @@
         }
 
     }
-    cusdimensionTypemElements.define("custom-button-builder",
+    customElements.define("custom-button-builder",
         DimensionWidgetBuilderPanel);
 })();
