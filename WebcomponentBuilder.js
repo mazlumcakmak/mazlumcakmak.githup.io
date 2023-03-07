@@ -28,6 +28,7 @@
                 }));
         }
         myFunction(_shadowRoot) {
+			debugger;
             var table = _shadowRoot.getElementById("tableFilter");
             if (_shadowRoot.getElementById("filterName").value == "" || _shadowRoot.getElementById("filterName").value == undefined) {
                 return;
