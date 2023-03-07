@@ -37,7 +37,7 @@
 				var option = document.createElement('option'); 
 				option.text = lt_values[i].Description;
 				option.value  = lt_values[i].ID; 
-				select.appendChild(option);
+				select.add(option);
             }
 
         }
