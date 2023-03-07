@@ -12,9 +12,6 @@
             this._shadowRoot
             .getElementById("form")
             .addEventListener("submit", this._submit.bind(this));
-            this._shadowRoot
-            .getElementById("addBtn")
-            .addEventListener("click", this._addrow.bind(this));
         }
         _submit(e) {
             e.preventDefault();
@@ -28,20 +25,7 @@
                     },
                 }));
         }
-        _addrow(e) {
-            debugger;
-            e.preventDefault();
-            this.dispatchEvent(
-                new CustomEvent("propertiesChanged", {
-
-                    detail: {
-                        properties: {
-                            filterName: this.filterName,
-                            tableFiltre: this.tableFiltre
-                        },
-                    },
-                }));
-        }
+       
 
         set dimension(_dimension) {
             this._shadowRoot.getElementById("builder_dimension").value = _dimension;
@@ -56,18 +40,7 @@
         get dimensionType() {
             return this._shadowRoot.getElementById("builder_dimensionType").value;
         }
-        get tableFiltre() {
-            return this._shadowRoot.getElementById("tableFilter");
-        }
-        set tableFiltre(_tableFiltre) {
-            var table = _tableFiltre;
-            var row = table.insertRow(table.length);
-            var cell1 = row.insertCell(0);
-            cell1.innerHTML = this._shadowRoot.getElementById("filterName").value;
-        }
-        get filterName() {
-            return this._shadowRoot.getElementById("filterName").value;
-        }
+        
 
     }
     customElements.define("custom-button-builder",
