@@ -29,18 +29,15 @@
                 }));
         }
         _addrow(e) {
-			debugger;
+            debugger;
             e.preventDefault();
             this.dispatchEvent(
                 new CustomEvent("propertiesChanged", {
-                    
-                    if (this._shadowRoot.getElementById("filterName").value == "" || this._shadowRoot.getElementById("filterName").value == undefined) {
+
+                    if (this.filterName == "" || this.filterName == undefined) {
                         return;
                     }
-					var table = this._shadowRoot.getElementById("tableFilter");
-                    var row = table.insertRow(table.length);
-                    var cell1 = row.insertCell(0);
-                    cell1.innerHTML = this._shadowRoot.getElementById("filterName").value;
+                    this.tableFiltre();
                 }));
         }
 
@@ -56,6 +53,18 @@
         }
         get dimensionType() {
             return this._shadowRoot.getElementById("builder_dimensionType").value;
+        }
+        get tableFiltre() {
+            return this._shadowRoot.getElementById("tableFilter");
+        }
+        set tableFiltre() {
+            var table = this.tableFiltre();
+            var row = table.insertRow(table.length);
+            var cell1 = row.insertCell(0);
+            cell1.innerHTML = this._shadowRoot.getElementById("filterName").value;
+        }
+        get filterName() {
+            return this._shadowRoot.getElementById("filterName").value;
         }
 
     }
