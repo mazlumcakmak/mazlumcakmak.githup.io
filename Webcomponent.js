@@ -1,6 +1,6 @@
 (function () {
     let tmpl = document.createElement('template');
-    tmpl.innerHTML = '<div class="combobox"> <select> <option value="Select">Select....</option> <option value="php">php</option> <option value="html">html</option> <option value="javascript">Javascript</option> <option value="CPP">CPP</option> <option value="Python">Python</option> <option value="vue">Vue</option> <option value="7">Cobobl</option> <option value="9">TEXT 4</option> <option value="CSS Text">CSS TEXT</option> <option value="responsive">Responsive</option> <option value="script">scripting</option> <option value="preprocessors">Saas, Less</option> <option value="csharp">C Sharp</option></select> </div> <style> :root {--PANTONECOATED: #5075d0;} select { box-shadow: none; flex: 1; padding: 0 1.2em; color: #fff; background-color: var(--PANTONECOATED); cursor: pointer;}select::-ms-expand { display: none;} .combobox { position: relative; display: flex; width: 20em; height: 3em; border-radius: .25em; overflow: hidden; color:#fff;}.combobox::after { content: ' \ 25BC '; position: absolute; top: 0; right: 0; padding: 1em; background-color: #b567c5; transition: .25s all ease; pointer-events: none;}.combobox:hover::after { color: #f39c12; } </style>';
+    tmpl.innerHTML = '<select name="example"> <option value="A">A</option> <option value="B">B</option> <option value="-">Other</option> </select>';
 
     class PerformanceHelp extends HTMLElement {
         constructor() {
