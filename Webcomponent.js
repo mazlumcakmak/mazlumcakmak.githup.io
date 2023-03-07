@@ -23,8 +23,7 @@
                 this.dispatchEvent(event);
             });
         }
-        getData() {
-            debugger;
+        getData() { 
             const dimension = this._props.dimension;
             const dimensionType = this._props.dimensionType;
             if (dimension != "" && dimension != undefined) {
