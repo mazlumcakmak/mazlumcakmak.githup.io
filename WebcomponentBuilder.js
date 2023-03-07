@@ -23,7 +23,7 @@
         td {
         padding: 1px;
         text-align: left;
-        font-size: 13px;
+        font-size: 13px; 
         }
 
         input {
@@ -81,13 +81,13 @@
         <tr>
         <td>
         <p>Source Currency Code</p>
-        <input id="dimensionType" type="text" placeholder="Master Data / Transaction Data">
+        <input id="builder_dimensionType" type="text" placeholder="Master Data / Transaction Data">
         </td>
         </tr>
         <tr>
         <td>
         <p>Target Currency Code</p>
-        <input id="dimension" type="text" placeholder="Dimension Name">
+        <input id="builder_dimension" type="text" placeholder="Dimension Name">
         </td>
         </tr>
         </table>
