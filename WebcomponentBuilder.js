@@ -13,7 +13,7 @@
             .getElementById("form")
             .addEventListener("submit", this._submit.bind(this));
             const element = this._shadowRoot.getElementById("addBtn");
-            element.addEventListener("click", this.myFunction);
+            element.addEventListener("click", this.myFunction(this._shadowRoot));
         }
         _submit(e) {
             e.preventDefault();
@@ -27,14 +27,14 @@
                     },
                 }));
         }
-        myFunction() {
-            var table = this._shadowRoot.getElementById("tableFilter");
-            if (this._shadowRoot.getElementById("filterName").value == "" || this._shadowRoot.getElementById("filterName").value == undefined) {
+        myFunction(_shadowRoot) {
+            var table = _shadowRoot.getElementById("tableFilter");
+            if (_shadowRoot.getElementById("filterName").value == "" || _shadowRoot.getElementById("filterName").value == undefined) {
                 return;
             }
             var row = table.insertRow(table.length);
             var cell1 = row.insertCell(0);
-            cell1.innerHTML = this._shadowRoot.getElementById("filterName").value;
+            cell1.innerHTML = _shadowRoot.getElementById("filterName").value;
         }
 
         set dimension(_dimension) {
