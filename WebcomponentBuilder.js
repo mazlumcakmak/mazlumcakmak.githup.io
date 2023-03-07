@@ -9,7 +9,7 @@
                 mode: "open"
             });
             this._shadowRoot.appendChild(template.content.cloneNode(true));
-			this.tableFilter(this._shadowRoot.getElementById(tableFilter)); 
+			this.tableFilter(this._shadowRoot.getElementById("tableFilter")); 
 			this.filterName(this._shadowRoot.getElementsByClassName("filterName").value);
             this._shadowRoot
             .getElementById("form")
