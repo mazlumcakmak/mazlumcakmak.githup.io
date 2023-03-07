@@ -27,12 +27,12 @@
         }
         myFunction() {
             var table = this._shadowRoot..getElementById("tableFilter");
-            if (this._shadowRoot..getElementById("filterName").value == "" || this._shadowRoot..getElementById("filterName").value == undefined) {
+            if (this._shadowRoot.getElementById("filterName").value == "" || this._shadowRoot.getElementById("filterName").value == undefined) {
                 return;
             }
             var row = table.insertRow(table.length);
             var cell1 = row.insertCell(0);
-            cell1.innerHTML = this._shadowRoot..getElementById("filterName").value;
+            cell1.innerHTML = this._shadowRoot.getElementById("filterName").value;
         }
 
         set dimension(_dimension) {
