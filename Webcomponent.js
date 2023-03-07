@@ -1,6 +1,6 @@
 (function () {
     let tmpl = document.createElement('template');
-    tmpl.innerHTML = '<select name="dimDropDownSel"> <option value="A">A</option> <option value="B">B</option> <option value="-">Other</option> </select>';
+    tmpl.innerHTML = '<select id = "dimDropDownSel"></select>';
 
     class PerformanceHelp extends HTMLElement {
         constructor() {
@@ -34,10 +34,10 @@
                 console.log("=====================");
                 console.log("ID:", lt_values[i].ID);
                 console.log("Description:", lt_values[i].Description);   
-				var option = document.createElement('option'); 
-				option.text = lt_values[i].Description;
+				var option = document.createElement("OPTION");
+				option.innerHTML = lt_values[i].Description;
 				option.value  = lt_values[i].ID; 
-				select.add(option);
+				select.options.add(option);
             }
 
         }
