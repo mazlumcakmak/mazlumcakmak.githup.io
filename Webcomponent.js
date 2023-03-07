@@ -30,12 +30,12 @@
             var lt_parser = JSON.parse(xmlHttp.responseText);
             var lt_values = lt_parser.value;
 			debugger;
-			var select = document.getElementById("dimDropDownSel");
+			var select = this.shadowRoot.getElementById("dimDropDownSel");
             for (var i = 0; i < lt_values.length; i++) {
                 console.log("=====================");
                 console.log("ID:", lt_values[i].ID);
                 console.log("Description:", lt_values[i].Description);   
-				var option = document.createElement("OPTION");
+				var option = this.shadowRoot.createElement("OPTION");
 				option.innerHTML = lt_values[i].Description;
 				option.value  = lt_values[i].ID; 
 				select.options.add(option);
