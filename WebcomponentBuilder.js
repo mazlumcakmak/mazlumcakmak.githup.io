@@ -67,7 +67,8 @@
                 }));
             var provider = this.prodiver;
             if (provider != "" && provider != undefined) {
-                var lvUrl = "https://" + window.location.host + "/api/v1/dataexport/administration/providers/sac/" + provider + "/";
+                var lvUrl = "https://" + window.location.host + "/api/v1/dataexport/providers/sac/" + provider + "/";
+				https://graphisoft-1.eu10.hcs.cloud.sap/api/v1/dataexport/providers/sac/C7U72B2E0VPSGLIY7E2E1UFM68/
                 var xmlHttp = new XMLHttpRequest();
                 xmlHttp.open("GET", lvUrl, false);
                 xmlHttp.send(null);
@@ -82,8 +83,8 @@
                             continue;
                         }
                         var option = document.createElement("OPTION");
-                        option.innerHTML = lt_values[i].name;
-                        option.value = lt_values[i].name;
+                        option.innerHTML = lt_values[i].name.replace("Master","");
+                        option.value = lt_values[i].name.replace("Master","");
                         select.options.add(option);
                     }
 
