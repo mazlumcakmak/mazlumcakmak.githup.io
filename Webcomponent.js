@@ -7,6 +7,7 @@
             super();
             this.init();
             this._props = {};
+            this._select = {};
             this.getData();
 
         }
@@ -86,8 +87,11 @@
             this.getData();
         }
         fireChanged() {
-			
-			console.log(this.selectedkey);
+			debugger;
+			 this._select = {
+                selectedKey : this.selectedKey,
+                selectedValue : this.selectedValue
+            };
 			
 		}
 		get selectedKey(){
@@ -96,6 +100,7 @@
             return e.options[e.selectedIndex].value; 
 		}
 		set selectedKey(_selectedKey){
+			debugger;
 			var e = this.shadowRoot.getElementById("dimDropDownSel");
             return e.options[e.selectedIndex].value = _selectedKey; 
 		}
