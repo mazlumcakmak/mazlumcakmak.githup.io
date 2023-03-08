@@ -103,6 +103,7 @@
         }
 
         set dimension(_dimension) {
+			debugger;
             var lv_dimension = this._shadowRoot.getElementById("builder_dimension").value;
             if (lv_provider == "none" && gv_dimension == "") {
                 gv_dimension = _dimension;
@@ -123,6 +124,7 @@
         }
 
         set prodiver(_prodiver) {
+			debugger;
             //var e = this._shadowRoot.getElementById("builder_provider");
             //return e.options[e.selectedIndex].value = _prodiver;
             var lv_f = false;
