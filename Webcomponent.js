@@ -86,11 +86,12 @@
             this.getData();
         }
         fireChanged() {
-			debugger;
+			
 			console.log(this.selectedkey);
 			
 		}
 		get selectedKey(){
+			debugger;
 			var e = this.shadowRoot.getElementById("dimDropDownSel");
             return e.options[e.selectedIndex].value; 
 		}
