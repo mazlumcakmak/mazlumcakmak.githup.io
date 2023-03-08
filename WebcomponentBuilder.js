@@ -71,8 +71,7 @@
             return e.options[e.selectedIndex].value;
             //return this._shadowRoot.getElementById("builder_provider").value;
         }
-        get displayOpt() {  
-		debugger;
+        get displayOpt() {   
 			return this._shadowRoot.getElementById("builder_displayOpt").value;
         }
         set displayOpt(_displayOpt) {
