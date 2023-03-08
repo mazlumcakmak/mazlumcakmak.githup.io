@@ -33,10 +33,9 @@
                     option.value = lt_values[i].ProviderID;
                     select.options.add(option);
                 }
-                this._shadowRoot.getElementById("builder_provider").value = lt_values[0].ProviderID;
+                //this._shadowRoot.getElementById("builder_provider").value = lt_values[0].ProviderID;
             }
-            //https://graphisoft-1.eu10.hcs.cloud.sap/api/v1/dataexport/providers/sac/C7U72B2E0VPSGLIY7E2E1UFM68/
-            //lvUrl = "https://" + window.location.host + "/api/v1/dataexport/administration/providers/sac/";
+            this.getDimension();
 
         }
         _submit(e) {
@@ -54,7 +53,6 @@
                 }));
         }
         fireChanged() {
-            debugger;
             this.dispatchEvent(new CustomEvent("propertiesChanged", {
                     detail: {
                         properties: {
@@ -65,10 +63,16 @@
                         }
                     }
                 }));
+
+            this.getDimension();
+        }
+        getDimension() {
+            debugger;
             var provider = this.prodiver;
+            var lvdimension = this.dimension;
             if (provider != "" && provider != undefined) {
                 var lvUrl = "https://" + window.location.host + "/api/v1/dataexport/providers/sac/" + provider + "/";
-				https://graphisoft-1.eu10.hcs.cloud.sap/api/v1/dataexport/providers/sac/C7U72B2E0VPSGLIY7E2E1UFM68/
+                https: //graphisoft-1.eu10.hcs.cloud.sap/api/v1/dataexport/providers/sac/C7U72B2E0VPSGLIY7E2E1UFM68/
                 var xmlHttp = new XMLHttpRequest();
                 xmlHttp.open("GET", lvUrl, false);
                 xmlHttp.send(null);
@@ -83,14 +87,16 @@
                             continue;
                         }
                         var option = document.createElement("OPTION");
-                        option.innerHTML = lt_values[i].name.replace("Master","");
-                        option.value = lt_values[i].name.replace("Master","");
+                        option.innerHTML = lt_values[i].name.replace("Master", "");
+                        option.value = lt_values[i].name.replace("Master", "");
                         select.options.add(option);
-                    }
 
+                    }
+                    if (lvdimension != "" && lvdimension != undefined) {
+                        this.dimension(lvdimension);
+                    }
                 }
             }
-
         }
         set dimension(_dimension) {
             this._shadowRoot.getElementById("builder_dimension").value = _dimension;
