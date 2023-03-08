@@ -86,15 +86,24 @@
             this.getData();
         }
         fireChanged() {
-			this.selectedKey;
+			
 		}
 		get selectedKey(){
 			var e = this.shadowRoot.getElementById("dimDropDownSel");
+            return e.options[e.selectedIndex].value; 
+		}
+		set selectedKey(_selectedKey){
+			var e = this.shadowRoot.getElementById("dimDropDownSel");
+            return e.options[e.selectedIndex].value = _selectedKey; 
+		}
+		get selectedValue(){
+			var e = this.shadowRoot.getElementById("dimDropDownSel");
             return e.options[e.selectedIndex].text; 
 		}
-		
-		 
-		
+		set selectedValue(_selectedValue){
+			var e = this.shadowRoot.getElementById("dimDropDownSel");
+            return e.options[e.selectedIndex].text = _selectedValue; 
+		}
         onCustomWidgetBeforeUpdate(changedProperties) {
             this._props = {
                 ...this._props,
