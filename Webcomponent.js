@@ -98,13 +98,11 @@
                 }));
 
         }
-        get selectedKey() {
-            debugger;
+        get selectedKey() { 
             var e = this.shadowRoot.getElementById("dimDropDownSel");
             return e.options[e.selectedIndex].value;
         }
-        set selectedKey(_selectedKey) {
-            debugger;
+        set selectedKey(_selectedKey) { 
             var e = this.shadowRoot.getElementById("dimDropDownSel");
             return e.options[e.selectedIndex].value = _selectedKey;
         }
