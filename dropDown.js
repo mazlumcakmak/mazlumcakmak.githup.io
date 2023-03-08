@@ -17,7 +17,7 @@
     tmpl.innerHTML = tmpl.innerHTML + '"';
     tmpl.innerHTML = tmpl.innerHTML + ' /></l:VerticalLayout> </content> </Page> </mvc:View> </script>';
 
-    class InputPassword extends HTMLElement {
+    class DropDownWidget extends HTMLElement {
 
         constructor() {
             super();
@@ -165,8 +165,7 @@
             }
         }
 
-    }
-    customElements.define("custom-dropDownWidget", InputPassword);
+    } 
 
     // UTILS
     function loadthis(that) {
@@ -223,4 +222,5 @@
             return v.toString(16);
         });
     }
+	 customElements.define('custom-dropDownWidget', DropDownWidget); 
 })();
