@@ -1,10 +1,10 @@
 (function() {
     let _shadowRoot;
     let _id;
-    let _password;
+    let _dropDown;
 
     let tmpl = document.createElement("template");
-    tmpl.innerHTML = `
+    tmpl.innerHTML = '
         <style>
         </style>
         <div id="ui5_content" name="ui5_content">
@@ -12,24 +12,36 @@
         </div>
 
         <script id="oView" name="oView" type="sapui5/xmlview">
-            <mvc:View
-			    controllerName="myView.Template"
-				xmlns:l="sap.ui.layout"
-				xmlns:mvc="sap.ui.core.mvc"
-				xmlns="sap.m">
-				<l:VerticalLayout
-					class="sapUiContentPadding"
-					width="100%">
-					<l:content>
-						<Input
-							id="passwordInput"
-							type="Password"
-							placeholder="Enter password ..." liveChange="onButtonPress"/>
-					</l:content>
-				</l:VerticalLayout>
-			</mvc:View>
+         <mvc:View
+			height="100%"
+			controllerName="sap.m.sample.ComboBoxSearchBoth.controller.ComboBoxSearchBoth"
+			xmlns:core="sap.ui.core"
+			xmlns:mvc="sap.ui.core.mvc"
+			xmlns:l="sap.ui.layout"
+			xmlns="sap.m">
+			<Page showHeader="false" class="sapUiContentPadding">
+				<content>
+					<l:VerticalLayout>
+						<ComboBox
+							id="idComboBox"
+							showSecondaryValues= "true"
+							filterSecondaryValues= "true"
+							value="{/comboBoxValue}"
+							selectedKey="{/comboBoxKey}"
+							items="{
+								path: '/CountriesCollection',
+								sorter: { path: 'text' }
+							}">
+							<core:ListItem key="{key}" text="{text}" additionalText="{key}"/>
+						</ComboBox>
+						<Label text="Formatted value (text and key):" labelFor="idComboBox"/>
+						<Text text="{parts: [{path: '/comboBoxValue'}, {path: '/comboBoxKey'}], formatter: '.fnFormatter'}" />
+					</l:VerticalLayout>
+				</content>
+			</Page>
+		</mvc:View>
         </script>        
-    `;
+    ';
 
     class InputPassword extends HTMLElement {
 
@@ -46,7 +58,7 @@
             _shadowRoot.querySelector("#oView").id = _id + "_oView";
 
             this._export_settings = {};
-            this._export_settings.password = "";
+            this._export_settings.dropDown = "";
 
             this.addEventListener("click", event => {
                 console.log('click');
@@ -148,28 +160,28 @@
         }
 
         _firePropertiesChanged() {
-            this.password = "";
+            this.dropDown = "";
             this.dispatchEvent(new CustomEvent("propertiesChanged", {
                 detail: {
                     properties: {
-                        password: this.password
+                        dropDown: this.dropDown
                     }
                 }
             }));
         }
 
         // SETTINGS
-        get password() {
-            return this._export_settings.password;
+        get dropDown() {
+            return this._export_settings.dropDown;
         }
-        set password(value) {
-            value = _password;
-            this._export_settings.password = value;
+        set dropDown(value) {
+            value = _dropDown;
+            this._export_settings.dropDown = value;
         }
 
         static get observedAttributes() {
             return [
-                "password"
+                "dropDown"
             ];
         }
 
@@ -180,7 +192,7 @@
         }
 
     }
-    customElements.define("com-fd-djaja-sap-sac-inputpassword", InputPassword);
+    customElements.define("custom-dropDownWidget", InputPassword);
 
     // UTILS
     function loadthis(that) {
@@ -202,12 +214,12 @@
 
                 return Controller.extend("myView.Template", {
                     onButtonPress: function(oEvent) {
-                        _password = oView.byId("passwordInput").getValue();
+                        _dropDown = oView.byId("idComboBox").getValue();
                         that._firePropertiesChanged();
-                        console.log(_password);
+                        console.log(_dropDown);
 
                         this.settings = {};
-                        this.settings.password = "";
+                        this.settings.dropDown = "";
 
                         that.dispatchEvent(new CustomEvent("onStart", {
                             detail: {
@@ -226,7 +238,7 @@
 
 
             if (that_._designMode) {
-                oView.byId("passwordInput").setEnabled(false);
+                oView.byId("idComboBox").setEnabled(false);
             }
         });
     }
