@@ -1,10 +1,19 @@
-(function() {
+(function () {
     let _shadowRoot;
     let _id;
     let _dropDown;
 
     let tmpl = document.createElement("template");
-    tmpl.innerHTML = '<style> </style> <div id="ui5_content" name="ui5_content"><slot name="content"></slot> </div> <script id="oView" name="oView" type="sapui5/xmlview"><mvc:View height="100%" controllerName="sap.m.sample.ComboBoxSearchBoth.controller.ComboBoxSearchBoth" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns:l="sap.ui.layout" xmlns="sap.m"> <Page showHeader="false" class="sapUiContentPadding"><content> <l:VerticalLayout> <ComboBox id="idComboBox" showSecondaryValues= "true" filterSecondaryValues= "true" value="{/comboBoxValue}" selectedKey="{/comboBoxKey}"> <core:ListItem key="{key}" text="{text}" additionalText="{key}"/></ComboBox> <Label text="Formatted value (text and key):" labelFor="idComboBox"/><Text text="{parts: [{path: '/comboBoxValue'}, {path: '/comboBoxKey'}], formatter: '.fnFormatter'}" /></l:VerticalLayout> </content> </Page> </mvc:View> </script>';
+    tmpl.innerHTML = '<style> </style> <div id="ui5_content" name="ui5_content"><slot name="content"></slot> </div> <script id="oView" name="oView" type="sapui5/xmlview"><mvc:View height="100%" controllerName="sap.m.sample.ComboBoxSearchBoth.controller.ComboBoxSearchBoth" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns:l="sap.ui.layout" xmlns="sap.m"> <Page showHeader="false" class="sapUiContentPadding"><content> <l:VerticalLayout> <ComboBox id="idComboBox" showSecondaryValues= "true" filterSecondaryValues= "true" value="{/comboBoxValue}" selectedKey="{/comboBoxKey}"';
+    tmpl.innerHTML = tmpl.innerHTML + 'items="{ path: ';
+    tmpl.innerHTML = tmpl.innerHTML + "/'/";
+    tmpl.innerHTML = tmpl.innerHTML + " CountriesCollection/'";
+    tmpl.innerHTML = tmpl.innerHTML + ", sorter: { path: 'text' } }";
+    tmpl.innerHTML = tmpl.innerHTML + '"> <core:ListItem key="{key}" text="{text}" additionalText="{key}"/></ComboBox> <Label text="Formatted value (text and key):" labelFor="idComboBox"/><Text text="{parts: [{path:';
+    tmpl.innerHTML = tmpl.innerHTML + "	'/comboBoxValue'}";
+    tmpl.innerHTML = tmpl.innerHTML + ", {path: '/comboBoxKey'}]";
+    tmpl.innerHTML = tmpl.innerHTML + ', formatter: '.fnFormatter '}"';
+    tmpl.innerHTML = tmpl.innerHTML + ' /></l:VerticalLayout> </content> </Page> </mvc:View> </script>';
 
     class InputPassword extends HTMLElement {
 
@@ -68,12 +77,12 @@
                                 this.metadata = metadata;
 
                                 this.dispatchEvent(new CustomEvent("propertiesChanged", {
-                                    detail: {
-                                        properties: {
-                                            metadata: metadata
+                                        detail: {
+                                            properties: {
+                                                metadata: metadata
+                                            }
                                         }
-                                    }
-                                }));
+                                    }));
                             }
                         };
 
@@ -106,7 +115,7 @@
         }
 
         disconnectedCallback() {
-            if (this._subscription) { 
+            if (this._subscription) {
                 this._subscription();
                 this._subscription = null;
             }
@@ -125,12 +134,12 @@
         _firePropertiesChanged() {
             this.dropDown = "";
             this.dispatchEvent(new CustomEvent("propertiesChanged", {
-                detail: {
-                    properties: {
-                        dropDown: this.dropDown
+                    detail: {
+                        properties: {
+                            dropDown: this.dropDown
+                        }
                     }
-                }
-            }));
+                }));
         }
 
         // SETTINGS
@@ -160,23 +169,23 @@
     // UTILS
     function loadthis(that) {
         var that_ = that;
-      
+
         let content = document.createElement('div');
         content.slot = "content";
         that_.appendChild(content);
 
-        sap.ui.getCore().attachInit(function() {
+        sap.ui.getCore().attachInit(function () {
             "use strict";
 
             //### Controller ###
             sap.ui.define([
-                "jquery.sap.global",
-                "sap/ui/core/mvc/Controller"
-            ], function(jQuery, Controller) {
+                    "jquery.sap.global",
+                    "sap/ui/core/mvc/Controller"
+                ], function (jQuery, Controller) {
                 "use strict";
 
                 return Controller.extend("myView.Template", {
-                    onButtonPress: function(oEvent) {
+                    onButtonPress: function (oEvent) {
                         _dropDown = oView.byId("idComboBox").getValue();
                         that._firePropertiesChanged();
                         console.log(_dropDown);
@@ -185,20 +194,19 @@
                         this.settings.dropDown = "";
 
                         that.dispatchEvent(new CustomEvent("onStart", {
-                            detail: {
-                                settings: this.settings
-                            }
-                        }));
-                    } 
+                                detail: {
+                                    settings: this.settings
+                                }
+                            }));
+                    }
                 });
             });
 
             //### THE APP: place the XMLView somewhere into DOM ###
-            var oView  = sap.ui.xmlview({
+            var oView = sap.ui.xmlview({
                 viewContent: jQuery(_shadowRoot.getElementById(_id + "_oView")).html(),
             });
             oView.placeAt(content);
-
 
             if (that_._designMode) {
                 oView.byId("idComboBox").setEnabled(false);
@@ -209,8 +217,8 @@
     function createGuid() {
         return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, c => {
             let r = Math.random() * 16 | 0,
-                v = c === "x" ? r : (r & 0x3 | 0x8);
+            v = c === "x" ? r : (r & 0x3 | 0x8);
             return v.toString(16);
         });
-    }  
+    }
 })();
