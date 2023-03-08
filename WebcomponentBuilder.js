@@ -78,7 +78,7 @@
             //return this._shadowRoot.getElementById("builder_provider").value;
         }
         get displayOpt() {
-            var e = this._shadowRoot.getElementById("builder_displayOpt");
+            var e = this._shadowRoot.getElementById("builder_displayOpt").text;
 
         }
         set displayOpt(_displayOpt) {
