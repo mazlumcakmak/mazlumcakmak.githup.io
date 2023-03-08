@@ -86,12 +86,15 @@
             this.getData();
         }
         fireChanged() {
-			this.selectedKey();
+			this.selectedKey;
 		}
 		get selectedKey(){
 			var e = this.shadowRoot.getElementById("dimDropDownSel");
             return e.options[e.selectedIndex].text; 
 		}
+		
+		 
+		
         onCustomWidgetBeforeUpdate(changedProperties) {
             this._props = {
                 ...this._props,
