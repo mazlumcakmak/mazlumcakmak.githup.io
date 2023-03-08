@@ -77,17 +77,13 @@
             return e.options[e.selectedIndex].value;
             //return this._shadowRoot.getElementById("builder_provider").value;
         }
-        get displayOpt() { 
-		debugger;
-		var aa = this._shadowRoot.getElementById("builder_displayOpt").text;
-		var ab = this._shadowRoot.getElementById("builder_displayOpt").value;
-		var ac = this._shadowRoot.getElementById("builder_displayOpt");
-			return this._shadowRoot.getElementById("builder_displayOpt").text;
+        get displayOpt() {  
+			return this._shadowRoot.getElementById("builder_displayOpt").value;
         }
         set displayOpt(_displayOpt) {
             //var e = this._shadowRoot.getElementById("builder_provider");
             //return e.options[e.selectedIndex].value = _prodiver;
-            this._shadowRoot.getElementById("builder_displayOpt").text = _displayOpt;
+            this._shadowRoot.getElementById("builder_displayOpt").value = _displayOpt;
 
         }
     }
