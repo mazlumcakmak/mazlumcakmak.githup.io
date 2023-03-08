@@ -12,6 +12,11 @@
             this._shadowRoot
             .getElementById("form")
             .addEventListener("submit", this._submit.bind(this));
+            this.addEventListener("click", event => {
+                var event = new Event("onClick");
+                this.fireChanged();
+                this.dispatchEvent(event);
+            });
             var lvUrl = "https://" + window.location.host + "/api/v1/dataexport/administration/Namespaces(NamespaceID='sac')/Providers";
             var xmlHttp = new XMLHttpRequest();
             xmlHttp.open("GET", lvUrl, false);
@@ -28,10 +33,10 @@
                     option.value = lt_values[i].ProviderID;
                     select.options.add(option);
                 }
-				this._shadowRoot.getElementById("builder_provider").value = lt_values[0].ProviderID;
+                this._shadowRoot.getElementById("builder_provider").value = lt_values[0].ProviderID;
             }
-			//https://graphisoft-1.eu10.hcs.cloud.sap/api/v1/dataexport/providers/sac/C7U72B2E0VPSGLIY7E2E1UFM68/
-			//lvUrl = "https://" + window.location.host + "/api/v1/dataexport/administration/providers/sac/";
+            //https://graphisoft-1.eu10.hcs.cloud.sap/api/v1/dataexport/providers/sac/C7U72B2E0VPSGLIY7E2E1UFM68/
+            //lvUrl = "https://" + window.location.host + "/api/v1/dataexport/administration/providers/sac/";
 
         }
         _submit(e) {
@@ -41,14 +46,27 @@
                     detail: {
                         properties: {
                             dimension: this.dimension,
-                            dimensionType: this.dimensionType, 
+                            dimensionType: this.dimensionType,
                             prodiver: this.prodiver,
                             displayOpt: this.displayOpt
                         },
                     },
                 }));
         }
+        fireChanged() {
+            debugger;
+            this.dispatchEvent(new CustomEvent("propertiesChanged", {
+                    detail: {
+                        properties: {
+                            dimension: this.dimension,
+                            dimensionType: this.dimensionType,
+                            prodiver: this.prodiver,
+                            displayOpt: this.displayOpt
+                        }
+                    }
+                }));
 
+        }
         set dimension(_dimension) {
             this._shadowRoot.getElementById("builder_dimension").value = _dimension;
         }
@@ -62,7 +80,7 @@
         get dimensionType() {
             return this._shadowRoot.getElementById("builder_dimensionType").value;
         }
-        
+
         set prodiver(_prodiver) {
             //var e = this._shadowRoot.getElementById("builder_provider");
             //return e.options[e.selectedIndex].value = _prodiver;
@@ -74,8 +92,8 @@
             return e.options[e.selectedIndex].value;
             //return this._shadowRoot.getElementById("builder_provider").value;
         }
-        get displayOpt() {   
-			return this._shadowRoot.getElementById("builder_displayOpt").value;
+        get displayOpt() {
+            return this._shadowRoot.getElementById("builder_displayOpt").value;
         }
         set displayOpt(_displayOpt) {
             //var e = this._shadowRoot.getElementById("builder_provider");
