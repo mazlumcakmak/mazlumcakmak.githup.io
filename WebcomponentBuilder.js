@@ -71,8 +71,7 @@
             var provider = this.prodiver;
             var lvdimension = this.dimension;
             if (provider != "" && provider != undefined) {
-                var lvUrl = "https://" + window.location.host + "/api/v1/dataexport/providers/sac/" + provider + "/";
-                https: //graphisoft-1.eu10.hcs.cloud.sap/api/v1/dataexport/providers/sac/C7U72B2E0VPSGLIY7E2E1UFM68/
+                var lvUrl = "https://" + window.location.host + "/api/v1/dataexport/providers/sac/" + provider + "/"; 
                 var xmlHttp = new XMLHttpRequest();
                 xmlHttp.open("GET", lvUrl, false);
                 xmlHttp.send(null);
