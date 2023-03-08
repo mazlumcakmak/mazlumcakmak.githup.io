@@ -35,7 +35,7 @@
                 }
                 //this._shadowRoot.getElementById("builder_provider").value = lt_values[0].ProviderID;
             }
-            this.getDimension();
+            this.fillDimension();
 
         }
         _submit(e) {
@@ -64,9 +64,9 @@
                     }
                 }));
 
-            this.getDimension();
+            this.fillDimension();
         }
-        getDimension() {
+        fillDimension() {
             debugger;
             var provider = this.prodiver;
             var lvdimension = this.dimension;
