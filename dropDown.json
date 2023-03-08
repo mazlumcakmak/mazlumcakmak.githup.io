@@ -1,6 +1,6 @@
 {
   "id": "dropDownWidget",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "name": "dropDownWidget",
   "description": "Custom Drop Down Widget",
   "newInstancePrefix": "dropDownWidget",
@@ -8,7 +8,6 @@
   "vendor": "Mazlum Çakmak",
   "eula": "",
   "license": "",
-  "imports": [ "input-controls" ],
   "webcomponents": [
     {
       "kind": "main",
