@@ -78,6 +78,10 @@
             //return this._shadowRoot.getElementById("builder_provider").value;
         }
         get displayOpt() { 
+		debugger;
+		var aa = this._shadowRoot.getElementById("builder_displayOpt").text;
+		var ab = this._shadowRoot.getElementById("builder_displayOpt").value;
+		var ac = this._shadowRoot.getElementById("builder_displayOpt");
 			return this._shadowRoot.getElementById("builder_displayOpt").text;
         }
         set displayOpt(_displayOpt) {
