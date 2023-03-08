@@ -67,12 +67,9 @@
         }
         get prodiver() {
             return this._shadowRoot.getElementById("builder_provider").value;
-        } 
-        set displayOpt(_displayOpt) {
-            this._shadowRoot.getElementById("builder_displayOpt").value = _displayOpt;
-        }
+        }  
         get displayOpt() {
-            return this._shadowRoot.getElementById("builder_displayOpt").value;
+            return this._shadowRoot.getElementById("builder_displayOpt").value.options[e.selectedIndex].text;
         }
     }
     customElements.define("custom-button-builder",
