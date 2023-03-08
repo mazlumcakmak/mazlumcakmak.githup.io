@@ -4,44 +4,7 @@
     let _dropDown;
 
     let tmpl = document.createElement("template");
-    tmpl.innerHTML = '
-        <style>
-        </style>
-        <div id="ui5_content" name="ui5_content">
-         <slot name="content"></slot>
-        </div>
-
-        <script id="oView" name="oView" type="sapui5/xmlview">
-         <mvc:View
-			height="100%"
-			controllerName="sap.m.sample.ComboBoxSearchBoth.controller.ComboBoxSearchBoth"
-			xmlns:core="sap.ui.core"
-			xmlns:mvc="sap.ui.core.mvc"
-			xmlns:l="sap.ui.layout"
-			xmlns="sap.m">
-			<Page showHeader="false" class="sapUiContentPadding">
-				<content>
-					<l:VerticalLayout>
-						<ComboBox
-							id="idComboBox"
-							showSecondaryValues= "true"
-							filterSecondaryValues= "true"
-							value="{/comboBoxValue}"
-							selectedKey="{/comboBoxKey}"
-							items="{
-								path: '/CountriesCollection',
-								sorter: { path: 'text' }
-							}">
-							<core:ListItem key="{key}" text="{text}" additionalText="{key}"/>
-						</ComboBox>
-						<Label text="Formatted value (text and key):" labelFor="idComboBox"/>
-						<Text text="{parts: [{path: '/comboBoxValue'}, {path: '/comboBoxKey'}], formatter: '.fnFormatter'}" />
-					</l:VerticalLayout>
-				</content>
-			</Page>
-		</mvc:View>
-        </script>        
-    ';
+    tmpl.innerHTML = '<style> </style> <div id="ui5_content" name="ui5_content"><slot name="content"></slot> </div> <script id="oView" name="oView" type="sapui5/xmlview"><mvc:View height="100%" controllerName="sap.m.sample.ComboBoxSearchBoth.controller.ComboBoxSearchBoth" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns:l="sap.ui.layout" xmlns="sap.m"> <Page showHeader="false" class="sapUiContentPadding"><content> <l:VerticalLayout> <ComboBox id="idComboBox" showSecondaryValues= "true" filterSecondaryValues= "true" value="{/comboBoxValue}" selectedKey="{/comboBoxKey}" items="{ path: '/CountriesCollection', sorter: { path: 'text' } }"> <core:ListItem key="{key}" text="{text}" additionalText="{key}"/></ComboBox> <Label text="Formatted value (text and key):" labelFor="idComboBox"/><Text text="{parts: [{path: '/comboBoxValue'}, {path: '/comboBoxKey'}], formatter: '.fnFormatter'}" /></l:VerticalLayout> </content> </Page> </mvc:View> </script>';
 
     class InputPassword extends HTMLElement {
 
