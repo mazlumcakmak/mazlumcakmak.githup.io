@@ -78,13 +78,16 @@
         }
         set prodiver(_prodiver) {
             this._shadowRoot.getElementById("builder_provider").value = _prodiver;
+			
         }
         get prodiver() {
-            return this._shadowRoot.getElementById("builder_provider").value;
+			var e = this._shadowRoot.getElementById("builder_provider");
+			return e.options[e.selectedIndex].value;
+            //return this._shadowRoot.getElementById("builder_provider").value;
         }
         get displayOpt() {
             var e = this._shadowRoot.getElementById("builder_displayOpt");
-            return e.options[e.selectedIndex].text;
+            
         }
     }
     customElements.define("custom-button-builder",
