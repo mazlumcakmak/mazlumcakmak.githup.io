@@ -11,12 +11,12 @@
             this._shadowRoot.appendChild(template.content.cloneNode(true));
             this._shadowRoot
             .getElementById("form")
-            .addEventListener("submit", this._submit.bind(this)); 
+            .addEventListener("submit", this._submit.bind(this));
             var lvUrl = "https://" + window.location.host + "/api/v1/dataexport/administration/Namespaces(NamespaceID='sac')/Providers";
             var xmlHttp = new XMLHttpRequest();
             xmlHttp.open("GET", lvUrl, false);
             xmlHttp.send(null);
-            if (xmlHttp.status === 200) { 
+            if (xmlHttp.status === 200) {
                 var lt_parser = JSON.parse(xmlHttp.responseText);
                 var lt_values = lt_parser.value;
 
@@ -81,10 +81,10 @@
             var e = this._shadowRoot.getElementById("builder_displayOpt");
 
         }
-		set displayOpt(_displayOpt) {
+        set displayOpt(_displayOpt) {
             //var e = this._shadowRoot.getElementById("builder_provider");
             //return e.options[e.selectedIndex].value = _prodiver;
-            this._shadowRoot.getElementById("builder_displayOpt").value = _displayOpt;
+            this._shadowRoot.getElementById("builder_displayOpt").text = _displayOpt;
 
         }
     }
