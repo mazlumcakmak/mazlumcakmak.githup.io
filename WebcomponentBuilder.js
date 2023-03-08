@@ -38,8 +38,7 @@
                     detail: {
                         properties: {
                             dimension: this.dimension,
-                            dimensionType: this.dimensionType,
-                            url: this.url,
+                            dimensionType: this.dimensionType, 
                             prodiver: this.prodiver,
                             displayOpt: this.displayOpt
                         },
@@ -60,12 +59,7 @@
         get dimensionType() {
             return this._shadowRoot.getElementById("builder_dimensionType").value;
         }
-        set url(_url) {
-            this._shadowRoot.getElementById("builder_url").value = _url;
-        }
-        get url() {
-            return this._shadowRoot.getElementById("builder_url").value;
-        }
+        
         set prodiver(_prodiver) {
             //var e = this._shadowRoot.getElementById("builder_provider");
             //return e.options[e.selectedIndex].value = _prodiver;
