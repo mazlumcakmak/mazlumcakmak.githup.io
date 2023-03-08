@@ -29,6 +29,7 @@
             if (dimension != "" && dimension != undefined) {
                 var xmlHttp = new XMLHttpRequest();
                 var lvUrl = "https://itelligencegroup-4.eu10.hcs.cloud.sap/api/v1/dataexport/providers/sac/C9Z996O1NC1N4P3AWYHVPEXP8G/" + dimension + "Master";
+				//https://itelligencegroup-4.eu10.hcs.cloud.sap/api/v1/dataexport/providers/sac/C9Z996O1NC1N4P3AWYHVPEXP8G/FactData?$filter=contains(Version,%27public.Plan%27)
                 xmlHttp.open("GET", lvUrl, true); // false for synchronous request
                 xmlHttp.onload = (e) => {
                     if (xmlHttp.readyState === 4) {
@@ -44,7 +45,7 @@
                                     option.innerHTML = lt_values[i].YEAR + " - " + lt_values[i].MONTHDESC;
                                     option.value = lt_values[i].CALMONTH;
                                 } else {
-                                    option.innerHTML = lt_values[i].Description;
+                                    option.innerHTML = lt_values[i].ID +" - " + lt_values[i].Description;
                                     option.value = lt_values[i].ID;
                                 }
                                 select.options.add(option);
