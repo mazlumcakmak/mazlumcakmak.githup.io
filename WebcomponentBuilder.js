@@ -69,7 +69,9 @@
             return this._shadowRoot.getElementById("builder_url").value;
         }
         set prodiver(_prodiver) {
-            this._shadowRoot.getElementById("builder_provider").value = _prodiver;
+            var e = this._shadowRoot.getElementById("builder_provider");
+            return e.options[e.selectedIndex].value = _prodiver;
+            //this._shadowRoot.getElementById("builder_provider").value = _prodiver;
 
         }
         get prodiver() {
