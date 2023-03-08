@@ -69,7 +69,8 @@
             return this._shadowRoot.getElementById("builder_provider").value;
         }  
         get displayOpt() {
-            return this._shadowRoot.getElementById("builder_displayOpt").value.options[e.selectedIndex].text;
+			var e = this._shadowRoot.getElementById("builder_displayOpt");
+            return e.options[e.selectedIndex].text;
         }
     }
     customElements.define("custom-button-builder",
