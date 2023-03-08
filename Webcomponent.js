@@ -89,7 +89,7 @@
 			this.selectedKey();
 		}
 		get selectedKey(){
-			var e = this._shadowRoot.getElementById("dimDropDownSel");
+			var e = this.shadowRoot.getElementById("dimDropDownSel");
             return e.options[e.selectedIndex].text; 
 		}
         onCustomWidgetBeforeUpdate(changedProperties) {
