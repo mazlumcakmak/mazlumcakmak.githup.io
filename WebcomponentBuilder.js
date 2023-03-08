@@ -14,8 +14,8 @@
             .addEventListener("submit", this._submit.bind(this));
 
             this._shadowRoot
-            .getElementById("form")
-            .addEventListener("builder_provider", this.fireChanged.bind(this));
+            .getElementById("builder_provider")
+            .addEventListener("click", this.fireChanged.bind(this));
 
             var lvUrl = "https://" + window.location.host + "/api/v1/dataexport/administration/Namespaces(NamespaceID='sac')/Providers";
             var xmlHttp = new XMLHttpRequest();
@@ -75,16 +75,16 @@
                     var lt_parser = JSON.parse(xmlHttp.responseText);
                     var lt_values = lt_parser.value;
 
-                    //this._shadowRoot.getElementById("builder_provider").innerHTML = "";
-                    //var select = this._shadowRoot.getElementById("builder_provider");
+                   // this._shadowRoot.getElementById("builder_dimension").innerHTML = "";
+                   // var select = this._shadowRoot.getElementById("builder_dimension");
                     for (var i = 0; i < lt_values.length; i++) {
                         if (lt_values[i].name == "FactData" || lt_values[i].name == "MasterData") {
                             continue;
                         }
-                        //var option = document.createElement("OPTION");
-                        //option.innerHTML = lt_values[i].name;
-                        //option.value = lt_values[i].name;
-                        //select.options.add(option);
+                     //   var option = document.createElement("OPTION");
+                     //   option.innerHTML = lt_values[i].name;
+                     //   option.value = lt_values[i].name;
+                      //  select.options.add(option);
                     }
 
                 }
