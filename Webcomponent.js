@@ -1,6 +1,6 @@
 (function () {
     let tmpl = document.createElement('template');
-    tmpl.innerHTML = '<br> <style> select { width: 100%; min-width: 15ch; max-width: 300ch; border: 1px solid ; border-radius: 0.25em; padding: 0.25em 0.5em; font-size: 1.25rem; cursor: pointer; line-height: 1.1; background-color: #fff; background-image: linear-gradient(to top, #f9f9f9, #fff 33%);position: relative; } </style> <select id="dimDropDownSel" > <option>Loading...</option> </select>';
+    tmpl.innerHTML = '<br> <style> #form { font-family: Arial, sans-serif;width: 400px; margin: 0 audimensionType; } a { text-decoration: none; } #table { width: 100%; border-collapse: collapse; margin-botdimensionTypem: 10px;} #td { padding: 15px; text-align: left; font-size: 13px; } input { width: 100%; padding: 10px; border: 2px solid #ccc; border-radius: 5px; font-size: 13px; box-sizing: border-box; margin-botdimensionTypem: 10px;} #tdFilter { width: 80%; padding: 15px; text-align: left; font-size: 13px; } input[type="color"] { -webkit-appearance: none; border: none; width: 32px; height: 32; } input[type="color"]::-webkit-color-swatch-wrapper {padding: 0; } input[type="color"]::-webkit-color-swatch {border: none; } select { width: 100%; padding: 10px; border: 2px solid #ccc; border-radius: 5px; font-size: 13px; box-sizing: border-box; margin-botdimensionTypem: 10px;} input[type="submit"] { background-color: #487cac; color: white; padding: 10px; border: none; border-radius: 5px; font-size: 14px; cursor: pointer; width: 100%; } input[type="button"] { background-color: #487cac; color: white; padding: 10px; border: none; border-radius: 5px; font-size: 14px; cursor: pointer; width: 100%; } #label { width: 140px; } #tableFilter { font-family: arial, sans-serif;border-collapse: collapse; width: 100%; } td, th { border: 1px solid #dddddd; text-align: left; padding: 8px; } tr:nth-child(even) { background-color: #dddddd; } #tr:nth-child(even) { background-color: #FFFFFF; } select { width: 100%; min-width: 15ch; max-width: 300ch; border: 1px solid; border-radius: 0.25em; padding: 0.25em 0.5em; font-size: 1.25rem; cursor: pointer; line-height: 1.1; background-color: #fff; background-image: linear-gradient(to top, #f9f9f9, #fff 33%);position: relative; } </style> <form id="form"> <table id="table"> <tr id="tr"> <td id="td"> <p>Dimension Type</p> <input id="builder_dimensionType" type="text" placeholder="Master Data / Transaction Data"></td> </tr> <tr id="tr"> <td id="td"> <p>Dimension Name</p> <input id="builder_dimension" type="text" placeholder="Dimension Name"></td> </tr> <tr id="tr"> <td id="td"> <p>URL</p> <input id="builder_url" type="text" placeholder="URL"></td> </tr> <tr id="tr"> <td id="td"> <p>Provider</p> <input id="builder_provider" type="text" placeholder="Provider"></td> </tr> <tr id="tr"> <td id="td"> <p>Display Option</p> <select id = "builder_displayOpt"><option>Description</option> <option>ID</option> <option>ID - Description</option><option>Description - ID</option></select> </td> </tr> </table> <table id="table"> <tr id="tr"> <td id="td"> <p>Filter Name</p> <input style="width: 70%;" id="filterName" class="filterName" type="text" placeholder="Filter Name"><input id="addBtn" style="width: 20%;" value="Add" type="button" onclick="myFunction()"></td> </tr> </table> <br> <br> <table id="tableFilter" class="tableFilter"><tr> <th>Filter Value</th> </tr> <tr> <td></td> </tr> </table> <br> <br> <br> <input value="Update Settings" type="submit"><br> </form>';
 
     class PerformanceHelp extends HTMLElement {
         constructor() {
@@ -28,6 +28,7 @@
             const dimensionType = this._props.dimensionType;
             const url = this._props.url;
             const prodiver = this._props.prodiver;
+            const displayOpt = this._props.displayOpt;
             if (dimension != "" && dimension != undefined && url != "" && url != undefined && prodiver != "" && prodiver != undefined) {
                 var xmlHttp = new XMLHttpRequest();
                 var lvUrl = url + "/api/v1/dataexport/providers/sac/" + prodiver + "/" + dimension + "Master";
@@ -48,8 +49,24 @@
                                     option.innerHTML = lt_values[i].YEAR + " - " + lt_values[i].MONTHDESC;
                                     option.value = lt_values[i].CALMONTH;
                                 } else {
-                                    option.innerHTML = lt_values[i].ID + " - " + lt_values[i].Description;
-                                    option.value = lt_values[i].ID;
+                                    switch (displayOpt) {
+                                    case "Description":
+                                        option.value = lt_values[i].ID;
+                                        option.innerHTML = lt_values[i].Description;
+                                        break;
+                                    case "ID":
+                                        option.value = lt_values[i].ID;
+                                        option.innerHTML = lt_values[i].ID;
+                                    case "ID - Description":
+                                        option.value = lt_values[i].ID;
+                                        option.innerHTML = lt_values[i].ID + " - " + lt_values[i].Description;
+                                        break;
+                                    case "Description - ID":
+                                        option.value = lt_values[i].ID;
+                                        option.innerHTML = lt_values[i].Description + " - " + lt_values[i].ID;
+                                        break;
+                                    }
+
                                 }
                                 select.options.add(option);
                             }

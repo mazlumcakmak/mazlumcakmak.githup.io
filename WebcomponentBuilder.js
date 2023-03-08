@@ -36,7 +36,8 @@
                             dimension: this.dimension,
                             dimensionType: this.dimensionType,
 							url : this.url,
-							prodiver : this.prodiver
+							prodiver : this.prodiver,
+							displayOpt : this.displayOpt
                         },
                     },
                 }));
@@ -66,8 +67,13 @@
         }
         get prodiver() {
             return this._shadowRoot.getElementById("builder_provider").value;
+        } 
+        set displayOpt(_displayOpt) {
+            this._shadowRoot.getElementById("builder_displayOpt").value = _displayOpt;
         }
-
+        get displayOpt() {
+            return this._shadowRoot.getElementById("builder_displayOpt").value;
+        }
     }
     customElements.define("custom-button-builder",
         DimensionWidgetBuilderPanel);
