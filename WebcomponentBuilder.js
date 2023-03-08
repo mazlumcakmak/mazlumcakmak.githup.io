@@ -15,29 +15,23 @@
             debugger;
             var lvUrl = "https://" + window.location.host + "/api/v1/dataexport/administration/Namespaces(NamespaceID='sac')/Providers";
             var xmlHttp = new XMLHttpRequest();
-            xmlHttp.open("GET", lvUrl, true);
-            xmlHttp.onload = (e) => {
-                if (xmlHttp.readyState === 4) {
-                    if (xmlHttp.status === 200) {
-                        var lt_parser = JSON.parse(xmlHttp.responseText);
-                        var lt_values = lt_parser.value;
+            xmlHttp.open("GET", lvUrl, false);
+            if (xmlHttp.status === 200) {
+                var lt_parser = JSON.parse(xmlHttp.responseText);
+                var lt_values = lt_parser.value;
 
-                        this._shadowRoot.getElementById("builder_provider").innerHTML = "";
-                        var select = this._shadowRoot.getElementById("builder_provider");
-                        for (var i = 0; i < lt_values.length; i++) {
-                            var option = document.createElement("OPTION");
-                            option.innerHTML = ProviderName;
-                            option.value = lt_values[i].ProviderID;
-                            select.options.add(option);
-                        }
-                    } else {
-                        console.error(xmlHttp.statusText);
-                    }
+                this._shadowRoot.getElementById("builder_provider").innerHTML = "";
+                var select = this._shadowRoot.getElementById("builder_provider");
+                for (var i = 0; i < lt_values.length; i++) {
+                    var option = document.createElement("OPTION");
+                    option.innerHTML = ProviderName;
+                    option.value = lt_values[i].ProviderID;
+                    select.options.add(option);
                 }
-            };
-            xmlHttp.onerror = (e) => {
-                console.error(xhr.statusText);
-            };
+            } else {
+                console.error(xmlHttp.statusText);
+            }
+            
             xmlHttp.send(null);
 
         }
