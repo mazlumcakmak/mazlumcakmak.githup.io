@@ -23,7 +23,7 @@
                 this.dispatchEvent(event);
             });
         }
-        getData() { 
+        getData() {
             const dimension = this._props.dimension;
             const dimensionType = this._props.dimensionType;
             if (dimension != "" && dimension != undefined) {
@@ -40,8 +40,13 @@
                             var select = this.shadowRoot.getElementById("dimDropDownSel");
                             for (var i = 0; i < lt_values.length; i++) {
                                 var option = document.createElement("OPTION");
-                                option.innerHTML = lt_values[i].Description;
-                                option.value = lt_values[i].ID;
+                                if (dimension == "Date") {
+                                    option.innerHTML = lt_values[i].YEAR + " - " + lt_values[i].MONTHDESC;
+                                    option.value = lt_values[i].CALMONTH;
+                                } else {
+                                    option.innerHTML = lt_values[i].Description;
+                                    option.value = lt_values[i].ID;
+                                }
                                 select.options.add(option);
                             }
                         } else {
