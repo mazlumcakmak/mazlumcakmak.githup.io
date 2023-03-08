@@ -19,8 +19,8 @@
             this._shadowRoot
             .getElementById("builder_provider")
             .addEventListener("change", this.fireChanged.bind(this));
-
-            //this.fillDimension();
+            this.fillModel();
+            this.fillDimension();
 
         }
         _submit(e) {
@@ -76,7 +76,7 @@
                         select.options.add(option);
 
                     }
-                   
+
                 }
             }
         }
@@ -126,6 +126,10 @@
             debugger;
             //var e = this._shadowRoot.getElementById("builder_provider");
             //return e.options[e.selectedIndex].value = _prodiver;
+			if(_prodiver == "" || _prodiver == undefined){
+				this.fillModel();
+				return;
+			}
             var lv_f = false;
             var lv_provider = this._shadowRoot.getElementById("builder_provider").value;
             if (lv_provider == "none" && gv_provider == "") {
@@ -135,11 +139,11 @@
             gv_provider = _prodiver;
             this._shadowRoot.getElementById("builder_provider").value = _prodiver;
             if (lv_f) {
-				this.fillDimension();
-				this.dimension = gv_dimension
-                
-				//this._shadowRoot.getElementById("builder_dimension").value = gv_dimension;
-                
+                this.fillDimension();
+                this.dimension = gv_dimension
+
+                    //this._shadowRoot.getElementById("builder_dimension").value = gv_dimension;
+
             }
 
         }
