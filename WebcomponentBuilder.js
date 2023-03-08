@@ -93,7 +93,7 @@
 
                     }
                     if (lvdimension != "" && lvdimension != undefined) {
-                        this.dimension(lvdimension);
+                        this._shadowRoot.getElementById("builder_dimension").value= lvdimension;
                     }
                 }
             }
