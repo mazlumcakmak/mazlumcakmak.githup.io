@@ -105,7 +105,7 @@
         set dimension(_dimension) {
 			debugger;
             var lv_dimension = this._shadowRoot.getElementById("builder_dimension").value;
-            if (lv_provider == "none" && gv_dimension == "") {
+            if (lv_dimension == "none" && gv_dimension == "") {
                 gv_dimension = _dimension;
             } else {
                 this._shadowRoot.getElementById("builder_dimension").value = _dimension;
