@@ -12,35 +12,35 @@
             this._shadowRoot
             .getElementById("form")
             .addEventListener("submit", this._submit.bind(this));
-			console.log("host : " , window.location.host );
-            if (this._shadowRoot.getElementById("builder_url").value != "" && this._shadowRoot.getElementById("builder_url").value != undefined) {
-                var lvUrl = url + "/api/v1/dataexport/administration/Namespaces(NamespaceID='sac')/Providers";
-                var xmlHttp = new XMLHttpRequest();
-                xmlHttp.open("GET", lvUrl, true);
-                xmlHttp.onload = (e) => {
-                    if (xmlHttp.readyState === 4) {
-                        if (xmlHttp.status === 200) {
-                            var lt_parser = JSON.parse(xmlHttp.responseText);
-                            var lt_values = lt_parser.value;
+            debugger;
+            var lvUrl = "https://" + window.location.host + "/api/v1/dataexport/administration/Namespaces(NamespaceID='sac')/Providers";
 
-                            this.shadowRoot.getElementById("builder_provider").innerHTML = "";
-                            var select = this.shadowRoot.getElementById("builder_provider");
-                            for (var i = 0; i < lt_values.length; i++) {
-                                var option = document.createElement("OPTION");
-                                option.innerHTML = ProviderName;
-                                option.value = lt_values[i].ProviderID;
-                                select.options.add(option);
-                            }
-                        } else {
-                            console.error(xmlHttp.statusText);
+            var xmlHttp = new XMLHttpRequest();
+            xmlHttp.open("GET", lvUrl, true);
+            xmlHttp.onload = (e) => {
+                if (xmlHttp.readyState === 4) {
+                    if (xmlHttp.status === 200) {
+                        var lt_parser = JSON.parse(xmlHttp.responseText);
+                        var lt_values = lt_parser.value;
+
+                        this.shadowRoot.getElementById("builder_provider").innerHTML = "";
+                        var select = this.shadowRoot.getElementById("builder_provider");
+                        for (var i = 0; i < lt_values.length; i++) {
+                            var option = document.createElement("OPTION");
+                            option.innerHTML = ProviderName;
+                            option.value = lt_values[i].ProviderID;
+                            select.options.add(option);
                         }
+                    } else {
+                        console.error(xmlHttp.statusText);
                     }
-                };
-                xmlHttp.onerror = (e) => {
-                    console.error(xhr.statusText);
-                };
-                xmlHttp.send(null);
-            }
+                }
+            };
+            xmlHttp.onerror = (e) => {
+                console.error(xhr.statusText);
+            };
+            xmlHttp.send(null);
+
         }
         _submit(e) {
             e.preventDefault();
@@ -79,16 +79,16 @@
         }
         set prodiver(_prodiver) {
             this._shadowRoot.getElementById("builder_provider").value = _prodiver;
-			
+
         }
         get prodiver() {
-			var e = this._shadowRoot.getElementById("builder_provider");
-			return e.options[e.selectedIndex].value;
+            var e = this._shadowRoot.getElementById("builder_provider");
+            return e.options[e.selectedIndex].value;
             //return this._shadowRoot.getElementById("builder_provider").value;
         }
         get displayOpt() {
             var e = this._shadowRoot.getElementById("builder_displayOpt");
-            
+
         }
     }
     customElements.define("custom-button-builder",
