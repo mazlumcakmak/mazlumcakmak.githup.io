@@ -135,8 +135,9 @@
             gv_provider = _prodiver;
             this._shadowRoot.getElementById("builder_provider").value = _prodiver;
             if (lv_f) {
+				this.fillDimension();
 				this.dimension = gv_dimension
-                this.fillDimension();
+                
 				//this._shadowRoot.getElementById("builder_dimension").value = gv_dimension;
                 
             }
