@@ -13,7 +13,7 @@
             .getElementById("form")
             .addEventListener("submit", this._submit.bind(this));
 			console.log("host : " , window.location.host );
-            if (url != "" && url != undefined) {
+            if (this._shadowRoot.getElementById("builder_url").value != "" && this._shadowRoot.getElementById("builder_url").value != undefined) {
                 var lvUrl = url + "/api/v1/dataexport/administration/Namespaces(NamespaceID='sac')/Providers";
                 var xmlHttp = new XMLHttpRequest();
                 xmlHttp.open("GET", lvUrl, true);
