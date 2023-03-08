@@ -85,7 +85,13 @@
         onCustomWidgetAfterUpdate(changedProperties) {
             this.getData();
         }
-        fireChanged() {}
+        fireChanged() {
+			this.selectedKey();
+		}
+		get selectedKey(){
+			var e = this._shadowRoot.getElementById("dimDropDownSel");
+            return e.options[e.selectedIndex].text; 
+		}
         onCustomWidgetBeforeUpdate(changedProperties) {
             this._props = {
                 ...this._props,
