@@ -81,6 +81,12 @@
             var e = this._shadowRoot.getElementById("builder_displayOpt");
 
         }
+		set displayOpt(_displayOpt) {
+            //var e = this._shadowRoot.getElementById("builder_provider");
+            //return e.options[e.selectedIndex].value = _prodiver;
+            this._shadowRoot.getElementById("builder_displayOpt").value = _displayOpt;
+
+        }
     }
     customElements.define("custom-button-builder",
         DimensionWidgetBuilderPanel);
