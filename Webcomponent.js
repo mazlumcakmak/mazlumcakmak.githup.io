@@ -86,6 +86,8 @@
             this.getData();
         }
         fireChanged() {
+			debugger;
+			console.log(this.selectedkey);
 			
 		}
 		get selectedKey(){
