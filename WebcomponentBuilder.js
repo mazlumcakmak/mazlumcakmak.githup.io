@@ -1,7 +1,7 @@
 
 (function () {
     let template = document.createElement("template");
-    template.innerHTML = '<br> <style> #form { font-family: Arial, sans-serif;width: 400px; margin: 0 audimensionType; } a { text-decoration: none; } #table { width: 100%; border-collapse: collapse; margin-botdimensionTypem: 10px;} #td { padding: 15px; text-align: left; font-size: 13px; } input { width: 100%; padding: 10px; border: 2px solid #ccc; border-radius: 5px; font-size: 13px; box-sizing: border-box; margin-botdimensionTypem: 10px;} #tdFilter { width: 80%; padding: 15px; text-align: left; font-size: 13px; } input[type="color"] { -webkit-appearance: none; border: none; width: 32px; height: 32px; } input[type="color"]::-webkit-color-swatch-wrapper {padding: 0; } input[type="color"]::-webkit-color-swatch {border: none; } input[type="submit"] { background-color: #487cac; color: white; padding: 10px; border: none; border-radius: 5px; font-size: 14px; cursor: pointer; width: 100%; } input[type="button"] { background-color: #487cac; color: white; padding: 10px; border: none; border-radius: 5px; font-size: 14px; cursor: pointer; width: 100%; } #label { width: 140px; } #tableFilter { font-family: arial, sans-serif;border-collapse: collapse; width: 100%; } td, th { border: 1px solid #dddddd; text-align: left; padding: 8px; } tr:nth-child(even) { background-color: #dddddd; } #tr:nth-child(even) { background-color: #FFFFFF; } select { width: 100%; min-width: 15ch; max-width: 300ch; border: 1px solid; border-radius: 0.25em; padding: 0.25em 0.5em; font-size: 0.9rem; cursor: pointer; line-height: 1.1; background-color: #fff; background-image: linear-gradient(to top, #f9f9f9, #fff 33%);position: relative; border: 2px solid #ccc; border-radius: 5px; box-sizing: border-box; margin-botdimensionTypem: 10px;} </style> <form id="form"> <table id="table"> <tr id="tr"> <td id="td"> <p>Provider</p> <select id="builder_provider"><option>loading..</option> </select> </td> </tr> <tr id="tr"> <td id="td"> <p>Dimension Type</p> <input id="builder_dimensionType" type="text" placeholder="Master Data / Transaction Data"></td> </tr> <tr id="tr"> <td id="td"> <p>Dimension Name</p> <input id="builder_dimension" type="text" placeholder="Dimension Name"></td> </tr> <tr id="tr"> <td id="td"> <p>Display Option</p> <select id="builder_displayOpt"><option>Description</option> <option>ID</option> <option>ID - Description</option><option>Description - ID</option></select> </td> </tr> </table> <table id="table"> <tr id="tr"> <td id="td"> <p>Filter Name</p> <input style="width: 70%;" id="filterName" class="filterName" type="text" placeholder="Filter Name"><input id="addBtn" style="width: 20%;" value="Add" type="button" onclick="myFunction()"></td> </tr> </table> <br> <br> <table id="tableFilter" class="tableFilter"><tr> <th>Filter Value</th> </tr> <tr> <td></td> </tr> </table> <br> <br> <br> <input value="Update Settings" type="submit"><br> </form>';
+    template.innerHTML = '<br> <style> #form { font-family: Arial, sans-serif;width: 400px; margin: 0 audimensionType; } a { text-decoration: none; } #table { width: 100%; border-collapse: collapse; margin-botdimensionTypem: 10px;} #td { padding: 15px; text-align: left; font-size: 13px; } input { width: 100%; padding: 10px; border: 2px solid #ccc; border-radius: 5px; font-size: 13px; box-sizing: border-box; margin-botdimensionTypem: 10px;} #tdFilter { width: 80%; padding: 15px; text-align: left; font-size: 13px; } input[type="color"] { -webkit-appearance: none; border: none; width: 32px; height: 32px; } input[type="color"]::-webkit-color-swatch-wrapper {padding: 0; } input[type="color"]::-webkit-color-swatch {border: none; } input[type="submit"] { background-color: #487cac; color: white; padding: 10px; border: none; border-radius: 5px; font-size: 14px; cursor: pointer; width: 100%; } input[type="button"] { background-color: #487cac; color: white; padding: 10px; border: none; border-radius: 5px; font-size: 14px; cursor: pointer; width: 100%; } #label { width: 140px; } #tableFilter { font-family: arial, sans-serif;border-collapse: collapse; width: 100%; } td, th { border: 1px solid #dddddd; text-align: left; padding: 8px; } tr:nth-child(even) { background-color: #dddddd; } #tr:nth-child(even) { background-color: #FFFFFF; } select { width: 100%; min-width: 15ch; max-width: 300ch; border: 1px solid; border-radius: 0.25em; padding: 0.25em 0.5em; font-size: 0.9rem; cursor: pointer; line-height: 1.1; background-color: #fff; background-image: linear-gradient(to top, #f9f9f9, #fff 33%);position: relative; border: 2px solid #ccc; border-radius: 5px; box-sizing: border-box; margin-botdimensionTypem: 10px;} </style> <form id="form"> <table id="table"> <tr id="tr"> <td id="td"> <p>Provider</p> <select id="builder_provider"><option>loading..</option> </select> </td> </tr> <tr id="tr"> <td id="td"> <p>Dimension Type</p> <input id="builder_dimensionType" type="text" placeholder="Master Data / Transaction Data"></td> </tr> <tr id="tr"> <td id="td"> <p>Dimension Name</p> <select id="builder_dimension"><option>loading..</option> </select> </td> </tr> <tr id="tr"> <td id="td"> <p>Display Option</p> <select id="builder_displayOpt"><option>Description</option> <option>ID</option> <option>ID - Description</option><option>Description - ID</option></select> </td> </tr> </table> <table id="table"> <tr id="tr"> <td id="td"> <p>Filter Name</p> <input style="width: 70%;" id="filterName" class="filterName" type="text" placeholder="Filter Name"><input id="addBtn" style="width: 20%;" value="Add" type="button" onclick="myFunction()"></td> </tr> </table> <br> <br> <table id="tableFilter" class="tableFilter"><tr> <th>Filter Value</th> </tr> <tr> <td></td> </tr> </table> <br> <br> <br> <input value="Update Settings" type="submit"><br> </form>';
     class DimensionWidgetBuilderPanel extends HTMLElement {
         constructor() {
             super();
@@ -15,7 +15,7 @@
 
             this._shadowRoot
             .getElementById("builder_provider")
-            .addEventListener("click", this.fireChanged.bind(this));
+            .addEventListener("change", this.fireChanged.bind(this));
 
             var lvUrl = "https://" + window.location.host + "/api/v1/dataexport/administration/Namespaces(NamespaceID='sac')/Providers";
             var xmlHttp = new XMLHttpRequest();
@@ -67,7 +67,7 @@
                 }));
             var provider = this.prodiver;
             if (provider != "" && provider != undefined) {
-                var lvUrl = "https://" + window.location.host + "/api/v1/dataexport/administration/providers/sac/" + this.prodiver;
+                var lvUrl = "https://" + window.location.host + "/api/v1/dataexport/administration/providers/sac/" + provider + "/";
                 var xmlHttp = new XMLHttpRequest();
                 xmlHttp.open("GET", lvUrl, false);
                 xmlHttp.send(null);
@@ -75,16 +75,16 @@
                     var lt_parser = JSON.parse(xmlHttp.responseText);
                     var lt_values = lt_parser.value;
 
-                   // this._shadowRoot.getElementById("builder_dimension").innerHTML = "";
-                   // var select = this._shadowRoot.getElementById("builder_dimension");
+                    this._shadowRoot.getElementById("builder_dimension").innerHTML = "";
+                    var select = this._shadowRoot.getElementById("builder_dimension");
                     for (var i = 0; i < lt_values.length; i++) {
                         if (lt_values[i].name == "FactData" || lt_values[i].name == "MasterData") {
                             continue;
                         }
-                     //   var option = document.createElement("OPTION");
-                     //   option.innerHTML = lt_values[i].name;
-                     //   option.value = lt_values[i].name;
-                      //  select.options.add(option);
+                        var option = document.createElement("OPTION");
+                        option.innerHTML = lt_values[i].name;
+                        option.value = lt_values[i].name;
+                        select.options.add(option);
                     }
 
                 }
