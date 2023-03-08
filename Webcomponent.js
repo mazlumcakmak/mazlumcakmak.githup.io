@@ -84,8 +84,7 @@
             }
         }
         onCustomWidgetAfterUpdate(changedProperties) {
-            this.getData();
-			alert("Update successfully Completed");
+            this.getData(); 
         }
         fireChanged() {
 
