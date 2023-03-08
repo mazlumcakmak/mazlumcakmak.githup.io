@@ -37,6 +37,7 @@
                 //https://itelligencegroup-4.eu10.hcs.cloud.sap/api/v1/dataexport/providers/sac/C9Z996O1NC1N4P3AWYHVPEXP8G/FactData?$filter=contains(Version,%27public.Plan%27)
                 xmlHttp.open("GET", lvUrl, true); // false for synchronous request
                 xmlHttp.onload = (e) => {
+					debugger;
                     if (xmlHttp.readyState === 4) {
                         if (xmlHttp.status === 200) {
                             var lt_parser = JSON.parse(xmlHttp.responseText);
