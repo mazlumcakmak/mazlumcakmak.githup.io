@@ -87,31 +87,35 @@
             this.getData();
         }
         fireChanged() {
-			debugger;
-			 this._select = {
-                selectedKey : this.selectedKey,
-                selectedValue : this.selectedValue
-            };
-			
-		}
-		get selectedKey(){
-			debugger;
-			var e = this.shadowRoot.getElementById("dimDropDownSel");
-            return e.options[e.selectedIndex].value; 
-		}
-		set selectedKey(_selectedKey){
-			debugger;
-			var e = this.shadowRoot.getElementById("dimDropDownSel");
-            return e.options[e.selectedIndex].value = _selectedKey; 
-		}
-		get selectedValue(){
-			var e = this.shadowRoot.getElementById("dimDropDownSel");
-            return e.options[e.selectedIndex].text; 
-		}
-		set selectedValue(_selectedValue){
-			var e = this.shadowRoot.getElementById("dimDropDownSel");
-            return e.options[e.selectedIndex].text = _selectedValue; 
-		}
+
+            this.dispatchEvent(new CustomEvent("propertiesChanged", {
+                    detail: {
+                        properties: {
+                            selectedKey: this.selectedKey,
+                            selectedValue: this.selectedValue
+                        }
+                    }
+                }));
+
+        }
+        get selectedKey() {
+            debugger;
+            var e = this.shadowRoot.getElementById("dimDropDownSel");
+            return e.options[e.selectedIndex].value;
+        }
+        set selectedKey(_selectedKey) {
+            debugger;
+            var e = this.shadowRoot.getElementById("dimDropDownSel");
+            return e.options[e.selectedIndex].value = _selectedKey;
+        }
+        get selectedValue() {
+            var e = this.shadowRoot.getElementById("dimDropDownSel");
+            return e.options[e.selectedIndex].text;
+        }
+        set selectedValue(_selectedValue) {
+            var e = this.shadowRoot.getElementById("dimDropDownSel");
+            return e.options[e.selectedIndex].text = _selectedValue;
+        }
         onCustomWidgetBeforeUpdate(changedProperties) {
             this._props = {
                 ...this._props,
