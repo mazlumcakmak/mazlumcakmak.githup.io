@@ -26,7 +26,7 @@
                 var select = this._shadowRoot.getElementById("builder_provider");
                 for (var i = 0; i < lt_values.length; i++) {
                     var option = document.createElement("OPTION");
-                    option.innerHTML = ProviderName;
+                    option.innerHTML = lt_values[i].ProviderName;
                     option.value = lt_values[i].ProviderID;
                     select.options.add(option);
                 }
