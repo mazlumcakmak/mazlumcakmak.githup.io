@@ -12,7 +12,9 @@
     tmpl.innerHTML = tmpl.innerHTML + '"> <core:ListItem key="{key}" text="{text}" additionalText="{key}"/></ComboBox> <Label text="Formatted value (text and key):" labelFor="idComboBox"/><Text text="{parts: [{path:';
     tmpl.innerHTML = tmpl.innerHTML + "	'/comboBoxValue'}";
     tmpl.innerHTML = tmpl.innerHTML + ", {path: '/comboBoxKey'}]";
-    tmpl.innerHTML = tmpl.innerHTML + ', formatter: '.fnFormatter '}"';
+    tmpl.innerHTML = tmpl.innerHTML + ", formatter: '";
+    tmpl.innerHTML = tmpl.innerHTML + ".fnFormatter '}";
+    tmpl.innerHTML = tmpl.innerHTML + '"';
     tmpl.innerHTML = tmpl.innerHTML + ' /></l:VerticalLayout> </content> </Page> </mvc:View> </script>';
 
     class InputPassword extends HTMLElement {
