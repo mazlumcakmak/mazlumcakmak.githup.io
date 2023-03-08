@@ -71,7 +71,7 @@
             var provider = this.prodiver;
             var lvdimension = this.dimension;
             if (provider != "" && provider != undefined) {
-                var lvUrl = "https://" + window.location.host + "/api/v1/dataexport/providers/sac/" + provider + "/"; 
+                var lvUrl = "https://" + window.location.host + "/api/v1/dataexport/providers/sac/" + provider + "/";
                 var xmlHttp = new XMLHttpRequest();
                 xmlHttp.open("GET", lvUrl, false);
                 xmlHttp.send(null);
@@ -92,15 +92,17 @@
 
                     }
                     if (lvdimension != "" && lvdimension != undefined) {
-                        this._shadowRoot.getElementById("builder_dimension").value= lvdimension;
+                        this._shadowRoot.getElementById("builder_dimension").value = lvdimension;
                     }
                 }
             }
         }
         set dimension(_dimension) {
+            debugger;
             this._shadowRoot.getElementById("builder_dimension").value = _dimension;
         }
         get dimension() {
+            debugger;
             return this._shadowRoot.getElementById("builder_dimension").value;
         }
 
