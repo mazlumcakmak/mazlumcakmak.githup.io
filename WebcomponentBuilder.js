@@ -14,7 +14,6 @@
             .addEventListener("submit", this._submit.bind(this));
             debugger;
             var lvUrl = "https://" + window.location.host + "/api/v1/dataexport/administration/Namespaces(NamespaceID='sac')/Providers";
-
             var xmlHttp = new XMLHttpRequest();
             xmlHttp.open("GET", lvUrl, true);
             xmlHttp.onload = (e) => {
@@ -23,8 +22,8 @@
                         var lt_parser = JSON.parse(xmlHttp.responseText);
                         var lt_values = lt_parser.value;
 
-                        this.shadowRoot.getElementById("builder_provider").innerHTML = "";
-                        var select = this.shadowRoot.getElementById("builder_provider");
+                        this._shadowRoot.getElementById("builder_provider").innerHTML = "";
+                        var select = this._shadowRoot.getElementById("builder_provider");
                         for (var i = 0; i < lt_values.length; i++) {
                             var option = document.createElement("OPTION");
                             option.innerHTML = ProviderName;
