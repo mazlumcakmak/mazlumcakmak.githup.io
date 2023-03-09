@@ -96,6 +96,7 @@
             }
         }
         getTransactionData() {
+			debugger;
             const dimension = this._props.dimension;
             const dimensionType = this._props.dimensionType;
             const prodiver = this._props.prodiver;
