@@ -25,6 +25,7 @@
             });
         }
         getData() {
+			debugger;
             const displayOpt = this._props.displayOpt;
             switch (displayOpt) {
             case "Master":
@@ -96,7 +97,7 @@
             }
         }
         getTransactionData() {
-			debugger;
+            debugger;
             const dimension = this._props.dimension;
             const dimensionType = this._props.dimensionType;
             const prodiver = this._props.prodiver;
@@ -110,11 +111,13 @@
                 xmlHttpMaster.onload = (e) => {
                     if (xmlHttpMaster.readyState === 4) {
                         if (xmlHttpMaster.status === 200) {
+                            // parser master data
                             var lt_parser = JSON.parse(xmlHttpMaster.responseText);
                             var lt_values = lt_parser.value;
+							// get transaction data
                             var lvUrlFact = "https://" + window.location.host + "/api/v1/dataexport/providers/sac/" + prodiver + "/FactData";
                             var xmlHttpFact = new XMLHttpRequest();
-                            // get transaction data
+                            
                             xmlHttpFact.open("GET", lvUrlFact, true);
                             xmlHttpFact.onload = (e) => {
                                 if (xmlHttpFact.readyState === 4) {
