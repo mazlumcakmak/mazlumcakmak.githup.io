@@ -270,27 +270,7 @@
       }
     }
 
-    getToken() {
-      var request = new XMLHttpRequest();
-      // get token
-      var token = "";
-      var url =
-        "https://itelligencegroup-4.authentication.eu10.hana.ondemand.com/oauth/token?grant_type=client_credentials";
-      var username =
-        "sb-5eef0586-d843-43bb-bcf4-b1469d4c9747!b51342|client!b3650";
-      var password = "fzk0Cz/n3KZXWvHQ3kLLPWdcDuw=";
-      var base64Credentials = btoa(username + ":" + password);
-
-      request.open("GET", url, false);
-      request.setRequestHeader("content-type", "application/json");
-      request.setRequestHeader("Authorization", "Basic " + base64Credentials);
-      request.send(null);
-      if (request.status != 200) {
-        return "";
-      }
-      var response = JSON.parse(request.responseText);
-      return (token = response.access_token);
-    }
+    
 
     get costList() {
       return costListFinal;
