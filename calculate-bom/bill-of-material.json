@@ -1,12 +1,12 @@
 {
   "name": "calculate-bom",
   "description": "Bill of Material Calculate",
-  "newInstancePrefix": "calculateBom",
+  "newInstancePrefix": "calculate-bom",
   "eula": "",
   "vendor": "NTT DATA",
   "license": "",
-  "id": "com.nttdata.epm.calculatebom",
-  "version": "1.0.1",
+  "id": "calculate-bom",
+  "version": "1.0.2",
   "icon": "",
   "webcomponents": [
     {
