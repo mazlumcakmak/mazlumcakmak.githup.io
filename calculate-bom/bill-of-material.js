@@ -53,7 +53,7 @@
         new CustomEvent("propertiesChanged", {
           detail: {
             properties: {
-              costListFinal: this.costListFinal,
+              costList: this.costList,
             },
           },
         })
