@@ -6,7 +6,7 @@
   "vendor": "NTT DATA",
   "license": "",
   "id": "com.nttdata.epm.calculatebom",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "icon": "",
   "webcomponents": [
     {
@@ -20,14 +20,86 @@
   "properties": {
     "costList": {
       "description": "cost list",
-      "type": "string",
-      "default": ""
+      "type": "costListInfo[]" 
     }
   },
+  "types": {
+    "costListInfo": {
+      "description": "Cost List Info",
+      "properties": [
+        {
+          "name": "DateMonth",
+          "type": "string",
+          "description": "Date Member"
+        },
+        {
+          "name": "Mattype",
+          "type": "string",
+          "description": "Mattype Member"
+        },
+        {
+          "name": "NTT_CW_COMPONENT",
+          "type": "string",
+          "description": "Component Member"
+        },
+        {
+          "name": "NTT_CW_COMPONENTDESC",
+          "type": "string",
+          "description": "Component Description"
+        },
+        {
+          "name": "NTT_CW_MAIN_MATERIAL",
+          "type": "string",
+          "description": "Main Material Member"
+        },
+        {
+          "name": "NTT_CW_MATERIAL",
+          "type": "string",
+          "description": "Material Member"
+        },
+        {
+          "name": "NTT_CW_MATERIALDESC",
+          "type": "string",
+          "description": "Material Description"
+        },
+        {
+          "name": "SalesQuantity",
+          "type": "number",
+          "description": "Sales Quantity"
+        },
+        {
+          "name": "SignedData",
+          "type": "number",
+          "description": "Cost Amount"
+        },
+        {
+          "name": "VersionMbr",
+          "type": "string",
+          "description": "Version Member"
+        },
+        {
+          "name": "bomQuantity",
+          "type": "number",
+          "description": "Bom Quantity"
+        },
+        {
+          "name": "purchase",
+          "type": "number",
+          "description": "purchase Price"
+        },
+        {
+          "name": "quantiy",
+          "type": "number",
+          "description": "Request Quantity"
+        } 
+      ]
+    }
+  },
+
   "methods": {
     "getBomList": {
       "description": "Calculate Bill of material",
-      "returnType": "string",
+      "returnType": "costListInfo[]",
       "body": "return this.costList;"
     }
   },
