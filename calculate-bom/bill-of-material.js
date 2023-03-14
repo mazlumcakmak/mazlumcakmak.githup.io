@@ -19,8 +19,6 @@
     constructor() {
       super();
       this.init();
-      this._props = {};
-      this._select = {};
     }
 
     init() {
@@ -40,10 +38,7 @@
       });
     }
 
-    // after update
-    onCustomWidgetAfterUpdate(changedProperties) {
-      this.getData();
-    }
+
     // getter setter
     fireChanged() {
       this.dispatchEvent(
@@ -56,13 +51,7 @@
         })
       );
     }
-    // before update
-    onCustomWidgetBeforeUpdate(changedProperties) {
-      this._props = {
-        ...this._props,
-        ...changedProperties,
-      };
-    }
+
     async serviceRun() {
       debugger;
       // get token
