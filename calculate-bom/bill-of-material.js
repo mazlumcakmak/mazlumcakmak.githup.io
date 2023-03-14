@@ -292,7 +292,7 @@
       return (token = response.access_token);
     }
 
-    get getBomList() {
+    get costList() {
       return costListFinal;
     }
   }

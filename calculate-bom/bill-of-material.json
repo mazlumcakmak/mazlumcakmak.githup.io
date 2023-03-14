@@ -17,12 +17,18 @@
       "ignoreIntegrity": true
     }
   ],
-  "properties": {},
+  "properties": {
+    "costList": {
+      "description": "cost list",
+      "type": "string",
+      "default": ""
+    }
+  },
   "methods": {
     "getBomList": {
       "description": "Calculate Bill of material",
-      "returnType": "string", 
-      "body": "return this.custList;"
+      "returnType": "string",
+      "body": "return this.costList;"
     }
   },
   "events": {
