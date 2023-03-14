@@ -266,5 +266,5 @@
     }
   }
 
-  customElements.define("calculatebom", bomExp);
+  customElements.define("calculate-bom", bomExp);
 })();

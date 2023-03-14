@@ -1,19 +1,19 @@
 {
-  "name": "calculatebom",
+  "name": "calculate-bom",
   "description": "Bill of Material Calculate",
-  "newInstancePrefix": "calculatebom",
+  "newInstancePrefix": "calculateBom",
   "eula": "",
   "vendor": "NTT DATA",
   "license": "",
-  "id": "calculatebom",
-  "version": "1.0.2",
+  "id": "com.nttdata.epm.calculatebom",
+  "version": "1.0.1",
   "icon": "",
   "webcomponents": [
     {
       "kind": "main",
-      "tag": "calculatebom",
-      "url": "",
-      "integrity": "https://mazlumcakmak.github.io/mazlumcakmak.githup.io/calculate-bom/bill-of-material.js",
+      "tag": "calculate-bom",
+      "url": "https://mazlumcakmak.github.io/mazlumcakmak.githup.io/calculate-bom/bill-of-material.js",
+      "integrity": "",
       "ignoreIntegrity": true
     }
   ],
