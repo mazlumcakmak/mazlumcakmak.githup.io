@@ -26,7 +26,6 @@
       purList = [];
       salesList = [];
       this.init();
-
     }
 
     init() {
@@ -41,11 +40,10 @@
         await this.serviceRun();
         this.fireChanged();
         this.dispatchEvent(event);
-       
+
         //console.log(costListFinal);
       });
     }
-
 
     // getter setter
     fireChanged() {
@@ -137,7 +135,8 @@
       // get sales service
       let salesPromise = new Promise(function (resolve, reject) {
         var requestSales = new XMLHttpRequest();
-        var url ="https://itelligencegroup-4.eu10.hcs.cloud.sap/api/v1/dataexport/providers/sac/Cg7geq0sgrstd2l1o5subvs16n/FactData";
+        var url =
+          "https://itelligencegroup-4.eu10.hcs.cloud.sap/api/v1/dataexport/providers/sac/Cg7geq0sgrstd2l1o5subvs16n/FactData";
         requestSales.open("GET", url, true);
         //requestSales.setRequestHeader("Authorization", "Bearer " + token);
         requestSales.onload = (e) => {
@@ -169,7 +168,12 @@
         requestVersionMaster.send(null);
       });
 
-      await Promise.all([  bomPromise, materialPromise, componentPromise, purchasePromise, ]).then(async (values) => {
+      await Promise.all([
+        bomPromise,
+        materialPromise,
+        componentPromise,
+        purchasePromise,
+      ]).then(async (values) => {
         await this.setBomExp(salesPromise);
       });
     }
@@ -188,13 +192,14 @@
           if (lt_cost_list[j].Mattype != "Z013") {
             var ls_pur = purList.filter(
               (e) =>
-              e.NTT_CW_COMPONENT == lt_cost_list[j].NTT_CW_COMPONENT &&
-              e.Date == salesList[i].Date
+                e.NTT_CW_COMPONENT == lt_cost_list[j].NTT_CW_COMPONENT &&
+                e.Date == salesList[i].Date
             );
             if (ls_pur.length != 0) {
               lv_price = ls_pur[0].SignedData;
               cost_amount =
                 salesList[i].SignedData * lt_cost_list[j].SignedData * lv_price;
+                cost_amount = Math.round(cost_amount * 100) / 100;
             }
           }
           costListFinal.push({
@@ -206,9 +211,9 @@
             Mattype: lt_cost_list[j].Mattype,
             VersionMbr: "public.2023V01",
             DateMonth: salesList[i].Date,
-            SalesQuantity: salesList[i].SignedData,
+            SalesQuantity: salesList[i].SignedData ,
             bomQuantity: lt_cost_list[j].SignedData,
-            quantiy: salesList[i].SignedData * lt_cost_list[j].SignedData,
+            quantiy: Math.round(salesList[i].SignedData * lt_cost_list[j].SignedData*100)/ 100,
             SignedData: cost_amount,
             purchase: lv_price,
           });
@@ -234,7 +239,7 @@
       // get bom component
       var lt_bom_list = bomlist.filter(
         (bom) =>
-        bom.Version == "public.Actual" && bom.NTT_CW_MATERIAL == materialId
+          bom.Version == "public.Actual" && bom.NTT_CW_MATERIAL == materialId
       );
 
       for (let i = 0; i < lt_bom_list.length; i++) {
@@ -267,12 +272,11 @@
       }
     }
 
-    
-
     get costList() {
       return costListFinal;
     }
   }
 
   customElements.define("calculate-bom", bomExp);
+
 })();
