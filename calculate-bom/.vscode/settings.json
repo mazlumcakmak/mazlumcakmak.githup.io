@@ -1,0 +1,5 @@
+{
+    "prettier.bracketSameLine": true,
+    "prettier.endOfLine": "auto",
+    "prettier.proseWrap": "preserve"
+}

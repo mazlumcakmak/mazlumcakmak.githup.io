@@ -1,55 +1,33 @@
 {
-    "name": "calculte-bom",
-    "description": "Bill of Material Calculate",
-    "newInstancePrefix": "calculteBom",
-    "eula": "",
-    "vendor": "NTT DATA",
-    "license": "",
-    "id": "com.nttdata.epm.calculatebom",
-    "version": "1.0.1",
-    "icon": "",
-    "webcomponents": [{
-            "kind": "main",
-            "tag": "widget-tag",
-            "url": "",
-            "integrity": "",
-            "ignoreIntegrity": true
-        }, {
-            "kind": "builder",
-            "tag": "widget-tag-builder",
-            "url": "",
-            "integrity": "",
-            "ignoreIntegrity": true
-        }
-    ],
-    "properties": {
-        "prodiver": {
-            "description": "Prodiver",
-            "type": "string",
-            "default": ""
-        }
-
-    },
-    "methods": {
-        "setDimension": {
-            "description": "Set Source Dimension",
-            "parameters": [{
-                    "name": "dimension",
-                    "type": "string",
-                    "description": "Source Dimension"
-                }
-            ],
-            "body": "this.dimension = dimension;"
-        },
-        "getDimension": {
-            "returnType": "string",
-            "description": "Return Source Dimension",
-            "body": "return this.dimension;"
-        }
-    },
-    "events": {
-        "onClick": {
-            "description": "Called when the user clicks the button."
-        }
+  "name": "calculate-bom",
+  "description": "Bill of Material Calculate",
+  "newInstancePrefix": "calculateBom",
+  "eula": "",
+  "vendor": "NTT DATA",
+  "license": "",
+  "id": "com.nttdata.epm.calculatebom",
+  "version": "1.0.1",
+  "icon": "",
+  "webcomponents": [
+    {
+      "kind": "main",
+      "tag": "calculate-bom",
+      "url": "",
+      "integrity": "https://mazlumcakmak.github.io/mazlumcakmak.githup.io/calculate-bom/bill-of-material.js",
+      "ignoreIntegrity": true
     }
+  ],
+  "properties": {},
+  "methods": {
+    "getBomList": {
+      "description": "Calculate Bill of material",
+      "returnType": "string", 
+      "body": "return this.custList;"
+    }
+  },
+  "events": {
+    "onClick": {
+      "description": "Called when the user clicks the button."
+    }
+  }
 }
