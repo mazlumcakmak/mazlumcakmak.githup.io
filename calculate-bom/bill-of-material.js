@@ -11,7 +11,7 @@
 
   let tmpl = document.createElement("template");
   tmpl.innerHTML =
-    "<style>#buttonStyle {background-color: #487cac; color: white;padding: 10px;border: none;border-radius: 5px;font-size: 14px;cursor: pointer;width: 20%;}</style>";
+    "<style>#buttonStyle {background-color: #487cac; color: white;padding: 10px;border: none;border-radius: 5px;font-size: 14px;cursor: pointer;width: 100%;}</style>";
   tmpl.innerHTML =
     tmpl.innerHTML + "<button id='buttonStyle' type='button'>Hesapla</button>";
 
