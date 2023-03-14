@@ -20,6 +20,11 @@
       super();
       costList = [];
       costListFinal = [];
+      bomlist = [];
+      matList = [];
+      compList = [];
+      purList = [];
+      salesList = [];
       this.init();
 
     }
