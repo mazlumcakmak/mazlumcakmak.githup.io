@@ -18,7 +18,10 @@
   class bomExp extends HTMLElement {
     constructor() {
       super();
+      costList = [];
+      costListFinal = [];
       this.init();
+
     }
 
     init() {
@@ -34,7 +37,7 @@
         this.fireChanged();
         this.dispatchEvent(event);
        
-        console.log(costListFinal);
+        //console.log(costListFinal);
       });
     }
 
