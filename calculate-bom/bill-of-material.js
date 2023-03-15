@@ -63,13 +63,13 @@
       try {
         await (await this.$$.tblCost.getPlanning()).setUserInput({
           "@MeasureDimension": "[Measure].[parentId].&[amount]",
-          "Date": "[Date].[YQM].&[202301]",
+          "Date": "[Date].[YQM].&[202302]",
           "NTT_CW_COMPONENT":  "10000012",
           "NTT_CW_MATERIAL": "95000294",
           "Version": "public.2023V01"
         }, "9999900");
       } catch (error) {
-        
+        console.log(error);
       }
       
       // get token
