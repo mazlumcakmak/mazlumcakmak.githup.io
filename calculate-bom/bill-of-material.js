@@ -66,7 +66,7 @@
         "NTT_CW_COMPONENT":  "10000012",
         "NTT_CW_MATERIAL": "95000294",
         "Version": "public.2023V01"
-      }, lv_amount);
+      }, "9999900");
       // get token
       // var token = this.getToken();
 
