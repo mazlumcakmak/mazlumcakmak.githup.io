@@ -60,6 +60,13 @@
 
     async serviceRun() {
       debugger;
+      await (await this.$$.tblCost.getPlanning()).setUserInput({
+        "@MeasureDimension": "[Measure].[parentId].&[amount]",
+        "Date": "[Date].[YQM].&[202301]",
+        "NTT_CW_COMPONENT":  "10000012",
+        "NTT_CW_MATERIAL": "95000294",
+        "Version": "public.2023V01"
+      }, lv_amount);
       // get token
       // var token = this.getToken();
 
