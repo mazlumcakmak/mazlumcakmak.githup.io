@@ -1,4 +1,5 @@
 (function () {
+  'use strict';
   let _costList;
   var costList = [];
   var bomlist;
@@ -68,6 +69,7 @@
           "NTT_CW_MATERIAL": "95000294",
           "Version": "public.2023V01"
         }, "9999900");
+        await (await this.$$.tblCost.getPlanning()).submitData();
       } catch (error) {
         console.log(error);
       }
