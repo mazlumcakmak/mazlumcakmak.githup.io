@@ -10,7 +10,7 @@
     }
   
     #table {
-      width: 80%;
+      width: 30%;
       border-collapse: collapse;
       margin-botdimensionTypem: 10px;
     }
