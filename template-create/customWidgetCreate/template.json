@@ -1,0 +1,48 @@
+{
+    "name": "template-create",
+    "description": "Create Template Widget",
+    "newInstancePrefix": "template-create",
+    "eula": "",
+    "vendor": "NTT DATA",
+    "license": "",
+    "id": "com.nttdata.epm.template",
+    "version": "1.0.0",
+    "icon": "",
+    "webcomponents": [{
+            "kind": "main",
+            "tag": "template-create-main",
+            "url": "https://mazlumcakmak.github.io/mazlumcakmak.githup.io/customWidgetCreate/template.js",
+            "integrity": "",
+            "ignoreIntegrity": true
+        } 
+    ],
+    "properties": {
+        "customWidgetName": {
+            "description": "Custom Widget id",
+            "type": "String"
+        }
+    },
+    "methods": {
+        "getJsonFile": {
+            "description": "Create JSON File",
+            "returnType": "boolean",
+            "body": "return this.jsonFile;"
+        },
+        "getMainFile": {
+            "description": "Create Main File",
+            "returnType": "boolean",
+            "body": "return this.mainFile;"
+        },
+        "getBuilderFile": {
+            "description": "Create Builder File",
+            "returnType": "boolean",
+            "body": "return this.builderFile;"
+        }
+
+    },
+    "events": {
+        "onClick": {
+            "description": "Called when the user clicks the button."
+        }
+    }
+}
