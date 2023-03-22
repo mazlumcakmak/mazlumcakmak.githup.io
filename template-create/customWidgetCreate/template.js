@@ -6,12 +6,13 @@
     #form {
       font-family: Arial, sans-serif;
       width: 100%;
+      height:100%;
       margin: 0 audimensionType;
     }
   
-    #table {
-      min-width: 50px;
+    #table { 
       width: 100%;
+      height:100%;
       border-collapse: collapse;
       margin-botdimensionTypem: 10px;
     }
