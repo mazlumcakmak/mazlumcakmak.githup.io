@@ -19,24 +19,14 @@
     "properties": {
         "customWidgetName": {
             "description": "Custom Widget id",
-            "type": "String"
+            "type": "string"
         }
     },
     "methods": {
-        "getJsonFile": {
+        "setCustomWidgetName": {
             "description": "Create JSON File",
-            "returnType": "boolean",
-            "body": "return this.jsonFile;"
-        },
-        "getMainFile": {
-            "description": "Create Main File",
-            "returnType": "boolean",
-            "body": "return this.mainFile;"
-        },
-        "getBuilderFile": {
-            "description": "Create Builder File",
-            "returnType": "boolean",
-            "body": "return this.builderFile;"
+            "returnType": "string",
+            "body": "return this.customWidgetName;"
         }
 
     },

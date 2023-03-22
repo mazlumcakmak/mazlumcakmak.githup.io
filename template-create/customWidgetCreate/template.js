@@ -155,21 +155,7 @@
 
     // after update
     onCustomWidgetAfterUpdate(changedProperties) {
-      const lv_fileType = this._props.fileType;
-      var lv_caption = "";
-      switch (lv_fileType) {
-        case "json":
-          lv_caption = "Get JSON File";
-          break;
-        case "main":
-          lv_caption = "Get Main js File";
-          break;
-        case "builder":
-          lv_caption = "Get Builder js File";
-          break;
-
-      }
-      shadowRoot.getElementById("template-create-buttonStyle").innerHTML = lv_caption;
+ 
     }
     // getter setter
     fireChanged() {
@@ -194,15 +180,9 @@
     }
 
     // getter setter
-    get jsonFile() {
+    get customWidgetName() {
       return jsonFile;
-    }
-    get mainFile() {
-      return mainFile;
-    }
-    get builderFile() {
-      return builderFile;
-    }
+    } 
   }
 
 
