@@ -5,25 +5,24 @@
   <style>
     #form {
       font-family: Arial, sans-serif;
-      width: 400px;
+      width: 100%;
       margin: 0 audimensionType;
     }
   
     #table {
-      width: 30%;
+      min-width: 50px;
+      width: 100%;
       border-collapse: collapse;
       margin-botdimensionTypem: 10px;
     }
   
-    #td {
-      padding: 15px;
+    #td { 
       text-align: left;
       font-size: 13px;
     }
   
     td,
-    th {
-      border: 1px solid #dddddd;
+    th { 
       text-align: left;
       padding: 8px;
     }
