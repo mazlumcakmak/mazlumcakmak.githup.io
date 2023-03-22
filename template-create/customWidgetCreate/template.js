@@ -171,12 +171,7 @@
       );
     }
     // before update
-    onCustomWidgetBeforeUpdate(changedProperties) {
-      this._props = {
-        ...this._props,
-        ...changedProperties,
-      };
-    }
+  
 
     // getter setter
     get customWidgetName() {
