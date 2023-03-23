@@ -138,7 +138,7 @@
     }
     get jsonText() {
       debugger;
-      return jsonFile;
+      return "test";
     }
   }
 
