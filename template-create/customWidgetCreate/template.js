@@ -61,7 +61,7 @@
     // get file
     async getFile() {
 
-      widgetId = this.customWidgetName;
+     // widgetId = this.customWidgetName;
       // cw
       var cwrequest = new XMLHttpRequest();
       var url =
