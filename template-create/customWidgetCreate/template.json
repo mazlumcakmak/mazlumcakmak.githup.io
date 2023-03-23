@@ -33,7 +33,7 @@
                 "name": "customWidgetName",
                 "type": "string" 
             }],
-            "body": " return this.jsonText; this.customWidgetName = customWidgetName;   "
+            "body": " this.customWidgetName = customWidgetName; return this.jsonText;    "
         }
 
     },

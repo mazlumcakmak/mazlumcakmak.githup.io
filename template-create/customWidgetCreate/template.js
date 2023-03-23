@@ -46,6 +46,7 @@
       super();
       this.init();
       this._props = {};
+      
     }
 
     init() {
@@ -53,6 +54,7 @@
         mode: "open",
       });
       shadowRoot.appendChild(tmpl.content.cloneNode(true));
+      fireChanged();
 
     }
 
@@ -115,7 +117,7 @@
           detail: {
             properties: {
               customWidgetName: this.customWidgetName,
-              jsonText: this.jsonText
+              jsonText: this.jsonText,
             },
           },
         })
