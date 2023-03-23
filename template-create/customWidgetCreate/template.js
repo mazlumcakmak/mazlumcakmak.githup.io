@@ -111,7 +111,7 @@
       if (window.showSaveFilePicker) {
         const opts = {
           types: [{
-            description: 'MYfile',
+            description: fileName,
             accept: {
               'application/json': ['.json']
             },
