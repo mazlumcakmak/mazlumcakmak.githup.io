@@ -97,7 +97,7 @@
       jsonFile.webcomponents[0].url = "enter url....";
       jsonFile.webcomponents[0].tag = lt_cw[0].ID + "-main";
       var jsonse = JSON.stringify(jsonFile);
-      this.download(jsonse, 'json.json', 'text/plain');
+      this.download(jsonse, 'json.json', "application/json");
 
     }
 
