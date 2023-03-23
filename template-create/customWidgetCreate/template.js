@@ -55,7 +55,7 @@
       // cw
       var cwrequest = new XMLHttpRequest();
       var url =
-        "https://itelligencegroup-4.eu10.hcs.cloud.sap/api/v1/dataexport/providers/sac/C7mdde8dlqmog6pl6c85rpea2/CWMaster?$filter=ID%20eq%20%"+getFile()+"%27";
+        "https://itelligencegroup-4.eu10.hcs.cloud.sap/api/v1/dataexport/providers/sac/C7mdde8dlqmog6pl6c85rpea2/CWMaster?$filter=ID%20eq%20%"+widgetId+"%27";
 
       cwrequest.open("GET", url, false);
       cwrequest.send(null);
