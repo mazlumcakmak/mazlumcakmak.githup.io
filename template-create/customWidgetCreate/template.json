@@ -17,16 +17,22 @@
         } 
     ],
     "properties": {
-        "customWidgetName": {
-            "description": "Custom Widget id",
+        "jsonText": {
+            "description": "Json Text",
             "type": "string"
         }
     },
     "methods": {
         "setCustomWidgetName": {
             "description": "Create JSON File",
-            "returnType": "string",
-            "body": "return this.customWidgetName;"
+            "parameters":[
+                {
+                    "name":"customWidgetName",
+                    "type" : "string",
+                    "description" : "Custom Widget ID"
+                }
+            ],
+            "body": "this.jsonText = jsonText;"
         }
 
     },

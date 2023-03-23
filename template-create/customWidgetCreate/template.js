@@ -1,4 +1,5 @@
 (function () {
+  let widgetId = "";
   let tmpl = document.createElement("template");
   tmpl.innerHTML = `
         <style> 
@@ -39,24 +40,16 @@
 
     // get file
     getFile() {
-      const lv_fileType = this._props.fileType;
-      // get token
-      var lv_token = this.getToken();
 
+      widgetId = this.widgetId;
       // cw
       var cwrequest = new XMLHttpRequest();
       var url =
-        "https://itelligencegroup-4.eu10.hcs.cloud.sap/api/v1/dataexport/providers/sac/C7mdde8dlqmog6pl6c85rpea2/CWMaster";
+        "https://itelligencegroup-4.eu10.hcs.cloud.sap/api/v1/dataexport/providers/sac/C7mdde8dlqmog6pl6c85rpea2/CWMaster?$filter=ID%20eq%20%27widgetId%27";
 
       cwrequest.open("GET", url, false);
-      cwrequest.setRequestHeader(
-        "Authorization",
-        "Bearer " + lv_token
-      );
       cwrequest.send(null);
       var lt_cw = JSON.parse(cwrequest.responseText).value;
-
-
 
       // cw
       var cwprequest = new XMLHttpRequest();
@@ -64,42 +57,14 @@
         "https://itelligencegroup-4.eu10.hcs.cloud.sap/api/v1/dataexport/providers/sac/C7mdde8dlqmog6pl6c85rpea2/CWMaster";
 
       cwprequest.open("GET", url, false);
-      cwprequest.setRequestHeader(
-        "Authorization",
-        "Bearer " + lv_token
-      );
       cwprequest.send(null);
       var lt_cwp = JSON.parse(cwprequest.responseText).value;
-
-
-
-      console.log(lt_cw);
-
+      jsonText = "test json string";
+      
     }
 
 
 
-    getToken() {
-      var request = new XMLHttpRequest();
-      // get token
-      var token = "";
-      var url =
-        "https://itelligencegroup-4.authentication.eu10.hana.ondemand.com/oauth/token?grant_type=client_credentials";
-      var username =
-        "sb-5eef0586-d843-43bb-bcf4-b1469d4c9747!b51342|client!b3650";
-      var password = "fzk0Cz/n3KZXWvHQ3kLLPWdcDuw=";
-      var base64Credentials = btoa(username + ":" + password);
-
-      request.open("GET", url, false);
-      request.setRequestHeader("content-type", "application/json");
-      request.setRequestHeader("Authorization", "Basic " + base64Credentials);
-      request.send(null);
-      if (request.status != 200) {
-        return "";
-      }
-      var response = JSON.parse(request.responseText);
-      return (token = response.access_token);
-    }
 
 
 
@@ -127,7 +92,13 @@
 
     // getter setter
     get customWidgetName() {
-      return jsonFile;
+      return widgetId;
+    }
+    set customWidgetName(_custId) {
+      widgetId = _custId;
+    }
+    get jsonText(){
+      return jsonText;
     }
   }
 
