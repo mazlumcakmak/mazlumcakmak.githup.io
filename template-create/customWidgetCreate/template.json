@@ -25,10 +25,7 @@
         "getJsonText": {
             "returnType": "string",
             "description": "Create JSON File",
-            "parameters": [{
-                "name": "customWidgetName",
-                "type": "string" 
-            }],
+            
             "body": "return this.jsonText;    "
         }
 
