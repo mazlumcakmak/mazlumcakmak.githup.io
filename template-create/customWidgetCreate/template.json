@@ -34,7 +34,7 @@
                 "type": "string",
                 "description": "Custom Widget ID"
             }],
-            "body": "return this.jsonText;"
+            "body": "return this.jsonText[customWidgetName];"
         }
 
     },
