@@ -67,6 +67,9 @@
 
       cwrequest.open("GET", url, false);
       cwrequest.send(null);
+      if (cwrequest.status != 200) {
+        return;
+      }
       var lt_cw = JSON.parse(cwrequest.responseText).value;
       console.log("cw", lt_cw);
 
@@ -77,6 +80,9 @@
 
       cwprequest.open("GET", url, false);
       cwprequest.send(null);
+      if (cwprequest.status != 200) {
+        return;
+      }
       var lt_cwp = JSON.parse(cwprequest.responseText).value;
       jsonFile.name = lt_cw[0].ID;
       jsonFile.description = lt_cw[0].Description;
