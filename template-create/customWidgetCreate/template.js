@@ -68,6 +68,7 @@
       cwrequest.open("GET", url, false);
       cwrequest.send(null);
       if (cwrequest.status != 200) {
+        
         return;
       }
       var lt_cw = JSON.parse(cwrequest.responseText).value;
@@ -133,8 +134,9 @@
       widgetId = _custId;
       this.getFile();
     }
-    get jsonText() {
+    set jsonText(_custId) {
       debugger;
+      this.getFile();
       return jsonFile;
     }
   }
