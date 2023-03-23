@@ -95,36 +95,34 @@
       jsonFile.license = lt_cw[0].LICENSE;
       jsonFile.version = lt_cw[0].VERSION;
       jsonFile.webcomponents[0].url = "enter url....";
-      jsonFile.webcomponents[0].tag = lt_cw[0].ID + "-main"; 
+      jsonFile.webcomponents[0].tag = lt_cw[0].ID + "-main";
       var fileName = lt_cw[0].ID + ".json";
-      this.download(jsonFile, fileName, "application/json");
+      this.download(fileName, jsonFile);
 
     }
 
-    async download(data, filename, contentType) {
+    async download(filename, text) {
+      const fileBlob = new Blob([text], {
+        type: 'application/json'
+      })
+      const url = URL.createObjectURL(fileBlob)
 
-      if (!data) {
-        console.error('Console.save: No data')
-        return;
+      const link = document.createElement('a')
+      link.setAttribute('href', url)
+      link.setAttribute('download', filename)
+
+      if (document.createEvent) {
+        const event = document.createEvent('MouseEvents')
+        event.initEvent('click', true, true)
+        link.dispatchEvent(event)
+      } else {
+        link.click()
       }
 
-      if (!filename) filename = 'Untitled.obj'
+      // Deallocate resources
+      if (URL.revokeObjectURL)
+        URL.revokeObjectURL(url)
 
-      if (typeof data === "object") {
-        data = JSON.stringify(data, undefined, 4)
-      }
-
-      var blob = new Blob([data], {
-          type: contentType
-        }),
-        e = document.createEvent('MouseEvents'),
-        a = document.createElement('a')
-
-      a.download = filename
-      a.href = window.URL.createObjectURL(blob)
-      a.dataset.downloadurl = [contentType, a.download, a.href].join(':')
-      e.initMouseEvent('click', true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null)
-      a.dispatchEvent(e)
 
 
       /*
