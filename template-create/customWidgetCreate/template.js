@@ -138,7 +138,7 @@
       this.getFile();
     }
     get jsonFile() {
-     
+      this.getFile();
       return String(jsonFile);
     } 
   }
