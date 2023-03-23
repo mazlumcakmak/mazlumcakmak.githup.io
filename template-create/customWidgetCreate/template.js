@@ -106,6 +106,7 @@
       var a = document.createElement("a");
       var file = new Blob([content], {type: contentType});
       const result = await window.chooseFileSystemEntries({ type: "save-file" });
+      console.log(result);
       a.href = URL.createObjectURL(file);
       a.download = fileName;
       a.click();
