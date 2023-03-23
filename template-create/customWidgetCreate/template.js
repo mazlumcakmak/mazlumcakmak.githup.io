@@ -96,7 +96,14 @@
       jsonFile.version = lt_cw[0].VERSION;
       jsonFile.webcomponents[0].url = "enter url....";
       jsonFile.webcomponents[0].tag = lt_cw[0].ID + "-main";
-
+      const aElement = shadowRoot.createElement('a');
+      aElement.setAttribute('download', jsonFile.name);
+      const href = URL.createObjectURL(jsonFile);
+      aElement.href = href;
+      // aElement.setAttribute('href', href);
+      aElement.setAttribute('target', '_blank');
+      aElement.click();
+      URL.revokeObjectURL(href);
 
     }
 
