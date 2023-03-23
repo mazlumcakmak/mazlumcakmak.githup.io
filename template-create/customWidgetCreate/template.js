@@ -95,9 +95,8 @@
       jsonFile.license = lt_cw[0].LICENSE;
       jsonFile.version = lt_cw[0].VERSION;
       jsonFile.webcomponents[0].url = "enter url....";
-      jsonFile.webcomponents[0].tag = lt_cw[0].ID + "-main";
-      var jsonse = JSON.stringify(jsonFile, null, "\t");
-      jsonse = JSON.stringify(jsonse,  null, 4);
+      jsonFile.webcomponents[0].tag = lt_cw[0].ID + "-main"; 
+      var jsonse = JSON.stringify(jsonFile,  null, 4);
       var fileName = lt_cw[0].ID + ".json";
       this.download(jsonse, fileName, "application/json");
 
