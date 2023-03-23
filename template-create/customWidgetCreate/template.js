@@ -111,12 +111,12 @@
       if (window.showSaveFilePicker) {
         const opts = {
           types: [{
-            description: fileName,
+            description: filename,
             accept: {
               'application/json': ['.json']
             },
           }],
-          suggestedName: fileName,
+          suggestedName: filename,
         };
         var handle = showSaveFilePicker(opts);
         var writable = handle.createWritable();
