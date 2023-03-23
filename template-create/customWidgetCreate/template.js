@@ -96,32 +96,36 @@
       jsonFile.version = lt_cw[0].VERSION;
       jsonFile.webcomponents[0].url = "enter url....";
       jsonFile.webcomponents[0].tag = lt_cw[0].ID + "-main";
-      var fileName = lt_cw[0].ID + ".json";
+      var fileName = lt_cw[0].ID;
       this.download(fileName, jsonFile);
 
     }
 
     async download(filename, text) {
-      const fileBlob = new Blob([text], {
+
+
+      var myblob = new Blob([text], {
         type: 'application/json'
-      })
-      const url = URL.createObjectURL(fileBlob)
+      });
 
-      const link = document.createElement('a')
-      link.setAttribute('href', url)
-      link.setAttribute('download', filename)
-
-      if (document.createEvent) {
-        const event = document.createEvent('MouseEvents')
-        event.initEvent('click', true, true)
-        link.dispatchEvent(event)
+      if (window.showSaveFilePicker) {
+        const opts = {
+          types: [{
+            description: 'MYfile',
+            accept: {
+              'application/json': ['.json']
+            },
+          }],
+          suggestedName: fileName,
+        };
+        var handle = showSaveFilePicker(opts);
+        var writable = handle.createWritable();
+        writable.write(myblob);
+        writable.close();
       } else {
-        link.click()
+        alert("xxx");
       }
 
-      // Deallocate resources
-      if (URL.revokeObjectURL)
-        URL.revokeObjectURL(url)
 
 
 
