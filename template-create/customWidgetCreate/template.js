@@ -123,7 +123,7 @@
         writable.write(myblob);
         writable.close();
       } else {
-        alert("xxx");
+        alert("Not File Saved!");
       }
 
 
