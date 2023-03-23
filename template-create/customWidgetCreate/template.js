@@ -110,12 +110,13 @@
     // getter setter
     get customWidgetName() {
       debugger;
-      return widgetId;
+      return customWidgetName;
     }
     set customWidgetName(_custId) {
       debugger;
-      this.getFile();
+      customWidgetName = _custId;
       widgetId = _custId;
+      this.getFile(); 
     }
     get jsonText(){
       debugger;
