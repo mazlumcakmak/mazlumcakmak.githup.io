@@ -26,8 +26,7 @@
     constructor() {
       super();
       this.init();
-      this._props = {};
-      this._select = {};
+      this._props = {}; 
     }
 
     init() {
