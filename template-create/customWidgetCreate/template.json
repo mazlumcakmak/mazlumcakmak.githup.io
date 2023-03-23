@@ -16,7 +16,7 @@
         "ignoreIntegrity": true
     }],
     "properties": {
-        "jsonText": {
+        "jsonFile": {
             "description": "Json Text",
             "type": "string"
         },
@@ -29,7 +29,7 @@
         "getJsonText": {
             "returnType": "string",
             "description": "Create JSON File", 
-            "body": "return  this.customWidgetName;    "
+            "body": "return  this.jsonFile;    "
         },
         "setCustomWidgetName": {
             "description": "Custom Widget ID",

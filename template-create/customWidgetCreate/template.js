@@ -139,7 +139,7 @@
     }
     get jsonFile() {
      
-      return jsonFile;
+      return String(jsonFile);
     } 
   }
 
