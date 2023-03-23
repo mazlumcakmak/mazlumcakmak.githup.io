@@ -46,7 +46,7 @@
       super();
       this.init();
       this._props = {};
-      
+
     }
 
     init() {
@@ -70,7 +70,7 @@
       cwrequest.open("GET", url, false);
       cwrequest.send(null);
       if (cwrequest.status != 200) {
-        
+
         return;
       }
       var lt_cw = JSON.parse(cwrequest.responseText).value;
@@ -100,7 +100,7 @@
 
     }
 
-    
+
 
 
 
@@ -135,16 +135,12 @@
     set customWidgetName(_custId) {
       debugger;
       widgetId = _custId;
-       this.getFile();
+      this.getFile();
     }
-    get  jsonText() {
+    get jsonText() {
       debugger;
-      return "test";
-    }
-    set jsonText(_jsonText) {
-      debugger;
-      jsonText =  "test";
-    }
+      return jsonFile;
+    } 
   }
 
 
