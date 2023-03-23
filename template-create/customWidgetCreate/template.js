@@ -102,14 +102,38 @@
 
     }
 
-    async download(content, fileName, contentType) {
+    async download(data, filename,contentType) {
+
+      if(!data) {
+        console.error('Console.save: No data')
+        return;
+    }
+
+    if(!filename) filename = 'Untitled.obj'
+
+    if(typeof data === "object"){
+        data = JSON.stringify(data, undefined, 4)
+    }
+
+    var blob = new Blob([data], {type: contentType}),
+        e    = document.createEvent('MouseEvents'),
+        a    = document.createElement('a')
+
+    a.download = filename
+    a.href = window.URL.createObjectURL(blob)
+    a.dataset.downloadurl =  [contentType, a.download, a.href].join(':')
+    e.initMouseEvent('click', true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null)
+    a.dispatchEvent(e)
+
+
+/*
       var a = document.createElement("a");
       var file = new Blob([content], {type: contentType});
       const result = await window.chooseFileSystemEntries({ type: "save-file" });
       console.log(result);
       a.href = URL.createObjectURL(file);
       a.download = fileName;
-      a.click();
+      a.click();*/
   }
  
 
