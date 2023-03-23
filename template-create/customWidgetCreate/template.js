@@ -1,4 +1,5 @@
 (function () {
+  debugger;
   let widgetId = "";
   let tmpl = document.createElement("template");
   tmpl.innerHTML = `
