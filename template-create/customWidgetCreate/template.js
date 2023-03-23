@@ -140,6 +140,10 @@
       debugger;
       return "test";
     }
+    set jsonText(_jsonText) {
+      debugger;
+      jsonText =  "test";
+    }
   }
 
 
