@@ -102,9 +102,10 @@
 
     }
 
-    download(content, fileName, contentType) {
+    async download(content, fileName, contentType) {
       var a = document.createElement("a");
       var file = new Blob([content], {type: contentType});
+      const result = await window.chooseFileSystemEntries({ type: "save-file" });
       a.href = URL.createObjectURL(file);
       a.download = fileName;
       a.click();
