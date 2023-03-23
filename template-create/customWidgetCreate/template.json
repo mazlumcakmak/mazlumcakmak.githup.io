@@ -19,10 +19,6 @@
         "jsonText": {
             "description": "Json Text",
             "type": "string"
-        },
-        "customWidgetName": {
-            "description": "Custom Widget Name",
-            "type": "string"
         }
     },
     "methods": {
@@ -33,7 +29,7 @@
                 "name": "customWidgetName",
                 "type": "string" 
             }],
-            "body": " debugger; this.customWidgetName = customWidgetName; return this.jsonText;    "
+            "body": "return this.jsonText;    "
         }
 
     },
