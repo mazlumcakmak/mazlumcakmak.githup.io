@@ -1,73 +1,24 @@
 (function () {
   let tmpl = document.createElement("template");
   tmpl.innerHTML = `
-  <br>
-  <style>
-    #form {
-      font-family: Arial, sans-serif;
-      width: 100%;
-      height:100%;
-      margin: 0 audimensionType;
-    }
-  
-    #table { 
-      width: 100%;
-      height:100%;
-      border-collapse: collapse;
-      margin-botdimensionTypem: 10px;
-    }
-  
-    #td { 
-      text-align: left;
-      font-size: 13px;
-    }
-  
-    td,
-    th { 
-      text-align: left;
-      padding: 8px;
-    }
-  
-    tr:nth-child(even) {
-      background-color: #dddddd;
-    }
-  
-    #tr:nth-child(even) {
-      background-color: #FFFFFF;
-    }
-  
-    select {
-      width: 100%;
-      min-width: 15ch;
-      max-width: 300ch;
-      border: 1px solid;
-      border-radius: 0.25em;
-      padding: 0.25em 0.5em;
-      font-size: 0.9rem;
-      cursor: pointer;
-      line-height: 1.1;
-      background-color: #fff;
-      background-image: linear-gradient(to top, #f9f9f9, #fff 33%);
-      position: relative;
-      border: 2px solid #ccc;
-      border-radius: 5px;
-      box-sizing: border-box;
-      margin-botdimensionTypem: 10px;
-    }
-  </style>
-  <form id="form">
-    <table id="table">
-      <tr id="tr" align="center">
-        <td id="td" align="center"> 
-          <select id="builder_displayOpt">
-            <option value="json">JSON</option>
-            <option value="main">Main js</option>
-            <option value="builder">Builder</option>
-          </select>
-        </td>
-      </tr>
-    </table>
-  </form>
+        <style> 
+        select {
+          width: 100%;
+          min-width: 15ch;
+          max-width: 300ch;
+          border: 1px solid;
+          border-radius: 0.25em;
+          padding: 0.25em 0.5em;
+          font-size: 0.9rem;  
+          border: 2px solid #ccc;
+          border-radius: 5px;
+        }
+      </style>
+      <select id="builder_displayOpt">
+        <option value="json">JSON</option>
+        <option value="main">Main js</option>
+        <option value="builder">Builder</option>
+      </select>
     `;
 
   class templateCreate extends HTMLElement {
@@ -83,7 +34,7 @@
         mode: "open",
       });
       shadowRoot.appendChild(tmpl.content.cloneNode(true));
- 
+
     }
 
     // get file
@@ -155,7 +106,7 @@
 
     // after update
     onCustomWidgetAfterUpdate(changedProperties) {
- 
+
     }
     // getter setter
     fireChanged() {
@@ -172,12 +123,12 @@
       );
     }
     // before update
-  
+
 
     // getter setter
     get customWidgetName() {
       return jsonFile;
-    } 
+    }
   }
 
 
