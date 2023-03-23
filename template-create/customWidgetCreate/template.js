@@ -79,9 +79,8 @@
         new CustomEvent("propertiesChanged", {
           detail: {
             properties: {
-              jsonFile: this.jsonFile,
-              mainFile: this.mainFile,
-              builderFile: this.builderFile,
+              customWidgetName: this.customWidgetName,
+              jsonText: this.jsonText 
             },
           },
         })
