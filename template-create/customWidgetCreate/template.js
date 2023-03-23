@@ -1,6 +1,6 @@
 (function () {
   let widgetId = "";
-  let jsonFile = {
+  var jsonFile = {
     "name": "",
     "description": "",
     "newInstancePrefix": "",
