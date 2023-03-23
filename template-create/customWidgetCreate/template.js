@@ -1,5 +1,4 @@
-(function () { 
-  debugger;
+(function () {  
   let widgetId = "";
   let jsonFile = {
     "name" : "",
