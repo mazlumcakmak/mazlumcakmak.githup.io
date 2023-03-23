@@ -19,14 +19,21 @@
         "jsonText": {
             "description": "Json Text",
             "type": "string"
+        },
+        "customWidgetName": {
+            "description": "Custom Widget Name",
+            "type": "string"
         }
     },
     "methods": {
         "getJsonText": {
             "returnType": "string",
             "description": "Create JSON File",
-            
-            "body": "return this.jsonText;    "
+            "parameters": [{
+                "name": "customWidgetName",
+                "type": "string" 
+            }],
+            "body": " this.customWidgetName = customWidgetName; return async this.jsonText;    "
         }
 
     },

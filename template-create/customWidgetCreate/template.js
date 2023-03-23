@@ -59,7 +59,7 @@
     }
 
     // get file
-    getFile() {
+    async getFile() {
 
       widgetId = this.customWidgetName;
       // cw
@@ -100,6 +100,7 @@
 
     }
 
+    
 
 
 
@@ -134,9 +135,9 @@
     set customWidgetName(_custId) {
       debugger;
       widgetId = _custId;
-      this.getFile();
+       this.getFile();
     }
-    get jsonText() {
+    get  jsonText() {
       debugger;
       return "test";
     }
