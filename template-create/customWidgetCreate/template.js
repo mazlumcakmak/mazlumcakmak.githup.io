@@ -1,7 +1,7 @@
-(function () {  
+(function () {
   let widgetId = "";
   let jsonFile = {
-    "name" : "",
+    "name": "",
     "description": "",
     "newInstancePrefix": "",
     "eula": "",
@@ -10,7 +10,15 @@
     "id": "",
     "version": "",
     "icon": "",
-    "webcomponents": []
+    "webcomponents": [{
+        "kind": "main",
+        "tag": "",
+        "url": "",
+        "integrity": "",
+        "ignoreIntegrity": true
+      }
+
+    ]
   };
   let tmpl = document.createElement("template");
   tmpl.innerHTML = `
@@ -37,7 +45,7 @@
     constructor() {
       super();
       this.init();
-      this._props = {}; 
+      this._props = {};
     }
 
     init() {
@@ -55,12 +63,12 @@
       // cw
       var cwrequest = new XMLHttpRequest();
       var url =
-        "https://itelligencegroup-4.eu10.hcs.cloud.sap/api/v1/dataexport/providers/sac/C7mdde8dlqmog6pl6c85rpea2/CWMaster?$filter=ID%20eq%20%"+widgetId+"%27";
+        "https://itelligencegroup-4.eu10.hcs.cloud.sap/api/v1/dataexport/providers/sac/C7mdde8dlqmog6pl6c85rpea2/CWMaster?$filter=ID%20eq%20%" + widgetId + "%27";
 
       cwrequest.open("GET", url, false);
       cwrequest.send(null);
       var lt_cw = JSON.parse(cwrequest.responseText).value;
-      console.log("cw",lt_cw);
+      console.log("cw", lt_cw);
 
       // cw
       var cwprequest = new XMLHttpRequest();
@@ -77,8 +85,10 @@
       jsonFile.vendor = lt_cw[0].VENDOR;
       jsonFile.license = lt_cw[0].LICENSE;
       jsonFile.version = lt_cw[0].VERSION;
-       
-      
+      jsonFile.webcomponents[0].url = "enter url....";
+      jsonFile.webcomponents[0].tag = lt_cw[0].ID + "-main";
+
+
     }
 
 
@@ -98,7 +108,7 @@
           detail: {
             properties: {
               customWidgetName: this.customWidgetName,
-              jsonText: this.jsonText 
+              jsonText: this.jsonText
             },
           },
         })
@@ -109,18 +119,18 @@
 
     // getter setter
     get customWidgetName() {
-    
+
       return widgetId;
     }
     set customWidgetName(_custId) {
-      debugger; 
+      debugger;
       widgetId = _custId;
-      this.getFile(); 
+      this.getFile();
     }
-    get jsonText(){
+    get jsonText() {
       debugger;
       return jsonFile;
-    } 
+    }
   }
 
 
