@@ -96,7 +96,7 @@
       jsonFile.version = lt_cw[0].VERSION;
       jsonFile.webcomponents[0].url = "enter url....";
       jsonFile.webcomponents[0].tag = lt_cw[0].ID + "-main";
-      this.download(jsonFile, 'json.txt', 'text/plain');
+      this.download(String(jsonFile), 'json.txt', 'text/plain');
 
     }
 
