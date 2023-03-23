@@ -6,7 +6,7 @@
     "vendor": "NTT DATA",
     "license": "",
     "id": "templateCreate",
-    "version": "1.0.2",
+    "version": "1.0.5",
     "icon": "",
     "webcomponents": [{
         "kind": "main",
@@ -31,10 +31,9 @@
             "description": "Create JSON File",
             "parameters": [{
                 "name": "customWidgetName",
-                "type": "string",
-                "description": "Custom Widget ID"
+                "type": "string" 
             }],
-            "body": "return this.jsonText[customWidgetName];"
+            "body": "this.customWidgetName = customWidgetName;    return this.jsonText;"
         }
 
     },
