@@ -130,7 +130,7 @@
     // getter setter
     get customWidgetName() {
 
-      return widgetId;
+      return jsonFile;
     }
     set customWidgetName(_custId) {
       debugger;

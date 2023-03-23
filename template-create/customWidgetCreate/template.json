@@ -28,12 +28,17 @@
     "methods": {
         "getJsonText": {
             "returnType": "string",
-            "description": "Create JSON File",
+            "description": "Create JSON File", 
+            "body": "return  this.customWidgetName;    "
+        },
+        "setCustomWidgetName": {
+            "description": "Custom Widget ID",
             "parameters": [{
                 "name": "customWidgetName",
-                "type": "string" 
+                "type": "string",
+                "description": "Custom Widget ID"
             }],
-            "body": " this.customWidgetName = customWidgetName; return async this.jsonText;    "
+            "body": "this.customWidgetName = customWidgetName;"
         }
 
     },
