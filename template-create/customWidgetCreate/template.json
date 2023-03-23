@@ -1,12 +1,12 @@
 {
-    "name": "template-create",
+    "name": "templateCreate",
     "description": "Create Template Widget",
-    "newInstancePrefix": "template-create",
+    "newInstancePrefix": "templateCreate",
     "eula": "",
     "vendor": "NTT DATA",
     "license": "",
-    "id": "com.nttdata.epm.template",
-    "version": "1.0.1",
+    "id": "templateCreate",
+    "version": "1.0.2",
     "icon": "",
     "webcomponents": [{
         "kind": "main",
