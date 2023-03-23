@@ -51,7 +51,7 @@
     // get file
     getFile() {
 
-      widgetId = this.widgetId;
+      widgetId = this.customWidgetName;
       // cw
       var cwrequest = new XMLHttpRequest();
       var url =
