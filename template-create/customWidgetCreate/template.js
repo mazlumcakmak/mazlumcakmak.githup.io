@@ -9,7 +9,8 @@
     "license": "",
     "id": "",
     "version": "",
-    "icon": ""
+    "icon": "",
+    "webcomponents": []
   };
   let tmpl = document.createElement("template");
   tmpl.innerHTML = `
