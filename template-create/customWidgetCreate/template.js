@@ -134,9 +134,8 @@
       widgetId = _custId;
       this.getFile();
     }
-    set jsonText(_custId) {
+    get jsonText() {
       debugger;
-      this.getFile();
       return jsonFile;
     }
   }
