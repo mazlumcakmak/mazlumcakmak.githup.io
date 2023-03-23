@@ -76,7 +76,7 @@
       jsonFile.vendor = lt_cw[0].VENDOR;
       jsonFile.license = lt_cw[0].LICENSE;
       jsonFile.version = lt_cw[0].VERSION;
-      this.jsonText(jsonFile);
+       
       
     }
 
@@ -118,11 +118,8 @@
     }
     get jsonText(){
       debugger;
-      return jsonText;
-    }
-    set jsonText(_json){
-      jsonText = _json;
-    }
+      return jsonFile;
+    } 
   }
 
 
