@@ -54,7 +54,7 @@
         mode: "open",
       });
       shadowRoot.appendChild(tmpl.content.cloneNode(true));
-      fireChanged();
+      this.fireChanged();
 
     }
 
