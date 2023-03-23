@@ -1,13 +1,10 @@
-(function () {
-  debugger;
+(function () { 
   let widgetId = "";
   let tmpl = document.createElement("template");
   tmpl.innerHTML = `
         <style> 
         select {
-          width: 100%;
-          min-width: 15ch;
-          max-width: 300ch;
+          width: 100%;  
           border: 1px solid;
           border-radius: 0.25em;
           padding: 0.25em 0.5em;
