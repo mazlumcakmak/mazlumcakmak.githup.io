@@ -133,7 +133,8 @@
 
 
 
-      this.download(fileName, jsonFormater);
+      await this.download(fileName, jsonFormater);
+      this.customWidgetName = '';
 
     }
 
