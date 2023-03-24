@@ -212,7 +212,11 @@
     set customWidgetName(_custId) {
       debugger;
       widgetId = _custId;
-      this.getFile();
+      if (widgetId != "") {
+        this.getFile();
+      }
+      
+      
     }
     get jsonFile() {
       this.getFile();
