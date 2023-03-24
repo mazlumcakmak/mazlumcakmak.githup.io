@@ -146,13 +146,7 @@
       await writable.write(myblob);
       await writable.close(); 
     }
-
-
-
-
-
-
-
+ 
     // after update
     onCustomWidgetAfterUpdate(changedProperties) {
 
