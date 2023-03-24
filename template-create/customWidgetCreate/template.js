@@ -103,24 +103,24 @@
         var methodName = lt_cwp[i].ORIGINALCWPID;
         var memberId = lt_cwp[i].ORIGINALCWPID;
         jsonFile.properties[lt_cwp[i][memberId]] = {
-          "description": lt_cwp[i][Description],
-          "type": lt_cwp[i][TYPE]
+          "description": lt_cwp[i].Description,
+          "type": lt_cwp[i].TYPE
         }
 
         // getter 
         jsonFile.methods["get" + methodName] = {
-          "returnType": lt_cwp[i][TYPE],
-          "description": lt_cwp[i][Description],
+          "returnType": lt_cwp[i].TYPE,
+          "description": lt_cwp[i].Description,
           "body": "return  this." + methodName + ";"
         }
 
         // setter
         jsonFile.methods["set" + methodName] = {
-          "description": lt_cwp[i][Description],
+          "description": lt_cwp[i].Description,
           "parameters": [{
             "name": methodName,
-            "type": lt_cwp[i][TYPE],
-            "description": lt_cwp[i][Description]
+            "type": lt_cwp[i].TYPE,
+            "description": lt_cwp[i].Description
           }],
           "body": "this." + methodName + " = " + methodName + ";"
         }
