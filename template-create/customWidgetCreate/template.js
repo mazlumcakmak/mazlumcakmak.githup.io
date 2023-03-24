@@ -100,7 +100,21 @@
       jsonFile.webcomponents[0].tag = lt_cw[0].ID + "-main";
 
       for (let i = 0; i < lt_cwp.length; i++) {
+        var methodName = lt_cwp[i][ORIGINALCWPID];
         jsonFile.properties[lt_cwp[i][ORIGINALCWPID]] = {
+          "description": lt_cwp[i][Description],
+          "type": lt_cwp[i][TYPE]
+        }
+
+        // getter 
+        jsonFile.methods["get" + methodName] = {
+          "returnType": lt_cwp[i][TYPE],
+          "description": lt_cwp[i][Description],
+          "body": "return  this." + methodName + ";"
+        }
+
+        // setter
+        jsonFile.methods["set" + methodName] = {
           "description": lt_cwp[i][Description],
           "type": lt_cwp[i][TYPE]
         }
