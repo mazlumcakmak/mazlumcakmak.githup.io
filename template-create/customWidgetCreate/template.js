@@ -125,14 +125,9 @@
           "body": "this." + methodName + " = " + methodName + ";"
         }
 
-      }
-
-
+      } 
       var fileName = lt_cw[0].ID;
-      var jsonFormater = JSON.stringify(jsonFile, null, 4);
-
-
-
+      var jsonFormater = JSON.stringify(jsonFile, null, 4);  
       await this.download(fileName, jsonFormater);
       this.customWidgetName = '';
 
