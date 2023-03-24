@@ -100,8 +100,9 @@
       jsonFile.webcomponents[0].tag = lt_cw[0].ID + "-main";
 
       for (let i = 0; i < lt_cwp.length; i++) {
-        var methodName = lt_cwp[i][ORIGINALCWPID];
-        jsonFile.properties[lt_cwp[i][ORIGINALCWPID]] = {
+        var methodName = lt_cwp[i].ORIGINALCWPID;
+        var memberId = lt_cwp[i].ORIGINALCWPID;
+        jsonFile.properties[lt_cwp[i][memberId]] = {
           "description": lt_cwp[i][Description],
           "type": lt_cwp[i][TYPE]
         }
