@@ -60,7 +60,7 @@
 
     }
 
-    
+    /*
     async connectedCallback() {
       this.getFile();
       this.interval = setInterval(() => {
@@ -70,7 +70,7 @@
 
     disconnectedCallback() {
       clearInterval(this.interval);
-    }
+    }*/
     // get file
     async getFile() {
 
