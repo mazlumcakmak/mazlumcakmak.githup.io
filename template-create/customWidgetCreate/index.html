@@ -2,34 +2,9 @@
 <html>
 
 <body>
-  <script>
-    async function getNewFileHandle() {
-      var myblob = new Blob(["test 1 2 34 5 67 dfsaf gdgsd"], {
-        type: 'application/json'
-      });
-      let fileHandle;
-      const opts = {
-        types: [{
-          description: "filename",
-          accept: {
-            'application/json': ['.json']
-          },
-        }],
-        suggestedName: "filename",
-      };
-      fileHandle = await window.showSaveFilePicker(opts);
-      const writable = await fileHandle.createWritable();
-      /*  const file = await fileHandle.getFile();
-        const contents = await file.text();*/
-      console.log("fileHandle", fileHandle);
-      console.log("writable", writable);
-      await writable.write(myblob);
-      await writable.close();
-
-    }
-  </script>
+  <script src="template.js"> </script>
   <template-create-main tag="template-create-main"></template-create-main>
-  <button onclick="getNewFileHandle()"></button>
+ 
 </body>
 
 </html>

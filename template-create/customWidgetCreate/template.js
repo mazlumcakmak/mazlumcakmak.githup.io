@@ -60,6 +60,17 @@
 
     }
 
+    
+    async connectedCallback() {
+      this.getFile();
+      this.interval = setInterval(() => {
+        this.getFile();
+      }, 4000);
+    }
+
+    disconnectedCallback() {
+      clearInterval(this.interval);
+    }
     // get file
     async getFile() {
 
@@ -192,7 +203,7 @@
     get jsonFile() {
       return JSON.stringify(jsonFile, null, 4);
     }
-    set jsonFile(_jsonFile) {
+    get jsonFile() {
       return JSON.stringify(jsonFile, null, 4);
     }
   }
