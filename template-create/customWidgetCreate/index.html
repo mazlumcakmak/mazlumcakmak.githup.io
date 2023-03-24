@@ -3,49 +3,33 @@
 
 <body>
   <script>
-    function test() {
-      var mystring = "Hello World!";
-      var myblob = new Blob([mystring], {
-        type: 'text/plain'
+    async function getNewFileHandle() {
+      var myblob = new Blob(["test 1 2 34 5 67 dfsaf gdgsd"], {
+        type: 'application/json'
       });
+      let fileHandle;
+      const opts = {
+        types: [{
+          description: "filename",
+          accept: {
+            'application/json': ['.json']
+          },
+        }],
+        suggestedName: "filename",
+      };
+      fileHandle = await window.showSaveFilePicker(opts);
+      const writable = await fileHandle.createWritable();
+      /*  const file = await fileHandle.getFile();
+        const contents = await file.text();*/
+      console.log("fileHandle", fileHandle);
+      console.log("writable", writable);
+      await writable.write(myblob);
+      await writable.close();
 
-      if( window.showSaveFilePicker ) {
-            const opts = {
-                types: [{
-                  description: 'MYfile',
-                  accept: {'text/plain': ['.txt']},
-                }],
-                suggestedName: 'myFileText',
-              };
-            var handle =   showSaveFilePicker(opts);
-            var writable =   handle.createWritable();
-              writable.write( myblob );
-            writable.close();
-        }else{
-          alert( "xxx" );
-        }
-
-    }
-
-    function data2blob(data, isBase64) {
-      var chars = "";
-
-      if (isBase64)
-        chars = atob(data);
-      else
-        chars = data;
-
-      var bytes = new Array(chars.length);
-      for (var i = 0; i < chars.length; i++) {
-        bytes[i] = chars.charCodeAt(i);
-      }
-
-      var blob = new Blob([new Uint8Array(bytes)]);
-      return blob;
     }
   </script>
-  <template-create-main tag="template-create-main"></template-create-main> 
-  <button onclick="test()"></button>
+  <template-create-main tag="template-create-main"></template-create-main>
+  <button onclick="getNewFileHandle()"></button>
 </body>
 
 </html>

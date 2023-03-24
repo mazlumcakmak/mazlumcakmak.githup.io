@@ -107,25 +107,28 @@
       var myblob = new Blob([text], {
         type: 'application/json'
       });
+      let fileHandle;
+      const opts = {
+        types: [{
+          description: filename,
+          accept: {
+            'application/json': ['.json']
+          },
+        }],
+        suggestedName: filename,
+      };
+      fileHandle = await window.showSaveFilePicker(opts);
+      const writable = await fileHandle.createWritable();
+      /*  const file = await fileHandle.getFile();
+        const contents = await file.text();*/
+      console.log("fileHandle", fileHandle);
+      console.log("writable", writable);
+      await writable.write(myblob);
+      await writable.close();
 
-      if (window.showSaveFilePicker) {
-        const opts = {
-          types: [{
-            description: filename,
-            accept: {
-              'application/json': ['.json']
-            },
-          }],
-          suggestedName: filename,
-        };
-        var handle = showSaveFilePicker(opts);
-        var writable = handle.createWritable();
-        writable.write(myblob);
-        writable.close();
-      } else {
-        alert("Not File Saved!");
-      }
 
+
+ 
 
 
 
