@@ -18,7 +18,9 @@
         "ignoreIntegrity": true
       }
 
-    ]
+    ],
+    "properties": {},
+    "methods": {}
   };
   let tmpl = document.createElement("template");
   tmpl.innerHTML = `
@@ -79,7 +81,7 @@
       // cw
       var cwprequest = new XMLHttpRequest();
       var url =
-        "https://itelligencegroup-4.eu10.hcs.cloud.sap/api/v1/dataexport/providers/sac/C7mdde8dlqmog6pl6c85rpea2/CWMaster";
+        "https://itelligencegroup-4.eu10.hcs.cloud.sap/api/v1/dataexport/providers/sac/C7mdde8dlqmog6pl6c85rpea2/CWPMaster?$filter=CUSTOMWIDGET%20eq%20%27" + widgetId + "%27";
 
       cwprequest.open("GET", url, false);
       cwprequest.send(null);
@@ -96,8 +98,21 @@
       jsonFile.version = lt_cw[0].VERSION;
       jsonFile.webcomponents[0].url = "enter url....";
       jsonFile.webcomponents[0].tag = lt_cw[0].ID + "-main";
+
+      for (let i = 0; i < lt_cwp.length; i++) {
+        jsonFile.properties[lt_cwp[i][ORIGINALCWPID]] = {
+          "description": lt_cwp[i][Description],
+          "type": lt_cwp[i][TYPE]
+        }
+
+      }
+
+
       var fileName = lt_cw[0].ID;
       var jsonFormater = JSON.stringify(jsonFile, null, 4);
+
+
+
       this.download(fileName, jsonFormater);
 
     }
@@ -129,7 +144,7 @@
 
 
 
- 
+
 
 
 
