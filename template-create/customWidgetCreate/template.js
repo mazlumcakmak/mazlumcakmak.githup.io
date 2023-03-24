@@ -116,7 +116,12 @@
         // setter
         jsonFile.methods["set" + methodName] = {
           "description": lt_cwp[i][Description],
-          "type": lt_cwp[i][TYPE]
+          "parameters": [{
+            "name": methodName,
+            "type": lt_cwp[i][TYPE],
+            "description": lt_cwp[i][Description]
+          }],
+          "body": "this." + methodName + " = " + methodName + ";"
         }
 
       }
