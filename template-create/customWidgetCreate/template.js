@@ -125,9 +125,9 @@
           "body": "this." + methodName + " = " + methodName + ";"
         }
 
-      } 
+      }
       var fileName = lt_cw[0].ID;
-      var jsonFormater = JSON.stringify(jsonFile, null, 4);  
+      var jsonFormater = JSON.stringify(jsonFile, null, 4);
       await this.download(fileName, jsonFormater);
       this.customWidgetName = '';
 
@@ -136,17 +136,27 @@
     async download(filename, text) {
 
 
-      var myblob = new Blob([text], {  type: 'application/json' });
+      var myblob = new Blob([text], {
+        type: 'application/json'
+      });
       let fileHandle;
-      const opts = { types: [{ description: filename, accept: { 'application/json': ['.json'] },  }], suggestedName: filename, };
+      const opts = {
+        types: [{
+          description: filename,
+          accept: {
+            'application/json': ['.json']
+          },
+        }],
+        suggestedName: filename,
+      };
       fileHandle = await window.showSaveFilePicker(opts);
-      const writable = await fileHandle.createWritable(); 
+      const writable = await fileHandle.createWritable();
       console.log("fileHandle", fileHandle);
       console.log("writable", writable);
       await writable.write(myblob);
-      await writable.close(); 
+      await writable.close();
     }
- 
+
     // after update
     onCustomWidgetAfterUpdate(changedProperties) {
 
@@ -178,12 +188,12 @@
       if (widgetId != "") {
         this.getFile();
       }
-      
-      
     }
     get jsonFile() {
-      this.getFile();
-      return String(jsonFile);
+      return JSON.stringify(jsonFile, null, 4);
+    }
+    set jsonFile(_jsonFile) {
+      return JSON.stringify(jsonFile, null, 4);
     }
   }
 

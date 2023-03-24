@@ -29,7 +29,7 @@
         "getJsonText": {
             "returnType": "string",
             "description": "Create JSON File", 
-            "body": "return  this.jsonFile;    "
+            "body": "return this.jsonFile;    "
         },
         "setCustomWidgetName": {
             "description": "Custom Widget ID",
