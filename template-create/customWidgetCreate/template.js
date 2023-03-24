@@ -102,7 +102,7 @@
       for (let i = 0; i < lt_cwp.length; i++) {
         var methodName = lt_cwp[i].ORIGINALCWPID;
         var memberId = lt_cwp[i].ORIGINALCWPID;
-        jsonFile.properties[lt_cwp[i][memberId]] = {
+        jsonFile.properties[memberId] = {
           "description": lt_cwp[i].Description,
           "type": lt_cwp[i].TYPE
         }
