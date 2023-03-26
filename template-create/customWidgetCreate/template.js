@@ -48,6 +48,10 @@
       super();
       this.init();
       this._props = {};
+      this._props.widgetId = "";
+      this._props.json = "";
+      this._props.mainJs = "";
+      this._props.builderJs = "";
 
     }
 
@@ -56,21 +60,81 @@
         mode: "open",
       });
       shadowRoot.appendChild(tmpl.content.cloneNode(true));
+
       //this.fireChanged();
 
     }
+    // create json file
+    async getJsonFile() {
+      widgetId = this._props.widgetId;
+      
+      var cwrequest = new XMLHttpRequest();
+      var url =
+        "https://itelligencegroup-4.eu10.hcs.cloud.sap/api/v1/dataexport/providers/sac/C7mdde8dlqmog6pl6c85rpea2/CWMaster?$filter=ID%20eq%20%27" + widgetId + "%27";
 
-    /*
-    async connectedCallback() {
-      this.getFile();
-      this.interval = setInterval(() => {
-        this.getFile();
-      }, 4000);
+      cwrequest.open("GET", url, false);
+      cwrequest.send(null);
+      if (cwrequest.status != 200) {
+
+        return;
+      }
+      var lt_cw = JSON.parse(cwrequest.responseText).value;
+      console.log("cw", lt_cw);
+
+      // cw
+      var cwprequest = new XMLHttpRequest();
+      var url =
+        "https://itelligencegroup-4.eu10.hcs.cloud.sap/api/v1/dataexport/providers/sac/C7mdde8dlqmog6pl6c85rpea2/CWPMaster?$filter=CUSTOMWIDGET%20eq%20%27" + widgetId + "%27";
+
+      cwprequest.open("GET", url, false);
+      cwprequest.send(null);
+      if (cwprequest.status != 200) {
+        return;
+      }
+      var lt_cwp = JSON.parse(cwprequest.responseText).value;
+      jsonFile.name = lt_cw[0].ID;
+      jsonFile.description = lt_cw[0].Description;
+      jsonFile.newInstancePrefix = lt_cw[0].NEWINSTANCEPREFIX;
+      jsonFile.eula = lt_cw[0].EULA;
+      jsonFile.vendor = lt_cw[0].VENDOR;
+      jsonFile.license = lt_cw[0].LICENSE;
+      jsonFile.version = lt_cw[0].VERSION;
+      jsonFile.webcomponents[0].url = "enter url....";
+      jsonFile.webcomponents[0].tag = lt_cw[0].ID + "-main";
+
+      for (let i = 0; i < lt_cwp.length; i++) {
+        var methodName = lt_cwp[i].ORIGINALCWPID;
+        var memberId = lt_cwp[i].ORIGINALCWPID;
+        jsonFile.properties[memberId] = {
+          "description": lt_cwp[i].Description,
+          "type": lt_cwp[i].TYPE
+        }
+
+        // getter 
+        jsonFile.methods["get" + methodName] = {
+          "returnType": lt_cwp[i].TYPE,
+          "description": lt_cwp[i].Description,
+          "body": "return  this." + methodName + ";"
+        }
+
+        // setter
+        jsonFile.methods["set" + methodName] = {
+          "description": lt_cwp[i].Description,
+          "parameters": [{
+            "name": methodName,
+            "type": lt_cwp[i].TYPE,
+            "description": lt_cwp[i].Description
+          }],
+          "body": "this." + methodName + " = " + methodName + ";"
+        }
+
+      }
+      var fileName = lt_cw[0].ID;
+      var jsonFormater = JSON.stringify(jsonFile, null, 4);
     }
 
-    disconnectedCallback() {
-      clearInterval(this.interval);
-    }*/
+
+
     // get file
     async getFile() {
 
@@ -172,39 +236,55 @@
     onCustomWidgetAfterUpdate(changedProperties) {
 
     }
+
+    _firePropertiesChanged() {
+      this.json = "";
+      this.mainJs = "";
+      this.builderJs = "";
+      this.dispatchEvent(new CustomEvent("propertiesChanged", {
+        detail: {
+          properties: {
+            json: this.json,
+            mainJs: this.mainJs,
+            builderJs: this.builderJs
+          }
+        }
+      }));
+    }
+
+
+
     // getter setter
-    fireChanged() {
-      this.dispatchEvent(
-        new CustomEvent("propertiesChanged", {
-          detail: {
-            properties: {
-              customWidgetName: this.customWidgetName,
-              jsonText: this.jsonText,
-            },
-          },
-        })
-      );
+    get widgetId() {
+      return this._props.widgetId;
     }
-    // before update
 
+    set widgetId(value) {
+      this._props.widgetId = value;
+    }
 
-    // getter setter
-    get customWidgetName() {
+    get json() {
+      return this._props.json;
+    }
 
-      return widgetId;
+    set json(value) {
+      this._props.json = value;
     }
-    set customWidgetName(_custId) {
-      debugger;
-      widgetId = _custId;
-      if (widgetId != "") {
-        this.getFile();
-      }
+
+    get mainJs() {
+      return this._props.mainJs;
     }
-    get jsonText() {
-      return jsonFile;
+
+    set mainJs(value) {
+      this._props.mainJs = value;
     }
-    set jsonText(_jsonText) {
-      return JSON.stringify(jsonFile, null, 4);
+
+    get builderJs() {
+      return this._props.builderJs;
+    }
+
+    set builderJs(value) {
+      this._props.builderJs = value;
     }
   }
 
