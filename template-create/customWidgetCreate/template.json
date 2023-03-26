@@ -9,12 +9,20 @@
     "version": "1.0.5",
     "icon": "",
     "webcomponents": [{
-        "kind": "main",
-        "tag": "template-create-main",
-        "url": "https://mazlumcakmak.github.io/mazlumcakmak.githup.io/template-create/customWidgetCreate/template.js",
-        "integrity": "",
-        "ignoreIntegrity": true
-    }],
+            "kind": "main",
+            "tag": "template-create-main",
+            "url": "https://mazlumcakmak.github.io/mazlumcakmak.githup.io/template-create/customWidgetCreate/template.js",
+            "integrity": "",
+            "ignoreIntegrity": true
+        },
+        {
+            "kind": "builder",
+            "tag": "template-create-builder",
+            "url": "https://mazlumcakmak.github.io/mazlumcakmak.githup.io/template-create/customWidgetCreate/template-builder.js",
+            "integrity": "",
+            "ignoreIntegrity": true
+        }
+    ],
     "properties": {
         "jsonFile": {
             "description": "Json Text",
@@ -22,6 +30,22 @@
         },
         "customWidgetName": {
             "description": "Custom Widget Name",
+            "type": "string"
+        },
+        "widgetId": {
+            "description": "widget id",
+            "type": "string"
+        },
+        "json": {
+            "description": "json text",
+            "type": "string"
+        },
+        "mainJs": {
+            "description": "main javascript text",
+            "type": "string"
+        },
+        "builderJs": {
+            "description": "builder javascript text",
             "type": "string"
         }
     },
@@ -44,6 +68,35 @@
                 "description": "Custom Widget ID"
             }],
             "body": "this.customWidgetName = customWidgetName;"
+        },
+
+        "getWidgetId": {
+            "returnType": "string",
+            "description": "get widget id",
+            "body": "return this.widgetId;"
+        },
+        "setWidgetId": {
+            "description": "set widget id",
+            "parameters": [{
+                "name": "widgetId",
+                "type": "string"
+            }],
+            "body": "this.widgetId = widgetId;"
+        },
+        "getJson": {
+            "description": "get json text",
+            "returnType": "string",
+            "body": "return this.json;"
+        },
+        "getMainJs": {
+            "description": "get main js text",
+            "returnType": "string",
+            "body": "return this.mainJs;"
+        },
+        "getBuilderJs": {
+            "description": "get builder js text",
+            "returnType": "string",
+            "body": "return this.builderJs;"
         }
 
     },

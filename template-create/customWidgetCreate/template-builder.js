@@ -29,6 +29,10 @@
             <legend>General</legend>
             <table>
             <tr>
+                <td><label for="widget ID">Widget ID</label></td>
+                <td><input id="widgetId" name="widgetId" type="text"></td>
+            </tr>
+            <tr>
                 <td><label for="JSON">JSON</label></td>
                 <td><input id="json" name="json" type="text"></td>
             </tr>
@@ -80,29 +84,37 @@
             }));
 
         }
+        
+        get widgetId(){
+            return this.getValue("widgetId");
+        }
 
-        get json(){
+        set widgetId(value){
+            this.setValue("widgetId",value);
+        }
+
+        get json() {
             return this.getValue("json");
         }
 
-        set json(value){
-            this.setValue("json",value);
+        set json(value) {
+            this.setValue("json", value);
         }
 
-        get mainJs(){
+        get mainJs() {
             return this.getValue("main-js");
         }
 
-        set mainJs(value){
-            this.setValue("main-js",value);
+        set mainJs(value) {
+            this.setValue("main-js", value);
         }
 
-        get builderJs(){
+        get builderJs() {
             return this.getValue("builder-js");
         }
 
-        set builderJs(value){
-            this.setValue("builder-js",value);
+        set builderJs(value) {
+            this.setValue("builder-js", value);
         }
 
         getValue(id) {
