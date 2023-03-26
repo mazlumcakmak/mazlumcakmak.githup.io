@@ -200,10 +200,10 @@
         this.getFile();
       }
     }
-    get jsonFile() {
-      return JSON.stringify(jsonFile, null, 4);
+    get jsonText() {
+      return jsonFile;
     }
-    get jsonFile() {
+    set jsonText(_jsonText) {
       return JSON.stringify(jsonFile, null, 4);
     }
   }
