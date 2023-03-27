@@ -67,7 +67,7 @@
     // create json file
     async getJsonFile() {
       widgetId = this._props.widgetId;
-      
+
       var cwrequest = new XMLHttpRequest();
       var url =
         "https://itelligencegroup-4.eu10.hcs.cloud.sap/api/v1/dataexport/providers/sac/C7mdde8dlqmog6pl6c85rpea2/CWMaster?$filter=ID%20eq%20%27" + widgetId + "%27";
@@ -131,9 +131,8 @@
       }
       var fileName = lt_cw[0].ID;
       var jsonFormater = JSON.stringify(jsonFile, null, 4);
+      this.json(jsonFormater);
     }
-
-
 
     // get file
     async getFile() {
@@ -234,7 +233,11 @@
 
     // after update
     onCustomWidgetAfterUpdate(changedProperties) {
+      console.log("onCustomWidgetAfterUpdate", changedProperties);
+    }
 
+    onCustomWidgetBeforeUpdate(changedProperties) {
+      console.log("onCustomWidgetBeforeUpdate", changedProperties);
     }
 
     _firePropertiesChanged() {
