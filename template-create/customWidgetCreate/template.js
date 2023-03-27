@@ -424,7 +424,7 @@
        lv_getSet = lv_getSet + " get " + methodName + "() {\n return this._props." + methodName + ";\n}\n";
        lv_getSet = lv_getSet + " set " + methodName + "(value) {\n this._props." + methodName + " = value;\n}\n";
        lv_properties = lv_properties + methodName + " = this." + methodName + ",\n";
-       lv_pi = lv_pi + "this." + methodName + "'';\n";
+       lv_pi = lv_pi + "this." + methodName + " = '';\n";
      }
 
      lv_mainJs = lv_mainJs.replace("@getter-setter@", lv_getSet);
