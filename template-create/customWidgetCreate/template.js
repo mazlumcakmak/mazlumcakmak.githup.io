@@ -161,7 +161,7 @@
                downloadFile(this._props.widgetId, this._props.mainJs, "text/plain", "js");
                break;
              case "builder":
-               downloadFile(this._props.widgetId + "Builder", this._props.builderJs, "text/plain", "js");
+               downloadFile(this._props.widgetId + "_builder", this._props.builderJs, "text/plain", "js");
                break;
 
            }
