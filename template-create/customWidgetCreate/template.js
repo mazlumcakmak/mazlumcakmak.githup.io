@@ -133,7 +133,7 @@
       var fileName = lt_cw[0].ID;
       var jsonFormater = JSON.stringify(jsonFile, null, 4);
       this.json = jsonFormater;
-      console.log("jsonFormater", jsonFormater);
+      console.log("jsonFormater", this.json);
     }
 
     // get file
@@ -234,9 +234,9 @@
     }
 
     // after update
-    onCustomWidgetAfterUpdate(changedProperties) {
+    async onCustomWidgetAfterUpdate(changedProperties) {
       if ("widgetId" in changedProperties) {
-        this.getJsonFile();
+       await this.getJsonFile();
       }
     }
 
