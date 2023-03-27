@@ -238,7 +238,7 @@
 
   function getJsonFile(that) {
     that._firePropertiesChanged();
-    widgetId = this._props.widgetId;
+    widgetId = that._props.widgetId;
     if (widgetId == "") return;
 
     var cwrequest = new XMLHttpRequest();
@@ -304,7 +304,7 @@
     var fileName = lt_cw[0].ID;
     var jsonFormater = JSON.stringify(jsonFile, null, 4);
 
-    this.json = jsonFormater;
+    that.json = jsonFormater;
     console.log("jsonFormater", this.json);
   }
 
