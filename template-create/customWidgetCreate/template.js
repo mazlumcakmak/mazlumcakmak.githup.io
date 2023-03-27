@@ -60,6 +60,13 @@
         mode: "open",
       });
       shadowRoot.appendChild(tmpl.content.cloneNode(true));
+      this.addEventListener("click", event => {
+        console.log("click");
+        var event = new Event("onClick");
+        this._firePropertiesChanged();
+        getJsonFile(this);
+        this.dispatchEvent(event);
+      });
 
       //this.fireChanged();
 
