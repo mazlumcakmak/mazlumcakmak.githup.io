@@ -393,13 +393,24 @@
       lv_getSet = lv_getSet + " set " + methodName + "(value) {\n this._props." + methodName + " = value;\n}";
       lv_properties = lv_properties + methodName + " = this." + methodName + ",";
     }
-    var lv_tag = lt_cwp[0].CUSTOMWIDGET + "-main";
-    lv_mainJs =  lv_mainJs.replace("@getter-setter@", lv_getSet);
-    lv_mainJs = lv_mainJs.replace("@tag@", lv_tag);
+    
+    lv_mainJs =  lv_mainJs.replace("@getter-setter@", lv_getSet); 
     lv_mainJs = lv_mainJs.replace("@properties@", lv_properties);
+
+    var lv_builderJs = lv_mainJs;
+
+    var lv_tag = lt_cwp[0].CUSTOMWIDGET + "-main";
+    lv_mainJs = lv_mainJs.replace("@tag@", lv_tag);
+
+    lv_tag = lt_cwp[0].CUSTOMWIDGET + "-builder";
+    lv_builderJs = lv_builderJs.replace("@tag@", lv_tag);
+
     that.mainJs = lv_mainJs;
     that._firePropertiesChanged();
-    console.log(that.mainJs);
+
+    that.builderJs = lv_builderJs;
+    that._firePropertiesChanged();
+     
   }
-  async function getBuilderJsFile(that, lt_cwp) {}
+ 
 })();
