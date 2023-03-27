@@ -394,12 +394,12 @@
       lv_properties = lv_properties + methodName + " = this." + methodName + ",";
     }
     var lv_tag = lt_cwp[0].CUSTOMWIDGET + "-main";
-    lv_mainJs.replace("@getter-setter@", lv_getSet);
-    lv_mainJs.replace("@tag@", lv_tag);
-    lv_mainJs.replace("@properties@", lv_properties);
+    lv_mainJs =  lv_mainJs.replace("@getter-setter@", lv_getSet);
+    lv_mainJs = lv_mainJs.replace("@tag@", lv_tag);
+    lv_mainJs = lv_mainJs.replace("@properties@", lv_properties);
     that.mainJs = lv_mainJs;
     that._firePropertiesChanged();
     console.log(that.mainJs);
   }
-
+  async function getBuilderJsFile(that, lt_cwp) {}
 })();
