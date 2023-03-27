@@ -80,8 +80,7 @@
 
         return;
       }
-      var lt_cw = JSON.parse(cwrequest.responseText).value;
-      console.log("cw", lt_cw);
+      var lt_cw = JSON.parse(cwrequest.responseText).value; 
 
       // cw
       var cwprequest = new XMLHttpRequest();
