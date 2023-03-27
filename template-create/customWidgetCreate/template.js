@@ -248,6 +248,7 @@
     onCustomWidgetAfterUpdate(changedProperties) {
       var that = this;
       if ("widgetId" in changedProperties) {
+        debugger;
         async function loadFile() {
           try {
             await getJsonFile(that);
@@ -384,10 +385,10 @@
     }
     var fileName = lt_cw[0].ID;
     var jsonFormater = JSON.stringify(jsonFile, null, 4);
-
-    that.json = jsonFormater;
     that._firePropertiesChanged();
-    console.log("jsonFormater", that.json);
+    that.json = jsonFormater;
+   
+     
   }
 
   async function downloadFile(filename, jsonText, maiText, builderText) {
