@@ -78,7 +78,7 @@
          this._props.json = "";
          this._props.mainJs = "";
          this._props.builderJs = "";
-         this._firePropertiesChanged(); 
+         this._firePropertiesChanged();
          return;
        }
 
@@ -187,7 +187,7 @@
 
            }
 
-
+           this.download = false;
          }
        }
      }
@@ -349,16 +349,16 @@
        type: type
      });
 
- 
+
      const opts = {
-      types: [{
-        description: filename,
-        accept: {
-          'text/plain': ['.'+fileType]
-        },
-      }],
-      suggestedName: filename,
-    };
+       types: [{
+         description: filename,
+         accept: {
+           'text/plain': ['.' + fileType]
+         },
+       }],
+       suggestedName: filename,
+     };
 
 
      fileHandle = await window.showSaveFilePicker(opts);
