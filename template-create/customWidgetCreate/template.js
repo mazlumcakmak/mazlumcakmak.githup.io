@@ -80,7 +80,7 @@
 
         return;
       }
-      var lt_cw = JSON.parse(cwrequest.responseText).value; 
+      var lt_cw = JSON.parse(cwrequest.responseText).value;
 
       // cw
       var cwprequest = new XMLHttpRequest();
@@ -132,7 +132,7 @@
       }
       var fileName = lt_cw[0].ID;
       var jsonFormater = JSON.stringify(jsonFile, null, 4);
-      
+
       this.json = jsonFormater;
       console.log("jsonFormater", this.json);
     }
@@ -237,7 +237,17 @@
     // after update
     async onCustomWidgetAfterUpdate(changedProperties) {
       if ("widgetId" in changedProperties) {
-       await this.getJsonFile();
+        async function loadFile() {
+          try {
+            await this.getJsonFile();
+          } catch (e) {
+            console.log(e);
+          } finally {
+            await this.getJsonFile();
+          }
+        }
+        loadFile();
+
       }
     }
 
