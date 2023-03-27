@@ -52,6 +52,7 @@
       this._props.json = "";
       this._props.mainJs = "";
       this._props.builderJs = "";
+      this._props.download = false;
       this.init();
 
 
@@ -183,7 +184,8 @@
             json: this.json,
             mainJs: this.mainJs,
             builderJs: this.builderJs,
-            selectedKey: this.selectedKey
+            selectedKey: this.selectedKey,
+            download: this.download
           }
         }
       }));
@@ -231,6 +233,14 @@
 
     set selectedKey(value) {
       this.shadowRoot.getElementById("main_file_type_select").value = value;
+    }
+
+    get download() {
+      return this._props.download;
+    }
+
+    set download(value) {
+      this._props.download = value;
     }
   }
 
@@ -348,6 +358,7 @@
             constructor() {
                 super();
                 this._props = {};
+                @propsInit@
                 this.init();
     
             }
@@ -386,16 +397,19 @@
     
     })();`;
     var lv_getSet = ""
-    lv_properties = "";
+    lv_properties = "",
+    lv_pi = "";
     for (let i = 0; i < lt_cwp.length; i++) {
       var methodName = lt_cwp[i].ORIGINALCWPID;
       lv_getSet = lv_getSet + " get " + methodName + "() {\n return this._props." + methodName + ";\n}\n";
       lv_getSet = lv_getSet + " set " + methodName + "(value) {\n this._props." + methodName + " = value;\n}\n";
       lv_properties = lv_properties + methodName + " = this." + methodName + ",\n";
+      lv_pi = lv_pi + "this."+methodName + "'';\n";
     }
     
     lv_mainJs =  lv_mainJs.replace("@getter-setter@", lv_getSet); 
     lv_mainJs = lv_mainJs.replace("@properties@", lv_properties);
+    lv_mainJs = lv_mainJs.replace("@propsInit@", lv_pi);
 
     var lv_builderJs = lv_mainJs;
 
