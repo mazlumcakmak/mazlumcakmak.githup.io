@@ -185,8 +185,7 @@
       return this._props.widgetId;
     }
 
-    set widgetId(value) {
-      debugger;
+    set widgetId(value) { 
       this._props.widgetId = value;
     }
 
