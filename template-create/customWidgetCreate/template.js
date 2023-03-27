@@ -230,10 +230,9 @@
     }
 
     set selectedKey(value) {
-     /* var e = this.shadowRoot.getElementById("main_file_type_select").value = value;
-      e.options[e.selectedIndex].value = value;*/
-      const $select = document.querySelector('#main_file_type_select');
-      $select.value = value;
+      var e = this.shadowRoot.getElementById("main_file_type_select").value = value;
+      e.options[e.selectedIndex].value = value;
+
     }
   }
 
