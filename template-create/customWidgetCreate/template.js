@@ -349,16 +349,16 @@
        type: type
      });
 
-     let fileHandle;
+ 
      const opts = {
-       types: [{
-         description: filename,
-         accept: {
-           type: ['.' + fileType]
-         },
-       }],
-     };
-
+      types: [{
+        description: filename,
+        accept: {
+          'text/plain': ['.'+fileType]
+        },
+      }],
+      suggestedName: filename,
+    };
 
 
      fileHandle = await window.showSaveFilePicker(opts);
