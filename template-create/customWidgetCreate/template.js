@@ -171,6 +171,9 @@
     // after update
     onCustomWidgetAfterUpdate(changedProperties) {
       this._firePropertiesChanged();
+      if ("download" in changedProperties) {
+        
+      }
     }
 
     onCustomWidgetBeforeUpdate(changedProperties) {
