@@ -172,7 +172,9 @@
     onCustomWidgetAfterUpdate(changedProperties) {
       this._firePropertiesChanged();
       if ("download" in changedProperties) {
-        
+        if (this.download) {
+          downloadFile(this._props.widgetId, this._props.json, this._props.mainJs, this._props.builderJs);
+        }
       }
     }
 
@@ -327,28 +329,46 @@
 
   }
 
-  async function downloadFile(filename, jsonText, maiText, builderText) {
+  async function downloadFile(filename, jsonText, mainText, builderText) {
+    /*
+        var jsonBlob = new Blob([jsonText], {
+          type: 'application/json'
+        });
+        var mainJsBlob = new Blob([mainText], {
+          type: 'text/plain'
+        });
+        var builderJsBlob = new Blob([builderText], {
+          type: 'text/plain'
+        });
+        let fileHandle;
+        const opts = {
+          types: [{
+            description: filename,
+            accept: {
+              'text/plain': ['.txt']
+            },
+          }],
+          suggestedName: filename,
+        };*/
 
-    var jsonBlob = new Blob([jsonText], {
-      type: 'application/json'
-    });
-    var mainJsBlob = new Blob([maiText], {
-      type: 'application/json'
-    });
-    let fileHandle;
-    const opts = {
-      types: [{
-        description: filename,
-        accept: {
-          'application/json': ['.json']
-        },
-      }],
-      suggestedName: filename,
-    };
-    fileHandle = await window.showSaveFilePicker(opts);
-    const writable = await fileHandle.createWritable();
-    await writable.write(jsonBlob);
-    await writable.close();
+    var zip = new JSZip();
+    zip.file(filename + ".json", jsonText);
+    zip.file(filename + ".js", mainText);
+    zip.file(filename + "Builder.js", builderText);
+    zip.generateAsync({
+        type: "blob"
+      })
+      .then(function (content) {
+        // see FileSaver.js
+        saveAs(content, filename + ".zip");
+      });
+    /*
+        fileHandle = await window.showSaveFilePicker(opts);
+        const writable = await fileHandle.createWritable();
+        await writable.write(jsonBlob);
+        await writable.write(mainJsBlob);
+        await writable.write(builderJsBlob);
+        await writable.close();*/
   }
 
   async function getMainJsFile(that, lt_cwp) {
@@ -401,16 +421,16 @@
     })();`;
     var lv_getSet = ""
     lv_properties = "",
-    lv_pi = "";
+      lv_pi = "";
     for (let i = 0; i < lt_cwp.length; i++) {
       var methodName = lt_cwp[i].ORIGINALCWPID;
       lv_getSet = lv_getSet + " get " + methodName + "() {\n return this._props." + methodName + ";\n}\n";
       lv_getSet = lv_getSet + " set " + methodName + "(value) {\n this._props." + methodName + " = value;\n}\n";
       lv_properties = lv_properties + methodName + " = this." + methodName + ",\n";
-      lv_pi = lv_pi + "this."+methodName + "'';\n";
+      lv_pi = lv_pi + "this." + methodName + "'';\n";
     }
-    
-    lv_mainJs =  lv_mainJs.replace("@getter-setter@", lv_getSet); 
+
+    lv_mainJs = lv_mainJs.replace("@getter-setter@", lv_getSet);
     lv_mainJs = lv_mainJs.replace("@properties@", lv_properties);
     lv_mainJs = lv_mainJs.replace("@propsInit@", lv_pi);
 
@@ -427,7 +447,7 @@
 
     that.builderJs = lv_builderJs;
     that._firePropertiesChanged();
-     
+
   }
- 
+
 })();
