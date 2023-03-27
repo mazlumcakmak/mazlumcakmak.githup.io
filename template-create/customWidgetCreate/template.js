@@ -71,7 +71,7 @@
 
     filtypeChange() {
       var that = this;
-      var lv_ft = this.selectedKey();
+      var lv_ft = this.selectedKey;
       if (lv_ft == "none") {
         this._props.json = "";
         this._props.mainJs = "";
