@@ -67,6 +67,7 @@
     // create json file
     async getJsonFile() {
       widgetId = this._props.widgetId;
+      if (widgetId == "") return;
 
       var cwrequest = new XMLHttpRequest();
       var url =
@@ -131,7 +132,7 @@
       }
       var fileName = lt_cw[0].ID;
       var jsonFormater = JSON.stringify(jsonFile, null, 4);
-      this.json(jsonFormater);
+      this.json = jsonFormater;
       console.log("jsonFormater", jsonFormater);
     }
 
