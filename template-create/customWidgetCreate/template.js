@@ -182,7 +182,8 @@
           properties: {
             json: this.json,
             mainJs: this.mainJs,
-            builderJs: this.builderJs
+            builderJs: this.builderJs,
+            selectedKey: this.selectedKey
           }
         }
       }));
