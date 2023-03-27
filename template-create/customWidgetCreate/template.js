@@ -377,12 +377,22 @@
             }
     
             // getter setter
+            @getter-setter@
            
         }
     
         customElements.define("@tag@", className);
     
     })();`;
+    var lv_getSet = "";
+    for (let i = 0; i < lt_cwp.length; i++) {
+      var methodName = lt_cwp[i].ORIGINALCWPID;
+      lv_getSet = lv_getSet + " get " + methodName + "() {\n return this._props." + methodName + ";\n}";
+      lv_getSet = lv_getSet + " set " + methodName + "(value) {\n this._props." + methodName + " = value;\n}";
+    }
+    var lv_tag = lt_cwp[0].CUSTOMWIDGET + "-main";
+    lv_mainJs.replace("@getter-setter@",lv_getSet);
+    lv_mainJs.replace("@tag@",lv_tag);
     that.mainJs = lv_mainJs;
     that._firePropertiesChanged();
     console.log(that.mainJs);
