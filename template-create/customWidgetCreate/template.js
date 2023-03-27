@@ -265,9 +265,7 @@
     }
 
     _firePropertiesChanged() {
-      this.json = "";
-      this.mainJs = "";
-      this.builderJs = "";
+      debugger; 
       this.dispatchEvent(new CustomEvent("propertiesChanged", {
         detail: {
           properties: {
@@ -388,6 +386,7 @@
     var jsonFormater = JSON.stringify(jsonFile, null, 4);
 
     that.json = jsonFormater;
+    that._firePropertiesChanged();
     console.log("jsonFormater", that.json);
   }
 
