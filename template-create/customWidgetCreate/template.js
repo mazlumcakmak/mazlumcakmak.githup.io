@@ -230,7 +230,7 @@
     }
 
     set selectedKey(value) {
-      this.shadowRoot.getElementById("main_file_type_select").value = value; 
+      this.shadowRoot.getElementById("main_file_type_select").value = value;
     }
   }
 
@@ -337,5 +337,54 @@
     await writable.close();
   }
 
+  async function getMainJsFile(that) {
+    var lv_mainJs = `(function () {
+
+        let tmpl = document.createElement("template");
+        tmpl.innerHTML = `
+    `;
+    
+        class className extends HTMLElement {
+            constructor() {
+                super();
+                this._props = {};
+                this.init();
+    
+            }
+    
+            init() {
+                let shadowRoot = this.attachShadow({
+                    mode: "open",
+                });
+                shadowRoot.appendChild(tmpl.content.cloneNode(true));
+    
+            }
+    
+            // after update
+            onCustomWidgetAfterUpdate(changedProperties) {
+                this._firePropertiesChanged();
+            }
+    
+            onCustomWidgetBeforeUpdate(changedProperties) {}
+    
+            _firePropertiesChanged() {
+                this.dispatchEvent(new CustomEvent("propertiesChanged", {
+                        detail: {
+                            properties: {}
+                        }
+                    }));
+            }
+    
+            // getter setter
+           
+        }
+    
+        customElements.define("@tag@", className);
+    
+    })();`;
+    that.mainJs = lv_mainJs;
+    that._firePropertiesChanged();
+    console.log(that.mainJs);
+  }
 
 })();
