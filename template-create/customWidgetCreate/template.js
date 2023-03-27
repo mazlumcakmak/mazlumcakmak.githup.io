@@ -230,9 +230,7 @@
     }
 
     set selectedKey(value) {
-      var e = this.shadowRoot.getElementById("main_file_type_select").value = value;
-      e.options[e.selectedIndex].value = value;
-
+      var e = this.shadowRoot.getElementById("main_file_type_select").value = value; 
     }
   }
 
