@@ -387,7 +387,7 @@
     var jsonFormater = JSON.stringify(jsonFile, null, 4);
 
     that.json = jsonFormater;
-    console.log("jsonFormater", this.json);
+    console.log("jsonFormater", that.json);
   }
 
   async function downloadFile(filename, jsonText, maiText, builderText) {
