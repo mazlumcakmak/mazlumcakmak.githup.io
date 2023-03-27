@@ -248,19 +248,7 @@
 
     // after update
     async onCustomWidgetAfterUpdate(changedProperties) {
-      var that = this;
-      if ("widgetId" in changedProperties) {
-        
-        async function loadFile() {
-          try {
-            await getJsonFile(that);
-          } catch (e) {
-            console.log(e);
-          }
-        }
-        loadFile();
-
-      }
+    
     }
 
     onCustomWidgetBeforeUpdate(changedProperties) {
