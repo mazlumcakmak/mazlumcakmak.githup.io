@@ -163,13 +163,14 @@
 
     // after update
     onCustomWidgetAfterUpdate(changedProperties) {
+      var that = this;
       if ("widgetId" in changedProperties) {
         async function loadFile() {
           try {
-            await getJsonFile();
+            await getJsonFile(that);
           } catch (e) {
             console.log(e);
-          }  
+          }
         }
         loadFile();
 
@@ -235,8 +236,8 @@
 
   customElements.define("template-create-main", templateCreate);
 
-  function getJsonFile() {
-    this._firePropertiesChanged();
+  function getJsonFile(that) {
+    that._firePropertiesChanged();
     widgetId = this._props.widgetId;
     if (widgetId == "") return;
 
@@ -306,4 +307,30 @@
     this.json = jsonFormater;
     console.log("jsonFormater", this.json);
   }
+
+  async function downloadFile(filename, jsonText, maiText, builderText) {
+
+    var jsonBlob = new Blob([jsonText], {
+      type: 'application/json'
+    });
+    var mainJsBlob = new Blob([maiText], {
+      type: 'application/json'
+    });
+    let fileHandle;
+    const opts = {
+      types: [{
+        description: filename,
+        accept: {
+          'application/json': ['.json']
+        },
+      }],
+      suggestedName: filename,
+    };
+    fileHandle = await window.showSaveFilePicker(opts);
+    const writable = await fileHandle.createWritable(); 
+    await writable.write(jsonBlob);
+    await writable.close();
+  }
+
+
 })();
