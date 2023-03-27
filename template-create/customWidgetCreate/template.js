@@ -320,7 +320,7 @@
   customElements.define("template-create-main", templateCreate);
 
   function getJsonFile(that) {
-    that._firePropertiesChanged();
+   
     widgetId = that._props.widgetId;
     if (widgetId == "") return;
 
