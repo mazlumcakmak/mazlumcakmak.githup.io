@@ -1,4 +1,9 @@
+import {
+  downloadZip
+} from "https://cdn.jsdelivr.net/npm/client-zip/index.js"
+
 (function () {
+
   let widgetId = "";
   var jsonFile = {
     "name": "",
@@ -169,11 +174,17 @@
       }
     }
     // after update
-    onCustomWidgetAfterUpdate(changedProperties) {
+    async onCustomWidgetAfterUpdate(changedProperties) {
       this._firePropertiesChanged();
       if ("download" in changedProperties) {
         if (this.download) {
-          downloadFile(this._props.widgetId, this._props.json, this._props.mainJs, this._props.builderJs);
+         // downloadFile(this._props.widgetId, this._props.json, this._props.mainJs, this._props.builderJs);
+          const blob = await downloadZip([this._props.json, this._props.mainJs, this._props.builderJs]).blob();
+          const link = document.createElement("a");
+          link.href = URL.createObjectURL(blob);
+          link.download = this._props.widgetId + ".zip";
+          link.click();
+          link.remove();
         }
       }
     }
