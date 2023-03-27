@@ -71,6 +71,8 @@
 
     filtypeChange() {
       var that = this;
+      var lv_ft = this.selectedKey();
+      if(lv_ft=="none") return;
       getJsonFile(that);
     }
 
