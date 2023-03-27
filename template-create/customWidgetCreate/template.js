@@ -52,7 +52,7 @@
       this._props.mainJs = "";
       this._props.builderJs = "";
       this.init();
-     
+
 
     }
 
@@ -62,13 +62,13 @@
       });
       shadowRoot.appendChild(tmpl.content.cloneNode(true));
       this.shadowRoot.getElementById("main_file_type_select").addEventListener("change", this.filtypeChange.bind(this));
-      
+
 
       //this.fireChanged();
 
     }
-    
-    filtypeChange(){
+
+    filtypeChange() {
       var that = this;
       getJsonFile(that);
     }
@@ -159,14 +159,14 @@
     }
     // after update
     onCustomWidgetAfterUpdate(changedProperties) {
-     this. _firePropertiesChanged();
+      this._firePropertiesChanged();
     }
 
     onCustomWidgetBeforeUpdate(changedProperties) {
 
     }
 
-    _firePropertiesChanged() { 
+    _firePropertiesChanged() {
       this.dispatchEvent(new CustomEvent("propertiesChanged", {
         detail: {
           properties: {
