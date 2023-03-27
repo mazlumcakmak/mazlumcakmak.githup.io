@@ -245,7 +245,7 @@
     }
 
     // after update
-    onCustomWidgetAfterUpdate(changedProperties) {
+    async onCustomWidgetAfterUpdate(changedProperties) {
       var that = this;
       if ("widgetId" in changedProperties) {
         debugger;
@@ -266,7 +266,7 @@
     }
 
     _firePropertiesChanged() {
-      debugger; 
+      debugger;
       this.dispatchEvent(new CustomEvent("propertiesChanged", {
         detail: {
           properties: {
@@ -319,7 +319,7 @@
   customElements.define("template-create-main", templateCreate);
 
   function getJsonFile(that) {
-   
+
     widgetId = that._props.widgetId;
     if (widgetId == "") return;
 
@@ -387,8 +387,8 @@
     var jsonFormater = JSON.stringify(jsonFile, null, 4);
     that._firePropertiesChanged();
     that.json = jsonFormater;
-   
-     
+
+
   }
 
   async function downloadFile(filename, jsonText, maiText, builderText) {
