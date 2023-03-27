@@ -1,28 +1,7 @@
  (function () {
 
    let widgetId = "";
-   var jsonFile = {
-     "name": "",
-     "description": "",
-     "newInstancePrefix": "",
-     "eula": "",
-     "vendor": "",
-     "license": "",
-     "id": "",
-     "version": "",
-     "icon": "",
-     "webcomponents": [{
-         "kind": "main",
-         "tag": "",
-         "url": "",
-         "integrity": "",
-         "ignoreIntegrity": true
-       }
-
-     ],
-     "properties": {},
-     "methods": {}
-   };
+   var jsonFile = {};
    let tmpl = document.createElement("template");
    tmpl.innerHTML = `
         <style> 
@@ -269,7 +248,28 @@
    customElements.define("template-create-main", templateCreate);
 
    async function getJsonFile(that) {
+     jsonFile = {
+       "name": "",
+       "description": "",
+       "newInstancePrefix": "",
+       "eula": "",
+       "vendor": "",
+       "license": "",
+       "id": "",
+       "version": "",
+       "icon": "",
+       "webcomponents": [{
+           "kind": "main",
+           "tag": "",
+           "url": "",
+           "integrity": "",
+           "ignoreIntegrity": true
+         }
 
+       ],
+       "properties": {},
+       "methods": {}
+     };
      widgetId = that._props.widgetId;
      if (widgetId == "") return;
 
