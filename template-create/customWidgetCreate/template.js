@@ -36,7 +36,7 @@
           border-radius: 5px;
         }
       </style>
-      <select id="builder_displayOpt">
+      <select id="main_file_type_select">
         <option value="json">JSON</option>
         <option value="main">Main js</option>
         <option value="builder">Builder</option>
@@ -60,13 +60,8 @@
         mode: "open",
       });
       shadowRoot.appendChild(tmpl.content.cloneNode(true));
-      this.addEventListener("click", event => {
-        console.log("click");
-        var event = new Event("onClick");
-        this._firePropertiesChanged();
-        getJsonFile(this);
-        this.dispatchEvent(event);
-      });
+      this.shadowRoot.getElementById("main_file_type_select").addEventListener("change", getJsonFile.bind(this));
+      
 
       //this.fireChanged();
 
