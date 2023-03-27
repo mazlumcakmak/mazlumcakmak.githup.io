@@ -255,7 +255,7 @@
     async onCustomWidgetAfterUpdate(changedProperties) {
       var that = this;
       if ("widgetId" in changedProperties) {
-        debugger;
+        
         async function loadFile() {
           try {
             await getJsonFile(that);
@@ -272,8 +272,7 @@
 
     }
 
-    _firePropertiesChanged() {
-      debugger;
+    _firePropertiesChanged() { 
       this.dispatchEvent(new CustomEvent("propertiesChanged", {
         detail: {
           properties: {
@@ -394,6 +393,7 @@
     var jsonFormater = JSON.stringify(jsonFile, null, 4);
     that._firePropertiesChanged();
     that.json = jsonFormater;
+    console.log(that.json);
 
 
   }
