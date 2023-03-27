@@ -285,8 +285,9 @@
     }
     var fileName = lt_cw[0].ID;
     var jsonFormater = JSON.stringify(jsonFile, null, 4);
-    that._firePropertiesChanged();
+   
     that.json = jsonFormater;
+    that._firePropertiesChanged();
     console.log(that.json);
 
 
