@@ -174,8 +174,20 @@
        this._firePropertiesChanged();
        if ("download" in changedProperties) {
          if (this.download) {
-          downloadFile(this._props.widgetId, this._props.json, this._props.mainJs, this._props.builderJs);
-            
+           switch (this.selectedKey) {
+             case "json":
+               downloadFile(this._props.widgetId, this._props.json, "application/json", "json");
+               break;
+             case "main":
+               downloadFile(this._props.widgetId, this._props.mainJs, "text/plain", "js");
+               break;
+             case "builder":
+               downloadFile(this._props.widgetId + "Builder", this._props.builderJs, "text/plain", "js");
+               break;
+
+           }
+
+
          }
        }
      }
@@ -331,23 +343,18 @@
 
    }
 
-   async function downloadFile(filename, jsonText, mainText, builderText) {
+   async function downloadFile(filename, content, type, fileType) {
+     //'application/json' , 'text/plain'
+     var fileBlob = new Blob([content], {
+       type: type
+     });
 
-     var jsonBlob = new Blob([jsonText], {
-       type: 'application/json'
-     });
-     var mainJsBlob = new Blob([mainText], {
-       type: 'text/plain'
-     });
-     var builderJsBlob = new Blob([builderText], {
-       type: 'text/plain'
-     });
      let fileHandle;
      const opts = {
        types: [{
          description: filename,
          accept: {
-           'application/zip': ['.zip']
+           type: ['.' + fileType]
          },
        }],
      };
@@ -355,10 +362,9 @@
 
 
      fileHandle = await window.showSaveFilePicker(opts);
+
      const writable = await fileHandle.createWritable();
-     await writable.write(jsonBlob);
-     await writable.write(mainJsBlob);
-     await writable.write(builderJsBlob);
+     await writable.write(fileBlob);
      await writable.close();
    }
 
