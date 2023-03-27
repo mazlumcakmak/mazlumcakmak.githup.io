@@ -389,8 +389,8 @@
     lv_properties = "";
     for (let i = 0; i < lt_cwp.length; i++) {
       var methodName = lt_cwp[i].ORIGINALCWPID;
-      lv_getSet = lv_getSet + " get " + methodName + "() {\n return this._props." + methodName + ";\n}";
-      lv_getSet = lv_getSet + " set " + methodName + "(value) {\n this._props." + methodName + " = value;\n}";
+      lv_getSet = lv_getSet + " get " + methodName + "() {\n return this._props." + methodName + ";\n}\n";
+      lv_getSet = lv_getSet + " set " + methodName + "(value) {\n this._props." + methodName + " = value;\n}\n";
       lv_properties = lv_properties + methodName + " = this." + methodName + ",";
     }
     
