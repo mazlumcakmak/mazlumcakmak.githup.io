@@ -188,6 +188,7 @@
            }
 
            this.download = false;
+           this._firePropertiesChanged();
          }
        }
      }
