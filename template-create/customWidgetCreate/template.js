@@ -342,8 +342,7 @@
     var lv_mainJs = `(function () {
 
         let tmpl = document.createElement("template");
-        tmpl.innerHTML = `
-    `;
+        tmpl.innerHTML = '';
     
         class className extends HTMLElement {
             constructor() {
