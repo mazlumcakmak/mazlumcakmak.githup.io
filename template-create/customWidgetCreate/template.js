@@ -318,7 +318,7 @@
 
   customElements.define("template-create-main", templateCreate);
 
-  function getJsonFile(that) {
+  async function getJsonFile(that) {
 
     widgetId = that._props.widgetId;
     if (widgetId == "") return;
