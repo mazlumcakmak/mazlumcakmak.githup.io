@@ -47,6 +47,10 @@
         "builderJs": {
             "description": "builder javascript text",
             "type": "string"
+        },
+        "selectedKey": {
+            "description": "selected key",
+            "type": "string"
         }
     },
     "methods": {
@@ -97,6 +101,19 @@
             "description": "get builder js text",
             "returnType": "string",
             "body": "return this.builderJs;"
+        },
+        "getSelectedKey": {
+            "description": "get selected Key",
+            "returnType": "string",
+            "body": "return this.selectedKey;"
+        },
+        "setSelectedKey": {
+            "description": "get selected Key",
+            "parameters": [{
+                "name": "selectedKey",
+                "type": "string"
+            }],
+            "body": "this.selectedKey = selectedKey;"
         }
 
     },

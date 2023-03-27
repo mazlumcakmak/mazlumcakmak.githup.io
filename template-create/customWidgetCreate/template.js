@@ -37,6 +37,7 @@
         }
       </style>
       <select id="main_file_type_select">
+        <option value="none">Select File Type....</option>
         <option value="json">JSON</option>
         <option value="main">Main js</option>
         <option value="builder">Builder</option>
@@ -185,7 +186,7 @@
       return this._props.widgetId;
     }
 
-    set widgetId(value) { 
+    set widgetId(value) {
       this._props.widgetId = value;
     }
 
@@ -211,6 +212,16 @@
 
     set builderJs(value) {
       this._props.builderJs = value;
+    }
+
+    get selectedKey() {
+      var e = this.shadowRoot.getElementById("main_file_type_select");
+      return e.options[e.selectedIndex].value;
+    }
+
+    set selectedKey(value) {
+      var e = this.shadowRoot.getElementById("main_file_type_select");
+      e.options[e.selectedIndex].text = value;
     }
   }
 
@@ -285,7 +296,7 @@
     }
     var fileName = lt_cw[0].ID;
     var jsonFormater = JSON.stringify(jsonFile, null, 4);
-   
+
     that.json = jsonFormater;
     that._firePropertiesChanged();
     console.log(that.json);
