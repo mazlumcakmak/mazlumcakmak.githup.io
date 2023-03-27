@@ -46,12 +46,13 @@
   class templateCreate extends HTMLElement {
     constructor() {
       super();
-      this.init();
       this._props = {};
       this._props.widgetId = "";
       this._props.json = "";
       this._props.mainJs = "";
       this._props.builderJs = "";
+      this.init();
+     
 
     }
 
@@ -180,6 +181,7 @@
     }
 
     set widgetId(value) {
+      debugger;
       this._props.widgetId = value;
     }
 
