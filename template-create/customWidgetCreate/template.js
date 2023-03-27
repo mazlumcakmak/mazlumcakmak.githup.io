@@ -72,7 +72,14 @@
     filtypeChange() {
       var that = this;
       var lv_ft = this.selectedKey();
-      if(lv_ft=="none") return;
+      if (lv_ft == "none") {
+        this._props.json = "";
+        this._props.mainJs = "";
+        this._props.builderJs = "";
+        this. _firePropertiesChanged();
+        return;
+      }
+
       getJsonFile(that);
     }
 
@@ -223,7 +230,7 @@
 
     set selectedKey(value) {
       var e = this.shadowRoot.getElementById("main_file_type_select");
-      e.options[e.selectedIndex].text = value;
+      e.options[e.selectedIndex].value = value;
     }
   }
 
