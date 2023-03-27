@@ -233,7 +233,9 @@
 
     // after update
     onCustomWidgetAfterUpdate(changedProperties) {
-      console.log("onCustomWidgetAfterUpdate", changedProperties);
+      if ("widgetId" in changedProperties) {
+        this.getJsonFile() ;
+    }
     }
 
     onCustomWidgetBeforeUpdate(changedProperties) {
