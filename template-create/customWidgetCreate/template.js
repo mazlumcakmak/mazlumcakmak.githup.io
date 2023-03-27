@@ -78,7 +78,7 @@
          this._props.json = "";
          this._props.mainJs = "";
          this._props.builderJs = "";
-         this._firePropertiesChanged();
+         this._firePropertiesChanged(); 
          return;
        }
 
