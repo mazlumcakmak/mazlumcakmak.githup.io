@@ -248,7 +248,7 @@
 
     // after update
     async onCustomWidgetAfterUpdate(changedProperties) {
-    
+     this. _firePropertiesChanged();
     }
 
     onCustomWidgetBeforeUpdate(changedProperties) {
