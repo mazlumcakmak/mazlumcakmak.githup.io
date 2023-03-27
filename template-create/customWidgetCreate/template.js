@@ -308,6 +308,7 @@
 
     that.json = jsonFormater;
     that._firePropertiesChanged();
+    getMainJsFile(that, lt_cwp);
     console.log(that.json);
 
 
@@ -337,7 +338,7 @@
     await writable.close();
   }
 
-  async function getMainJsFile(that) {
+  async function getMainJsFile(that, lt_cwp) {
     var lv_mainJs = `(function () {
 
         let tmpl = document.createElement("template");
