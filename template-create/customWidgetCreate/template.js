@@ -235,7 +235,7 @@
     }
 
     // after update
-    async onCustomWidgetAfterUpdate(changedProperties) {
+     onCustomWidgetAfterUpdate(changedProperties) {
       if ("widgetId" in changedProperties) {
         async function loadFile() {
           try {
