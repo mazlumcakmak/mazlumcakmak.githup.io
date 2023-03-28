@@ -257,8 +257,7 @@
 
             //### Controller ###
             sap.ui.define([
-                'sap/base/util/deepExtend',
-                './Formatter',
+                'sap/base/util/deepExtend', 
                 'sap/ui/core/mvc/Controller',
                 'sap/ui/model/json/JSONModel',
                 'sap/m/ColumnListItem',
