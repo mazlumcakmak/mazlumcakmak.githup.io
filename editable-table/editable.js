@@ -316,7 +316,7 @@
                                 }
                             ]
                         };
-                        this.oModel = new JSONModel(lv_json);
+                        var oModel = new JSONModel(lv_json);
                         this.oTable = this.byId("idProductsTable");
                         this.getView().setModel(this.oModel);
                         this.oReadOnlyTemplate = this.byId("idProductsTable").removeItem(0);
