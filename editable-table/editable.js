@@ -29,6 +29,8 @@
                                 <ToolbarSpacer />
                                 <Button id="editButton" text="Edit" type="Transparent"
                                     press="onEdit" />
+                                <Button id="initButton" text="Init" type="Transparent"
+                                    press="onInit" />
                                 <Button id="saveButton" text="Save" type="Transparent"
                                     press="onSave" visible="false" />
                                 <Button id="cancelButton" text="Cancel" type="Transparent"
