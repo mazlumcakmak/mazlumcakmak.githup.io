@@ -398,10 +398,10 @@
                             ]
                         };
                         that.aProductCollection = deepExtend([], lv_json);
-                        that.byId("editButton").setVisible(false);
-                        that.byId("saveButton").setVisible(true);
-                        that.byId("cancelButton").setVisible(true);
-                        that.rebindTable(that.oEditableTemplate, "Edit");
+                        oView.byId("editButton").setVisible(false);
+                        oView.byId("saveButton").setVisible(true);
+                        oView.byId("cancelButton").setVisible(true);
+                        oView.rebindTable(oView.oEditableTemplate, "Edit");
                     },
 
                     onSave: function () {
