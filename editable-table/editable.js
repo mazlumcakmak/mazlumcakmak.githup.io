@@ -320,7 +320,6 @@
                         };
                         oView.oModel = new JSONModel(lv_json);
                         oView.oTable = oView.byId("idProductsTable");
-                        that.getView().setModel(oView.oModel);
                         oView.oReadOnlyTemplate = oView.byId("idProductsTable").removeItem(0);
                         oView.rebindTable(oView.oReadOnlyTemplate, "Navigation");
                         oView.oEditableTemplate = new ColumnListItem({
