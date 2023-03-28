@@ -7,7 +7,7 @@
     tmpl.innerHTML = `
         <style>
         </style>
-        <div id="ui5_content" name="ui5_content">
+        <div id="ui5_content" name="ui5_content" style = "height:100%; widht:100%">
          <slot name="content"></slot>
         </div>
 
