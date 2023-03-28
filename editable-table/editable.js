@@ -251,8 +251,6 @@
         let content = document.createElement('div');
         content.slot = "content";
         that_.appendChild(content);
-       
-
 
         sap.ui.getCore().attachInit(function () {
             "use strict";
@@ -267,91 +265,10 @@
                 'sap/m/MessageToast'
             ], function (deepExtend, Formatter, Controller, JSONModel, ColumnListItem, Input, MessageToast) {
                 "use strict";
-                var lv_json = {
-                    "ProductCollection": [{
-                            "ProductId": "HT-1000",
-                            "Category": "Laptops",
-                            "MainCategory": "Computer Systems",
-                            "TaxTarifCode": "1",
-                            "SupplierName": "Very Best Screens",
-                            "WeightMeasure": 4.2,
-                            "WeightUnit": "KG",
-                            "Description": "Notebook Basic 15 with 2,80 GHz quad core, 15\" LCD, 4 GB DDR3 RAM, 500 GB Hard Disc, Windows 8 Pro",
-                            "Name": "Notebook Basic 15",
-                            "DateOfSale": "2017-03-26",
-                            "ProductPicUrl": "https://sdk.openui5.org/test-resources/sap/ui/documentation/sdk/images/HT-1000.jpg",
-                            "Status": "Available",
-                            "Quantity": 10,
-                            "UoM": "PC",
-                            "CurrencyCode": "EUR",
-                            "Price": 956,
-                            "Width": 30,
-                            "Depth": 18,
-                            "Height": 3,
-                            "DimUnit": "cm"
-                        },
-                        {
-                            "ProductId": "HT-1001",
-                            "Category": "Laptops",
-                            "MainCategory": "Computer Systems",
-                            "TaxTarifCode": "1",
-                            "SupplierName": "Very Best Screens",
-                            "WeightMeasure": 4.5,
-                            "WeightUnit": "KG",
-                            "Description": "Notebook Basic 17 with 2,80 GHz quad core, 17\" LCD, 4 GB DDR3 RAM, 500 GB Hard Disc, Windows 8 Pro",
-                            "Name": "Notebook Basic 17",
-                            "DateOfSale": "2017-04-17",
-                            "ProductPicUrl": "https://sdk.openui5.org/test-resources/sap/ui/documentation/sdk/images/HT-1001.jpg",
-                            "Status": "Available",
-                            "Quantity": 20,
-                            "UoM": "PC",
-                            "CurrencyCode": "EUR",
-                            "Price": 1249,
-                            "Width": 29,
-                            "Depth": 17,
-                            "Height": 3.1,
-                            "DimUnit": "cm"
-                        }
-                    ]
-                };
-                var oModel = new JSONModel(lv_json);
 
                 var TableController = Controller.extend("sap.m.sample.TableEditable.Table", {
 
                     onInit: function (evt) {
-
-                        this.oTable = this.byId("idProductsTable");
-                        this.getView().setModel(this.oModel);
-                        this.oReadOnlyTemplate = this.byId("idProductsTable").removeItem(0);
-                        this.rebindTable(this.oReadOnlyTemplate, "Navigation");
-                        this.oEditableTemplate = new ColumnListItem({
-                            cells: [
-                                new Input({
-                                    value: "{Name}"
-                                }), new Input({
-                                    value: "{Quantity}",
-                                    description: "{UoM}"
-                                }), new Input({
-                                    value: "{WeightMeasure}",
-                                    description: "{WeightUnit}"
-                                }), new Input({
-                                    value: "{Price}",
-                                    description: "{CurrencyCode}"
-                                })
-                            ]
-                        });
-                    },
-
-                    rebindTable: function (oTemplate, sKeyboardMode) {
-                        this.oTable.bindItems({
-                            path: "/ProductCollection",
-                            template: oTemplate,
-                            templateShareable: true,
-                            key: "ProductId"
-                        }).setKeyboardMode(sKeyboardMode);
-                    },
-
-                    onEdit: function () {
                         var lv_json = {
                             "ProductCollection": [{
                                     "ProductId": "HT-1000",
@@ -399,26 +316,59 @@
                                 }
                             ]
                         };
-                        this.aProductCollection = deepExtend([], lv_json);
-                        this.byId("editButton").setVisible(false);
-                        this.byId("saveButton").setVisible(true);
-                        this.byId("cancelButton").setVisible(true);
-                        this.rebindTable(this.oEditableTemplate, "Edit");
+                         var oModel = new JSONModel(lv_json);
+                        that.oTable = that.byId("idProductsTable");
+                        that.getView().setModel(that.oModel);
+                        that.oReadOnlyTemplate = that.byId("idProductsTable").removeItem(0);
+                        that.rebindTable(that.oReadOnlyTemplate, "Navigation");
+                        that.oEditableTemplate = new ColumnListItem({
+                            cells: [
+                                new Input({
+                                    value: "{Name}"
+                                }), new Input({
+                                    value: "{Quantity}",
+                                    description: "{UoM}"
+                                }), new Input({
+                                    value: "{WeightMeasure}",
+                                    description: "{WeightUnit}"
+                                }), new Input({
+                                    value: "{Price}",
+                                    description: "{CurrencyCode}"
+                                })
+                            ]
+                        });
+                    },
+
+                    rebindTable: function (oTemplate, sKeyboardMode) {
+                        that.oTable.bindItems({
+                            path: "/ProductCollection",
+                            template: oTemplate,
+                            templateShareable: true,
+                            key: "ProductId"
+                        }).setKeyboardMode(sKeyboardMode);
+                    },
+
+                    onEdit: function () {
+                        that.aProductCollection = deepExtend([], that.oModel.getProperty("/ProductCollection"));
+                        that.byId("editButton").setVisible(false);
+                        that.byId("saveButton").setVisible(true);
+                        that.byId("cancelButton").setVisible(true);
+                        that.rebindTable(that.oEditableTemplate, "Edit");
                     },
 
                     onSave: function () {
-                        this.byId("saveButton").setVisible(false);
-                        this.byId("cancelButton").setVisible(false);
-                        this.byId("editButton").setVisible(true);
-                        this.rebindTable(this.oReadOnlyTemplate, "Navigation");
+                        that.byId("saveButton").setVisible(false);
+                        that.byId("cancelButton").setVisible(false);
+                        that.byId("editButton").setVisible(true);
+                        that.rebindTable(that.oReadOnlyTemplate, "Navigation");
                     },
 
                     onCancel: function () {
-                        this.byId("cancelButton").setVisible(false);
-                        this.byId("saveButton").setVisible(false);
-                        this.byId("editButton").setVisible(true);
-                        this.oModel.setProperty("/ProductCollection", this.aProductCollection);
-                        this.rebindTable(this.oReadOnlyTemplate, "Navigation");
+                        that.byId("cancelButton").setVisible(false);
+                        that.byId("saveButton").setVisible(false);
+                        that.byId("editButton").setVisible(true);
+                        that.oModel.setProperty("/ProductCollection", that.aProductCollection);
+                        that.rebindTable(that.oReadOnlyTemplate, "Navigation");
                     },
 
                     onOrder: function () {
@@ -426,9 +376,9 @@
                     },
 
                     onExit: function () {
-                        this.aProductCollection = [];
-                        this.oEditableTemplate.destroy();
-                        this.oModel.destroy();
+                        that.aProductCollection = [];
+                        that.oEditableTemplate.destroy();
+                        that.oModel.destroy();
                     },
 
                     onPaste: function (oEvent) {
