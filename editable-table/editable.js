@@ -99,6 +99,7 @@
     class editTableWidget extends HTMLElement {
         constructor() {
             super();
+            var table ;
 
             _shadowRoot = this.attachShadow({
                 mode: "open"
@@ -111,7 +112,7 @@
 
             this._export_settings = {};
             this._export_settings.password = "";
-
+            loadthis(this);
             this.addEventListener("click", event => {
                 console.log('click');
             });
@@ -269,6 +270,7 @@
                 "use strict";
 
                 var TableController = Controller.extend("sap.m.sample.TableEditable.Table", {
+                    
 
                     onInit: function (evt) {
                         var lv_json = {
@@ -434,8 +436,13 @@
                         var aData = oEvent.getParameter("data");
                         MessageToast.show("Pasted Data: " + aData);
                     }
-                });
-
+                }); 
+                try {
+                    that.table = TableController;
+                } catch (error) {
+                    
+                }
+                
                 return TableController;
 
             });
