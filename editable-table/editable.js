@@ -7,8 +7,8 @@
     tmpl.innerHTML = `
         <style>
         </style>
-        <div id="ui5_content" name="ui5_content" style = "height:100%; widht:100%">
-         <slot name="content" style = "height:100%; widht:100%"></slot>
+        <div id="ui5_content" name="ui5_content" style="width: 100%; height: 100%;">
+         <slot name="content" style = style="width: 100%; height: 100%;"></slot>
         </div>
 
         <script id="oView" name="oView" type="sapui5/xmlview">
