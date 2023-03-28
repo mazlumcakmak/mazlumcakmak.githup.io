@@ -321,7 +321,7 @@
                         oView.oModel = new JSONModel(lv_json);
                         oView.oTable = oView.byId("idProductsTable");
                         oView.oReadOnlyTemplate = oView.byId("idProductsTable").removeItem(0);
-                        oView.rebindTable(oView.oReadOnlyTemplate, "Navigation");
+                        rebindTable(oView.oReadOnlyTemplate, "Navigation");
                         oView.oEditableTemplate = new ColumnListItem({
                             cells: [
                                 new Input({
