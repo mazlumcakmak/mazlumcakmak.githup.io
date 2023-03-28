@@ -303,6 +303,7 @@
      jsonFile.vendor = lt_cw[0].VENDOR;
      jsonFile.license = lt_cw[0].LICENSE;
      jsonFile.version = lt_cw[0].VERSION;
+     jsonFile.id = lt_cw[0].ID;
      jsonFile.webcomponents[0].url = "enter url....";
      jsonFile.webcomponents[0].tag = lt_cw[0].ID + "-main";
 

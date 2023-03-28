@@ -1,0 +1,22 @@
+{
+    "name": "edit-table-widget",
+    "description": "Editable Widget",
+    "newInstancePrefix": "edit-table-widget",
+    "eula": "",
+    "vendor": "NTT DATA",
+    "license": "",
+    "id": "edit-table-widget",
+    "version": "1.0.0",
+    "icon": "",
+    "webcomponents": [
+        {
+            "kind": "main",
+            "tag": "edit-table-widget-main",
+            "url": "enter url....",
+            "integrity": "",
+            "ignoreIntegrity": true
+        }
+    ],
+    "properties": {},
+    "methods": {}
+}
