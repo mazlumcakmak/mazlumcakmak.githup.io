@@ -7,13 +7,13 @@
     tmpl.innerHTML = `
         <style>
         </style>
-        <div id="ui5_content" name="ui5_content" style="width: 100%; height: 100%;">
-         <slot name="content"  style="width: 100%; height: 100%;"></slot>
+        <div id="ui5_content" name="ui5_content" style="width: 500px; height:500px;">
+         <slot name="content"  style="width: 500px; height: 500px;"></slot>
         </div>
 
         <script id="oView" name="oView" type="sapui5/xmlview">
            <mvc:View
-            height="100%"
+            height="500px"
             controllerName="sap.m.sample.TableEditable.Table"
             xmlns:mvc="sap.ui.core.mvc"
             xmlns="sap.m">
