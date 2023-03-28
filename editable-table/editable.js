@@ -8,7 +8,7 @@
         <style>
         </style>
         <div id="ui5_content" name="ui5_content" style="width: 100%; height: 100%;">
-         <slot name="content" style = style="width: 100%; height: 100%;"></slot>
+         <slot name="content"  style="width: 100%; height: 100%;"></slot>
         </div>
 
         <script id="oView" name="oView" type="sapui5/xmlview">
