@@ -397,7 +397,7 @@
                                 }
                             ]
                         };
-                        that.aProductCollection = deepExtend([], lv_json);
+                        oView.aProductCollection = deepExtend([], lv_json);
                         oView.byId("editButton").setVisible(false);
                         oView.byId("saveButton").setVisible(true);
                         oView.byId("cancelButton").setVisible(true);
