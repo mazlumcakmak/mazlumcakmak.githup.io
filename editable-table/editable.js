@@ -316,12 +316,12 @@
                                 }
                             ]
                         };
-                        that.oModel = new JSONModel(lv_json);
-                        that.oTable = that.byId("idProductsTable");
-                        that.getView().setModel(that.oModel);
-                        that.oReadOnlyTemplate = that.byId("idProductsTable").removeItem(0);
-                        that.rebindTable(that.oReadOnlyTemplate, "Navigation");
-                        that.oEditableTemplate = new ColumnListItem({
+                        oView.oModel = new JSONModel(lv_json);
+                        oView.oTable = oView.byId("idProductsTable");
+                        oView.getView().setModel(oView.oModel);
+                        oView.oReadOnlyTemplate = oView.byId("idProductsTable").removeItem(0);
+                        oView.rebindTable(oView.oReadOnlyTemplate, "Navigation");
+                        oView.oEditableTemplate = new ColumnListItem({
                             cells: [
                                 new Input({
                                     value: "{Name}"
@@ -340,7 +340,7 @@
                     },
 
                     rebindTable: function (oTemplate, sKeyboardMode) {
-                        that.oTable.bindItems({
+                        oView.oTable.bindItems({
                             path: "/ProductCollection",
                             template: oTemplate,
                             templateShareable: true,
