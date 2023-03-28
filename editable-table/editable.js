@@ -251,8 +251,7 @@
         let content = document.createElement('div');
         content.slot = "content";
         that_.appendChild(content);
-
-
+       
 
 
         sap.ui.getCore().attachInit(function () {
@@ -316,6 +315,7 @@
                     ]
                 };
                 var oModel = new JSONModel(lv_json);
+
                 var TableController = Controller.extend("sap.m.sample.TableEditable.Table", {
 
                     onInit: function (evt) {
