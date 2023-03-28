@@ -441,7 +441,7 @@
      lv_service = lv_service + 'masterDataReq.open("GET", url, false);\n';
      lv_service = lv_service + 'masterDataReq.send(null);\n';
      lv_service = lv_service + 'if (masterDataReq.status != 200) {\n  return;\n }\n';
-     lv_service = lv_service + 'return JSON.parse(masterDataReq.responseText).value';
+     lv_service = lv_service + 'return JSON.parse(masterDataReq.responseText).value\n}';
      lv_mainJs = lv_mainJs.replace("@serviceMethod@", lv_service);
 
      var lv_builderJs = lv_mainJs;
