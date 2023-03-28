@@ -350,10 +350,12 @@
        type: type
      });
 
-
+     var lv_fd = "";
+     if (fileType == "js") lv_fd = "JavaScript file";
+     if (fileType="json") lv_fd = "JSON";  
      const opts = {
        types: [{
-         description: filename,
+         description: lv_fd,
          accept: {
            'text/plain': ['.' + fileType]
          },
