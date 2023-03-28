@@ -268,7 +268,8 @@
 
        ],
        "properties": {},
-       "methods": {}
+       "methods": {},
+       "events": {}
      };
      widgetId = that._props.widgetId;
      if (widgetId == "") return;
@@ -353,7 +354,7 @@
 
      var lv_fd = "";
      if (fileType == "js") lv_fd = "JavaScript file";
-     if (fileType="json") lv_fd = "JSON";  
+     if (fileType = "json") lv_fd = "JSON";
      const opts = {
        types: [{
          description: lv_fd,
@@ -449,15 +450,15 @@
 
      var lv_tag = lt_cwp[0].CUSTOMWIDGET + "-main";
      lv_mainJs = lv_mainJs.replace("@tag@", lv_tag);
-    
+
 
      lv_tag = lt_cwp[0].CUSTOMWIDGET + "-builder";
-     lv_builderJs = lv_builderJs.replace("@tag@", lv_tag); 
+     lv_builderJs = lv_builderJs.replace("@tag@", lv_tag);
      that.mainJs = lv_mainJs;
-     that._firePropertiesChanged(); 
+     that._firePropertiesChanged();
      that.builderJs = lv_builderJs;
      that._firePropertiesChanged();
 
    }
- 
+
  })();

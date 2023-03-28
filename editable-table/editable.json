@@ -1,22 +1,21 @@
 {
-    "name": "edit-table-widget",
+    "name": "edittablewidget",
     "description": "Editable Widget",
-    "newInstancePrefix": "edit-table-widget",
+    "newInstancePrefix": "edittablewidget",
     "eula": "",
     "vendor": "NTT DATA",
     "license": "",
-    "id": "edit-table-widget",
+    "id": "edittablewidget",
     "version": "1.0.0",
     "icon": "",
-    "webcomponents": [
-        {
-            "kind": "main",
-            "tag": "edit-table-widget-main",
-            "url": "enter url....",
-            "integrity": "",
-            "ignoreIntegrity": true
-        }
-    ],
+    "webcomponents": [{
+        "kind": "main",
+        "tag": "edit-table-widget-main",
+        "url": "https://mazlumcakmak.github.io/mazlumcakmak.githup.io/editable-table/editable.js",
+        "integrity": "",
+        "ignoreIntegrity": true
+    }],
     "properties": {},
-    "methods": {}
+    "methods": {},
+    "events": {}
 }
