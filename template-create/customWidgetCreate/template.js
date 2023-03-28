@@ -451,11 +451,9 @@
     
 
      lv_tag = lt_cwp[0].CUSTOMWIDGET + "-builder";
-     lv_builderJs = lv_builderJs.replace("@tag@", lv_tag);
-     lv_mainJs = JSON.stringify(lv_mainJs, null, 4);
+     lv_builderJs = lv_builderJs.replace("@tag@", lv_tag); 
      that.mainJs = lv_mainJs;
-     that._firePropertiesChanged();
-     lv_builderJs = JSON.stringify(lv_mainJs, null, 4);
+     that._firePropertiesChanged(); 
      that.builderJs = lv_builderJs;
      that._firePropertiesChanged();
 
