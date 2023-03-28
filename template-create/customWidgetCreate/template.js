@@ -417,6 +417,7 @@
         }
     
         customElements.define("@tag@", className);
+        @serviceMethod@
     
     })();`;
      var lv_getSet = ""
@@ -434,10 +435,20 @@
      lv_mainJs = lv_mainJs.replace("@properties@", lv_properties);
      lv_mainJs = lv_mainJs.replace("@propsInit@", lv_pi);
 
+     var lv_service = 'async function masterDataService(tenant,provider,dimension) {\n';
+     lv_service = lv_service + 'var masterDataReq = new XMLHttpRequest();\n';
+     lv_service = lv_service + 'var url = "https://${tenant}/api/v1/dataexport/providers/sac/${provider}/${dimension}Master"';
+     lv_service = lv_service + 'masterDataReq.open("GET", url, false);\n';
+     lv_service = lv_service + 'masterDataReq.send(null);\n';
+     lv_service = lv_service + 'if (masterDataReq.status != 200) {\n  return;\n }\n';
+     lv_service = lv_service + 'return JSON.parse(masterDataReq.responseText).value';
+     lv_mainJs = lv_mainJs.replace("@serviceMethod@", lv_service);
+
      var lv_builderJs = lv_mainJs;
 
      var lv_tag = lt_cwp[0].CUSTOMWIDGET + "-main";
      lv_mainJs = lv_mainJs.replace("@tag@", lv_tag);
+    
 
      lv_tag = lt_cwp[0].CUSTOMWIDGET + "-builder";
      lv_builderJs = lv_builderJs.replace("@tag@", lv_tag);
