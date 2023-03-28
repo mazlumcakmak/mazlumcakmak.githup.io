@@ -401,7 +401,7 @@
                         oView.byId("editButton").setVisible(false);
                         oView.byId("saveButton").setVisible(true);
                         oView.byId("cancelButton").setVisible(true);
-                        oView.rebindTable(oView.oEditableTemplate, "Edit");
+                        that.rebindTable(oView.oEditableTemplate, "Edit");
                     },
 
                     onSave: function () {
