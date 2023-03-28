@@ -401,21 +401,21 @@
                         oView.byId("editButton").setVisible(false);
                         oView.byId("saveButton").setVisible(true);
                         oView.byId("cancelButton").setVisible(true);
-                        that.rebindTable(oView.oEditableTemplate, "Edit");
+                        that.rebindTable(that.oEditableTemplate, "Edit");
                     },
 
                     onSave: function () {
-                        that.byId("saveButton").setVisible(false);
-                        that.byId("cancelButton").setVisible(false);
-                        that.byId("editButton").setVisible(true);
+                        oView.byId("saveButton").setVisible(false);
+                        oView.byId("cancelButton").setVisible(false);
+                        oView.byId("editButton").setVisible(true);
                         that.rebindTable(that.oReadOnlyTemplate, "Navigation");
                     },
 
                     onCancel: function () {
-                        that.byId("cancelButton").setVisible(false);
-                        that.byId("saveButton").setVisible(false);
-                        that.byId("editButton").setVisible(true);
-                        that.oModel.setProperty("/ProductCollection", that.aProductCollection);
+                        oView.byId("cancelButton").setVisible(false);
+                        oView.byId("saveButton").setVisible(false);
+                        oView.byId("editButton").setVisible(true);
+                        oView.oModel.setProperty("/ProductCollection", oView.aProductCollection);
                         that.rebindTable(that.oReadOnlyTemplate, "Navigation");
                     },
 
