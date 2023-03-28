@@ -349,6 +349,7 @@
                     },
 
                     onEdit: function () {
+                        debugger;
                         var lv_json = {
                             "ProductCollection": [{
                                     "ProductId": "HT-1000",
