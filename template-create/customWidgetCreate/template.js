@@ -437,7 +437,7 @@
 
      var lv_service = 'async function masterDataService(tenant,provider,dimension) {\n';
      lv_service = lv_service + 'var masterDataReq = new XMLHttpRequest();\n';
-     lv_service = lv_service + 'var url = "https://${tenant}/api/v1/dataexport/providers/sac/${provider}/${dimension}Master"';
+     lv_service = lv_service + 'var url = "https://"+tenant+"/api/v1/dataexport/providers/sac/"+provider+"/"+dimension+"Master";';
      lv_service = lv_service + 'masterDataReq.open("GET", url, false);\n';
      lv_service = lv_service + 'masterDataReq.send(null);\n';
      lv_service = lv_service + 'if (masterDataReq.status != 200) {\n  return;\n }\n';
@@ -460,5 +460,5 @@
      that._firePropertiesChanged();
 
    }
-
+ 
  })();
