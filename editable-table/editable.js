@@ -316,6 +316,7 @@
                                 }
                             ]
                         };
+                        debugger;
                         var oModel = new JSONModel(lv_json);
                         this.oTable = this.byId("idProductsTable");
                         this.getView().setModel(this.oModel);
