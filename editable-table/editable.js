@@ -232,9 +232,9 @@
                     onInit: function () {
                         var oModel, oView;
 
-                        this._oMockServer = new DemoMockServer();
+                        that._oMockServer = new DemoMockServer();
 
-                        oModel = new ODataModel(this._oMockServer.getServiceUrl(), {
+                        oModel = new ODataModel(that._oMockServer.getServiceUrl(), {
                             defaultCountMode: "Inline"
                         });
 
@@ -248,7 +248,7 @@
                         mExcelSettings.worker = false;
                     },
                     onExit: function () {
-                        this._oMockServer.stop();
+                        that._oMockServer.stop();
                     }
                 });
             });
