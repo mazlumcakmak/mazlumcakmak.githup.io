@@ -12,94 +12,56 @@
         </div>
 
         <script id="oView" name="oView" type="sapui5/xmlview">
-           <mvc:View
-            height="500px"
-            controllerName="sap.m.sample.TableEditable.Table"
-            xmlns:mvc="sap.ui.core.mvc"
-            xmlns="sap.m">
+        <mvc:View
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
+	xmlns:smartTable="sap.ui.comp.smarttable"
+	xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+	controllerName="sap.ui.comp.sample.smarttable.mtableCustomizeConfig.SmartTable"
+	height="100%">
 
-            <Page showHeader="false" enableScrolling="true" class="sapUiContentPadding"
-                showNavButton="false">
-
-                <content>
-                    <Table id="idProductsTable" growing="true" growingThreshold="10" paste="onPaste">
-                        <headerToolbar>
-                            <OverflowToolbar id="otbSubheader">
-                                <Title text="Products" level="H2" />
-                                <ToolbarSpacer />
-                                <Button id="editButton" text="Edit" type="Transparent"
-                                    press="onEdit" />
-                                <Button id="initButton" text="Init" type="Transparent"
-                                    press="onInit" />
-                                <Button id="saveButton" text="Save" type="Transparent"
-                                    press="onSave" visible="false" />
-                                <Button id="cancelButton" text="Cancel" type="Transparent"
-                                    press="onCancel" visible="false" />
-                            </OverflowToolbar>
-                        </headerToolbar>
-                        <columns>
-                            <Column width="12em">
-                                <Text text="Product" />
-                            </Column>
-                            <Column minScreenWidth="Tablet" demandPopin="true" hAlign="End">
-                                <Text text="Quantity" />
-                            </Column>
-                            <Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">
-                                <Text text="Weight" />
-                            </Column>
-                            <Column hAlign="End">
-                                <Text text="Price" />
-                            </Column>
-                        </columns>
-                        <items>
-                            <ColumnListItem vAlign="Middle">
-                                <cells>
-                                    <ObjectIdentifier title="{Name}" text="{ProductId}" />
-                                    <ObjectNumber
-                                        number="{
-                                        path:'Quantity',
-                                        type: 'sap.ui.model.type.String',
-                                        formatOptions: {showMeasure: false}
-                                    }"
-                                        unit="{UoM}" />
-                                    <ObjectNumber number="{WeightMeasure}" unit="{WeightUnit}"
-                                        state="{
-                                    path: 'WeightMeasure',
-                                    formatter: 'sap.m.sample.TableEditable.Formatter.weightState'
-                                }" />
-                                    <ObjectNumber
-                                        number="{
-                                        parts:[{path:'Price'},{path:'CurrencyCode'}],
-                                        type: 'sap.ui.model.type.Currency',
-                                        formatOptions: {showMeasure: false}
-                                    }"
-                                        unit="{CurrencyCode}" />
-                                </cells>
-                            </ColumnListItem>
-                        </items>
-                    </Table>
-                </content>
-                <footer>
-                    <OverflowToolbar id="otbFooter">
-                        <ToolbarSpacer />
-                        <Button text="Order" press="onOrder">
-                            <layoutData>
-                                <OverflowToolbarLayoutData
-                                    moveToOverflow="false" />
-                            </layoutData>
-                        </Button>
-                    </OverflowToolbar>
-                </footer>
-
-            </Page>
-        </mvc:View>
+		<smartFilterBar:SmartFilterBar id="smartFilterBar" entitySet="LineItemsSet" persistencyKey="SmartFilter_Explored">
+			<smartFilterBar:controlConfiguration>
+				<smartFilterBar:ControlConfiguration key="Bukrs">
+					<smartFilterBar:defaultFilterValues>
+						<smartFilterBar:SelectOption low="0001">
+						</smartFilterBar:SelectOption>
+					</smartFilterBar:defaultFilterValues>
+				</smartFilterBar:ControlConfiguration>
+				<smartFilterBar:ControlConfiguration key="Gjahr">
+					<smartFilterBar:defaultFilterValues>
+						<smartFilterBar:SelectOption low="2014">
+						</smartFilterBar:SelectOption>
+					</smartFilterBar:defaultFilterValues>
+				</smartFilterBar:ControlConfiguration>
+			</smartFilterBar:controlConfiguration>
+		</smartFilterBar:SmartFilterBar>
+		<smartTable:SmartTable entitySet="LineItemsSet" smartFilterId="smartFilterBar"
+			tableType="ResponsiveTable" useExportToExcel="true" beforeExport="onBeforeExport"
+			app:useSmartField="true" customizeConfig="{
+				'textInEditModeSource': {
+					'*': 'ValueList',
+					'Bukrs':'NavigationProperty'
+				},
+				'clientSideMandatoryCheck': {
+					'*': true,
+					'Bukrs': false
+				}
+			}"
+			useVariantManagement="true" useTablePersonalisation="true" header="Line Items"
+			showRowCount="true" persistencyKey="SmartTableAnalytical_Explored" enableAutoBinding="true"
+			demandPopin="true" class="sapUiResponsiveContentPadding" enableAutoColumnWidth="true" editTogglable="true" app:useSmartToggle="true"/>
+</mvc:View>
         </script>        
     `;
 
     class editTableWidget extends HTMLElement {
         constructor() {
             super();
-            var table ;
+            var table;
 
             _shadowRoot = this.attachShadow({
                 mode: "open"
@@ -260,192 +222,37 @@
 
             //### Controller ###
             sap.ui.define([
-                'sap/base/util/deepExtend',
                 'sap/ui/core/mvc/Controller',
-                'sap/ui/model/json/JSONModel',
-                'sap/m/ColumnListItem',
-                'sap/m/Input',
-                'sap/m/MessageToast'
-            ], function (deepExtend, Formatter, Controller, JSONModel, ColumnListItem, Input, MessageToast) {
+                'sap/ui/model/odata/v2/ODataModel',
+                'sap/ui/comp/sample/smarttable/mockserver/DemoMockServer'
+            ], function (Controller, ODataModel, DemoMockServer) {
                 "use strict";
 
-                var TableController = Controller.extend("sap.m.sample.TableEditable.Table", {
-                    
+                return Controller.extend("sap.ui.comp.sample.smarttable.mtableCustomizeConfig.SmartTable", {
+                    onInit: function () {
+                        var oModel, oView;
 
-                    onInit: function (evt) {
-                        var lv_json = {
-                            "ProductCollection": [{
-                                    "ProductId": "HT-1000",
-                                    "Category": "Laptops",
-                                    "MainCategory": "Computer Systems",
-                                    "TaxTarifCode": "1",
-                                    "SupplierName": "Very Best Screens",
-                                    "WeightMeasure": 4.2,
-                                    "WeightUnit": "KG",
-                                    "Description": "Notebook Basic 15 with 2,80 GHz quad core, 15\" LCD, 4 GB DDR3 RAM, 500 GB Hard Disc, Windows 8 Pro",
-                                    "Name": "Notebook Basic 15",
-                                    "DateOfSale": "2017-03-26",
-                                    "ProductPicUrl": "https://sdk.openui5.org/test-resources/sap/ui/documentation/sdk/images/HT-1000.jpg",
-                                    "Status": "Available",
-                                    "Quantity": 10,
-                                    "UoM": "PC",
-                                    "CurrencyCode": "EUR",
-                                    "Price": 956,
-                                    "Width": 30,
-                                    "Depth": 18,
-                                    "Height": 3,
-                                    "DimUnit": "cm"
-                                },
-                                {
-                                    "ProductId": "HT-1001",
-                                    "Category": "Laptops",
-                                    "MainCategory": "Computer Systems",
-                                    "TaxTarifCode": "1",
-                                    "SupplierName": "Very Best Screens",
-                                    "WeightMeasure": 4.5,
-                                    "WeightUnit": "KG",
-                                    "Description": "Notebook Basic 17 with 2,80 GHz quad core, 17\" LCD, 4 GB DDR3 RAM, 500 GB Hard Disc, Windows 8 Pro",
-                                    "Name": "Notebook Basic 17",
-                                    "DateOfSale": "2017-04-17",
-                                    "ProductPicUrl": "https://sdk.openui5.org/test-resources/sap/ui/documentation/sdk/images/HT-1001.jpg",
-                                    "Status": "Available",
-                                    "Quantity": 20,
-                                    "UoM": "PC",
-                                    "CurrencyCode": "EUR",
-                                    "Price": 1249,
-                                    "Width": 29,
-                                    "Depth": 17,
-                                    "Height": 3.1,
-                                    "DimUnit": "cm"
-                                }
-                            ]
-                        };
-                        oView.oModel = new JSONModel(lv_json);
-                        oView.oTable = oView.byId("idProductsTable");
-                        oView.oReadOnlyTemplate = oView.byId("idProductsTable").removeItem(0);
-                        this.rebindTable(oView.oReadOnlyTemplate, "Navigation");
-                        oView.oEditableTemplate = new ColumnListItem({
-                            cells: [
-                                new Input({
-                                    value: "{Name}"
-                                }), new Input({
-                                    value: "{Quantity}",
-                                    description: "{UoM}"
-                                }), new Input({
-                                    value: "{WeightMeasure}",
-                                    description: "{WeightUnit}"
-                                }), new Input({
-                                    value: "{Price}",
-                                    description: "{CurrencyCode}"
-                                })
-                            ]
+                        this._oMockServer = new DemoMockServer();
+
+                        oModel = new ODataModel(this._oMockServer.getServiceUrl(), {
+                            defaultCountMode: "Inline"
                         });
-                    },
 
-                    rebindTable: function (oTemplate, sKeyboardMode) {
-                        oView.oTable.bindItems({
-                            path: "/ProductCollection",
-                            template: oTemplate,
-                            templateShareable: true,
-                            key: "ProductId"
-                        }).setKeyboardMode(sKeyboardMode);
+                        oView = this.getView();
+                        oView.setModel(oModel);
                     },
+                    onBeforeExport: function (oEvt) {
+                        var mExcelSettings = oEvt.getParameter("exportSettings");
 
-                    onEdit: function () {
-                        debugger;
-                        var lv_json = {
-                            "ProductCollection": [{
-                                    "ProductId": "HT-1000",
-                                    "Category": "Laptops",
-                                    "MainCategory": "Computer Systems",
-                                    "TaxTarifCode": "1",
-                                    "SupplierName": "Very Best Screens",
-                                    "WeightMeasure": 4.2,
-                                    "WeightUnit": "KG",
-                                    "Description": "Notebook Basic 15 with 2,80 GHz quad core, 15\" LCD, 4 GB DDR3 RAM, 500 GB Hard Disc, Windows 8 Pro",
-                                    "Name": "Notebook Basic 15",
-                                    "DateOfSale": "2017-03-26",
-                                    "ProductPicUrl": "https://sdk.openui5.org/test-resources/sap/ui/documentation/sdk/images/HT-1000.jpg",
-                                    "Status": "Available",
-                                    "Quantity": 10,
-                                    "UoM": "PC",
-                                    "CurrencyCode": "EUR",
-                                    "Price": 956,
-                                    "Width": 30,
-                                    "Depth": 18,
-                                    "Height": 3,
-                                    "DimUnit": "cm"
-                                },
-                                {
-                                    "ProductId": "HT-1001",
-                                    "Category": "Laptops",
-                                    "MainCategory": "Computer Systems",
-                                    "TaxTarifCode": "1",
-                                    "SupplierName": "Very Best Screens",
-                                    "WeightMeasure": 4.5,
-                                    "WeightUnit": "KG",
-                                    "Description": "Notebook Basic 17 with 2,80 GHz quad core, 17\" LCD, 4 GB DDR3 RAM, 500 GB Hard Disc, Windows 8 Pro",
-                                    "Name": "Notebook Basic 17",
-                                    "DateOfSale": "2017-04-17",
-                                    "ProductPicUrl": "https://sdk.openui5.org/test-resources/sap/ui/documentation/sdk/images/HT-1001.jpg",
-                                    "Status": "Available",
-                                    "Quantity": 20,
-                                    "UoM": "PC",
-                                    "CurrencyCode": "EUR",
-                                    "Price": 1249,
-                                    "Width": 29,
-                                    "Depth": 17,
-                                    "Height": 3.1,
-                                    "DimUnit": "cm"
-                                }
-                            ]
-                        };
-                        oView.aProductCollection = deepExtend([], lv_json);
-                        oView.byId("editButton").setVisible(false);
-                        oView.byId("saveButton").setVisible(true);
-                        oView.byId("cancelButton").setVisible(true);
-                        this.rebindTable(oView.oEditableTemplate, "Edit");
+                        // Disable Worker as Mockserver is used in Demokit sample
+                        mExcelSettings.worker = false;
                     },
-
-                    onSave: function () {
-                        oView.byId("saveButton").setVisible(false);
-                        oView.byId("cancelButton").setVisible(false);
-                        oView.byId("editButton").setVisible(true);
-                        that.rebindTable(that.oReadOnlyTemplate, "Navigation");
-                    },
-
-                    onCancel: function () {
-                        oView.byId("cancelButton").setVisible(false);
-                        oView.byId("saveButton").setVisible(false);
-                        oView.byId("editButton").setVisible(true);
-                        oView.oModel.setProperty("/ProductCollection", oView.aProductCollection);
-                        that.rebindTable(that.oReadOnlyTemplate, "Navigation");
-                    },
-
-                    onOrder: function () {
-                        MessageToast.show("Order button pressed");
-                    },
-
                     onExit: function () {
-                        that.aProductCollection = [];
-                        that.oEditableTemplate.destroy();
-                        that.oModel.destroy();
-                    },
-
-                    onPaste: function (oEvent) {
-                        var aData = oEvent.getParameter("data");
-                        MessageToast.show("Pasted Data: " + aData);
+                        this._oMockServer.stop();
                     }
-                }); 
-                try {
-                    that.table = TableController;
-                } catch (error) {
-                    
-                }
-                
-                return TableController;
-
+                });
             });
+
 
             //### THE APP: place the XMLView somewhere into DOM ###
             var oView = sap.ui.xmlview({
