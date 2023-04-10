@@ -7,10 +7,12 @@
         constructor() {
             super();
             this._props = {};
-            this.dimension = '';
+            this.dimension = [];
             this.factData = '';
+            this.masterData = {};
             this.filter = '';
             this.dimData = '';
+            this.provider = '';
 
             this.init();
 
@@ -27,6 +29,17 @@
         // after update
         onCustomWidgetAfterUpdate(changedProperties) {
             this._firePropertiesChanged();
+            if ("dimension" in changedProperties || "provider" in changedProperties) {
+                debugger;
+                if (this.provider == "" || this.provider) {
+                    return;
+                }
+
+                var lt_dim = this.dimension.value();
+                for (const dim of lt_dim) {
+                    this.masterDataService(this.provider, dim);
+                }
+            }
         }
 
         onCustomWidgetBeforeUpdate(changedProperties) {}
@@ -39,11 +52,14 @@
                         factData: this.factData,
                         filter: this.filter,
                         dimData: this.dimData,
+                        provider: this.provider,
 
                     }
                 }
             }));
         }
+
+
 
         // getter setter
         get dimData() {
@@ -70,20 +86,40 @@
         set filter(value) {
             this._props.filter = value;
         }
+        get provider() {
+            return this._props.provider;
+        }
+        set provider(value) {
+            this._props.provider = value;
+        }
+        get masterData() {
+            return this._props.masterData;
+        }
+        set masterData(value) {
+            this._props.masterData = value;
+        }
 
 
     }
 
     customElements.define("dimensionMembers-main", className);
-    async function masterDataService(tenant, provider, dimension) {
-        var masterDataReq = new XMLHttpRequest();
-        var url = "https://" + tenant + "/api/v1/dataexport/providers/sac/" + provider + "/" + dimension + "Master";
-        masterDataReq.open("GET", url, false);
-        masterDataReq.send(null);
-        if (masterDataReq.status != 200) {
-            return;
+    async function masterDataService(provider, dimension) {
+        var url = new XMLHttpRequest();
+        var url = "https://" + window.location.host + "/api/v1/dataexport/providers/sac/" + provider + "/" + dimension + "Master";
+        masterDataReq.open("GET", url, true);
+        masterDataReq.onload = (e) => {
+            if (masterDataReq.readyState === 4) {
+                if (masterDataReq.status === 200) {
+                    masterData[dimension].push(JSON.parse(masterDataReq.responseText).value);
+                }
+            }
         }
-        return JSON.parse(masterDataReq.responseText).value
+        masterDataReq.onerror = (e) => {
+            console.error(xhr.statusText);
+        };
+        masterDataReq.send(null);
     }
+
+
 
 })();
