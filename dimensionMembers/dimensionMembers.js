@@ -31,7 +31,8 @@
             this._firePropertiesChanged();
             if ("dimension" in changedProperties || "provider" in changedProperties) {
                 debugger;
-                if (this.provider == "" || this.provider == undefined) {
+                var p = this.provider ;
+                if (p == "" || p == undefined) {
                     return;
                 }
 
@@ -41,7 +42,7 @@
 
                 for (let i = 0; i < this.dimension.length; i++) {
                     const dim = this.dimension[i];
-                    this.masterDataService(this.provider, dim);
+                    masterDataService(p, dim);
 
                 }
 
