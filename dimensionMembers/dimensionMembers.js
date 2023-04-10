@@ -35,6 +35,10 @@
                     return;
                 }
 
+                if (this.dimension == undefined) {
+                    return;
+                }
+
                 var lt_dim = this.dimension.value();
                 for (const dim of lt_dim) {
                     this.masterDataService(this.provider, dim);
@@ -107,7 +111,7 @@
 
 
 
-     function masterDataService(provider, dimension) {
+    function masterDataService(provider, dimension) {
         var url = new XMLHttpRequest();
         var url = "https://" + window.location.host + "/api/v1/dataexport/providers/sac/" + provider + "/" + dimension + "Master";
         masterDataReq.open("GET", url, true);
