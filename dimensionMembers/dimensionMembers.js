@@ -115,7 +115,7 @@
 
 
     function masterDataService(provider, dimension) {
-        var url = new XMLHttpRequest();
+        var masterDataReq = new XMLHttpRequest();
         var url = "https://" + window.location.host + "/api/v1/dataexport/providers/sac/" + provider + "/" + dimension + "Master";
         masterDataReq.open("GET", url, true);
         masterDataReq.onload = (e) => {
