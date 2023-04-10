@@ -56,7 +56,7 @@
                 if (masterDataReq.readyState === 4) {
                     if (masterDataReq.status === 200) {
                         debugger;
-                        masterData[dimension].push(JSON.parse(masterDataReq.responseText).value);
+                        masterData[dimension]=JSON.parse(masterDataReq.responseText).value;
                     }
                 }
             }
