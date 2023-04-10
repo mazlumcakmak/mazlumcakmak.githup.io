@@ -31,7 +31,7 @@
             this._firePropertiesChanged();
             if ("dimension" in changedProperties || "provider" in changedProperties) {
                 debugger;
-                if (this.provider == "" || this.provider) {
+                if (this.provider == "" || this.provider == undefined) {
                     return;
                 }
 
