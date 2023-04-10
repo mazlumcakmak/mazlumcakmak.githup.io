@@ -102,7 +102,7 @@
 
     }
 
-    customElements.define("dimensionMembers-main", dimMembers);
+    customElements.define("dim-member-main", dimMembers);
 
 
 
