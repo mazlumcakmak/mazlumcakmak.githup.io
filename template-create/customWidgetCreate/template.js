@@ -351,7 +351,7 @@
      var fileBlob = new Blob([content], {
        type: type
      });
-
+     debugger;
      var lv_fd = "";
      if (fileType == "js") lv_fd = "JavaScript file";
      if (fileType = "json") lv_fd = "JSON";

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="editTable.js"></script>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td {
+            border: 1px solid #000000;
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            border: 1px solid #000000;
+            text-align: left;
+            padding: 8px;
+            cursor: pointer;
+            background: linear-gradient(0deg, #e4eff8, #487cac 5%, #e4eff8 150%);
+            color: white;
+            position: sticky;
+            top: 0;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+</head>
+
+<body>
+    <button onclick="functionName()">malzemeleri al</button>
+    <h2>Master Data Table</h2>
+
+    <table id="myTable">
+        <thead>
+            <tr>
+                <th>Member ID</th>
+                <th>Description</th>
+                <th>Material Group</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td contenteditable="true">Alfreds Futterkiste</td>
+                <td contenteditable="true">Maria Anders</td>
+                <td contenteditable="true">Germany</td>
+            </tr>
+            <tr>
+                <td contenteditable="true">Centro comercial Moctezuma</td>
+                <td contenteditable="true">Francisco Chang</td>
+                <td contenteditable="true">Mexico</td>
+            </tr>
+            <tr>
+                <td contenteditable="true">Ernst Handel</td>
+                <td contenteditable="true">Roland Mendel</td>
+                <td contenteditable="true">Austria</td>
+            </tr>
+            <tr>
+                <td contenteditable="true">Island Trading</td>
+                <td contenteditable="true">Helen Bennett</td>
+                <td contenteditable="true">UK</td>
+            </tr>
+            <tr>
+                <td contenteditable="true">Laughing Bacchus Winecellars</td>
+                <td contenteditable="true">Yoshi Tannamuri</td>
+                <td contenteditable="true">Canada</td>
+            </tr>
+            <tr>
+                <td contenteditable="true">Magazzini Alimentari Riuniti</td>
+                <td contenteditable="true">Giovanni Rovelli</td>
+                <td contenteditable="true">Italy</td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+
+</html>

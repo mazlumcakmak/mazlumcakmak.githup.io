@@ -1,0 +1,85 @@
+{
+    "name": "dimensionMembers",
+    "description": "Dimension Members",
+    "newInstancePrefix": "dimensionMembers",
+    "eula": "",
+    "vendor": "NTT DATA",
+    "license": "",
+    "id": "dimensionMembers",
+    "version": "1.0.0",
+    "icon": "",
+    "webcomponents": [
+        {
+            "kind": "main",
+            "tag": "dimensionMembers-main",
+            "url": "enter url....",
+            "integrity": "",
+            "ignoreIntegrity": true
+        }
+    ],
+    "properties": {
+        "dimension": {
+            "description": "Dimension Name",
+            "type": "string[]"
+        },
+        "factData": {
+            "description": "Fact Data",
+            "type": "string"
+        },
+        "filter": {
+            "description": "Filter",
+            "type": "string"
+        }
+    },
+    "methods": {
+        "getdimension": {
+            "returnType": "string[]",
+            "description": "Dimension Name",
+            "body": "return  this.dimension;"
+        },
+        "setdimension": {
+            "description": "Dimension Name",
+            "parameters": [
+                {
+                    "name": "dimension",
+                    "type": "string[]",
+                    "description": "Dimension Name"
+                }
+            ],
+            "body": "this.dimension = dimension;"
+        },
+        "getfactData": {
+            "returnType": "string",
+            "description": "Fact Data",
+            "body": "return  this.factData;"
+        },
+        "setfactData": {
+            "description": "Fact Data",
+            "parameters": [
+                {
+                    "name": "factData",
+                    "type": "string",
+                    "description": "Fact Data"
+                }
+            ],
+            "body": "this.factData = factData;"
+        },
+        "getfilter": {
+            "returnType": "string",
+            "description": "Filter",
+            "body": "return  this.filter;"
+        },
+        "setfilter": {
+            "description": "Filter",
+            "parameters": [
+                {
+                    "name": "filter",
+                    "type": "string",
+                    "description": "Filter"
+                }
+            ],
+            "body": "this.filter = filter;"
+        }
+    },
+    "events": {}
+}
