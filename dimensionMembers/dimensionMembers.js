@@ -1,7 +1,7 @@
 (function () {
 
     let tmpl = document.createElement("template");
-    tmpl.innerHTML = '';
+    tmpl.innerHTML = '<br> <style> </style> ';
 
     class dimMembers extends HTMLElement {
         constructor() {
