@@ -39,10 +39,12 @@
                     return;
                 }
 
-                var lt_dim = this.dimension.value();
-                for (const dim of lt_dim) {
+                for (let i = 0; i < this.dimension.length; i++) {
+                    const dim = this.dimension[i];
                     this.masterDataService(this.provider, dim);
+
                 }
+
             }
         }
 
