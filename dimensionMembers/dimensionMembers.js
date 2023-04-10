@@ -42,11 +42,29 @@
 
                 for (let i = 0; i < this.dimension.length; i++) {
                     const dim = this.dimension[i];
-                    masterDataService(p, dim);
+                    this.masterDataService(p, dim);
 
                 }
 
             }
+        }
+
+        masterDataService(provider, dimension) {
+            var masterDataReq = new XMLHttpRequest();
+            var url = "https://" + window.location.host + "/api/v1/dataexport/providers/sac/" + provider + "/" + dimension + "Master";
+            masterDataReq.open("GET", url, true);
+            masterDataReq.onload = (e) => {
+                if (masterDataReq.readyState === 4) {
+                    if (masterDataReq.status === 200) {
+                        debugger;
+                        masterData[dimension].push(JSON.parse(masterDataReq.responseText).value);
+                    }
+                }
+            }
+            masterDataReq.onerror = (e) => {
+                console.error(xhr.statusText);
+            };
+            masterDataReq.send(null);
         }
 
         onCustomWidgetBeforeUpdate(changedProperties) {}
@@ -114,23 +132,7 @@
 
 
 
-    function masterDataService(provider, dimension) {
-        var masterDataReq = new XMLHttpRequest();
-        var url = "https://" + window.location.host + "/api/v1/dataexport/providers/sac/" + provider + "/" + dimension + "Master";
-        masterDataReq.open("GET", url, true);
-        masterDataReq.onload = (e) => {
-            if (masterDataReq.readyState === 4) {
-                if (masterDataReq.status === 200) {
-                    debugger;
-                    masterData[dimension].push(JSON.parse(masterDataReq.responseText).value);
-                }
-            }
-        }
-        masterDataReq.onerror = (e) => {
-            console.error(xhr.statusText);
-        };
-        masterDataReq.send(null);
-    }
+     
 
 
 
