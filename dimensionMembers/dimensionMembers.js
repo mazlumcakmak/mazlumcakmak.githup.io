@@ -3,7 +3,7 @@
     let tmpl = document.createElement("template");
     tmpl.innerHTML = '';
 
-    class className extends HTMLElement {
+    class dimMembers extends HTMLElement {
         constructor() {
             super();
             this._props = {};
@@ -102,7 +102,7 @@
 
     }
 
-    customElements.define("dimensionMembers-main", className);
+    customElements.define("dimensionMembers-main", dimMembers);
     async function masterDataService(provider, dimension) {
         var url = new XMLHttpRequest();
         var url = "https://" + window.location.host + "/api/v1/dataexport/providers/sac/" + provider + "/" + dimension + "Master";
